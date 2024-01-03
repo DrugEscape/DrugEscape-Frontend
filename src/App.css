@@ -1,0 +1,145 @@
+html, body, #root{
+  margin:0;
+  padding:0;
+  height:100%;
+  width:100%;
+
+}
+#container {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+
+#header {
+  position:fixed;
+  width: 100%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  height: 64px;
+  top:0;
+  background-color: white;
+  z-index: 100;
+  border-bottom: 1px solid #A6A5AB;
+}
+
+
+#header-menu{
+  display:flex;
+  position:relative;
+  margin-left:57px;
+  margin-right:80px;
+  height: 100%;
+  
+}
+#header-logo{
+  width:25%;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 25px;
+  
+}
+#logo{
+  width: 50px;
+  height: 58px;
+
+}
+
+
+#header-index{
+  width:75%;
+}
+#header-ul{
+  width:100%;
+  height:100%;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin: 0;
+}
+#header-ul > *{
+  margin-left: 30px;
+  font-family: "Poppins", Sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.1s ease-in-out;
+}
+#header-ul > dt:hover{
+  color: rgba(34, 33, 33, 0.7);
+  cursor: pointer;
+  border-bottom: 3px solid #28EA53;
+}
+#header-ul > dt>a{
+  text-decoration: none;
+  color: black;
+}
+#header-ul > dt{
+  color:black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#header-login1, #header-mypage,#content-start,#content-login{
+  font-size: 18px;
+  font-family: "poppins", Sans-serif;
+  border: 1px solid #D4D2E3;
+  border-radius: 30px;
+  background: none;
+  padding :14px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+#header-login1{
+  color: rgba(34, 33, 33, 0.7);
+}
+#header-mypage{
+  background-color:#28EA53;
+  color:white;
+}
+#header-login1,#header-mypage:hover{
+  cursor: pointer;
+}
+
+#content{
+  margin-top: 104.8px;
+  height:598.4px;
+  position:relative;
+}
+#content-message{
+  line-height:56px;
+  height:130px;
+  width:500px;
+  font-weight: 700;
+  font-size: 32px;
+  position:absolute;
+  top:50px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+#content-message2{
+  color:#A6A5AB;
+  position:relative;
+  top:210px;
+  font-size: 14px;
+  line-height: 15px;
+}
+#content-button{
+  position: relative;
+  top: 250px;
+}
+#content-start{
+  margin-right: 50px;
+  background-color: #28EA53;
+  color: white;
+  cursor: pointer;
+}
+#content-login{
+  width:144px;
+  color:#28EA53;
+  cursor: pointer;
+}
+
+/*------------------ 메인 페이지 css */
+

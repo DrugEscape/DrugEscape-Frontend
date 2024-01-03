@@ -1,0 +1,195 @@
+html, body, *{
+    margin:0;
+    padding:0;
+
+}
+#manage{
+    position:relative;
+    width:100%;
+    height:100%;
+    top:104px;
+    
+
+}
+#manage-head{
+    position:absolute;
+    top:52px;
+    left:50%;
+    transform: translateX(-50%);
+}
+#manage-font{
+    font-family:DM Sans;
+    font-weight: 700;
+    color:#28EA53;
+    font-size: 24px;
+}
+#manage-servefont{
+    font-family:DM Sans;
+    font-weight: 400;
+    font-size: 14px;
+    color:#9795B5;
+    line-height: 30px;
+}
+#manage-content,#manage-b-content{
+    position: relative;
+    top:120px;
+    padding:10px;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#manage-content1,#manage-content2,#manage-content3,
+#manage-b-content1,#manage-b-content2,#manage-b-content3
+{
+    position: relative;
+    border:1px solid #E5E5E5;
+    border-radius: 15px;
+    margin-right: 40px;
+    width:300px;
+    height:200px;
+}
+.manage-img{
+    position:absolute;
+    left:30px;
+    top:30px;
+    width:60px;
+    height:60px;
+}
+.calender-p{
+    position: relative;
+    top:34px;
+    left:35%;
+    color:#28EA53;
+    font-size: 17px;
+    line-height: 28px;
+    text-align: left;
+}
+#calender-day,#calender-day2, #heart-info,
+#heart-per,#smile-info{
+    position:absolute;
+    top:110px;
+    font-size: 40px;
+    font-weight: 700;
+}
+#calender-day{
+    left:30px;
+    color:#b8b6b6;
+}
+
+#calender-day2{
+    left:88px;
+    color:#28EA53;
+}
+#heart-info{
+    left:30px;
+    color:#28EA53;
+}
+#heart-per{
+    left:80px;
+    color:#b8b6b6;
+}
+#smile-info{
+    left:30px;
+    color:#28EA53;
+}
+#exercise-btn1,#exercise-btn2{
+    font-size: 14px;
+    position: relative;
+    top:90px;
+    width:70px;
+    height:45px;
+    border-radius: 30px;
+    background-color: white;
+
+}
+#manage-b-content1 >button:hover{
+    color:white;
+    cursor: pointer;
+    background-color: #28EA53;
+}
+#exercise-btn1{
+    right:20px;   
+    border:none;
+    color:#28EA53;
+    border:1px solid #A6A5AB;
+
+}
+#exercise-btn2{
+    color:#28EA53;
+    border:1px solid #A6A5AB;
+    top:90px;
+    left:20px;   
+   
+}
+#meal-btn1,#meal-btn2,#meal-btn3{
+    font-size: 14px;
+    position: relative;
+    top:90px;
+    width:70px;
+    height:45px;
+    border-radius: 30px;
+    background-color: white;
+}
+#manage-b-content2 >button:hover{
+    color:white;
+    cursor: pointer;
+    background-color: #28EA53;
+}
+#meal-btn1{
+    right:25px;   
+    border:none;
+    color:#28EA53;
+    border:1px solid #A6A5AB;
+}
+#meal-btn2{
+    color:#28EA53;
+    border:1px solid #A6A5AB;  
+}
+#meal-btn3{
+    color:#28EA53;
+    border:1px solid #A6A5AB;
+    left:25px;   
+}
+#tm-btn1,#tm-btn2,#tm-btn3{
+    font-size: 14px;
+    position: relative;
+    top:63px;
+    width:70px;
+    height:45px;
+    border-radius: 30px;
+    background-color: white;
+}
+#manage-b-content3 >button:hover{
+    color:white;
+    cursor: pointer;
+    background-color: #28EA53;
+}
+#tm-btn1{
+    right:25px;   
+    color:#28EA53;
+    border:1px solid #A6A5AB;
+}
+#tm-btn2{
+    color:#28EA53;
+    border:1px solid #A6A5AB;  
+}
+#tm-btn3{
+    color:#28EA53;
+    border:1px solid #A6A5AB;
+    left:25px;   
+}
+#manage-btn{
+    position:relative;
+    top:120px;
+    left:430px;
+    color:white;
+    background-color:#28EA53;
+    border:none;
+    border-radius: 30px;
+    width:80px;
+    height:40px;
+}
+#manage-btn:hover{
+    cursor: pointer;
+}
