@@ -39,8 +39,8 @@ html, body, *{
     justify-content: center;
     align-items: center;
 }
-#manage-content1,#manage-content2,#manage-content3,
-#manage-b-content1,#manage-b-content2,#manage-b-content3
+#manage-content1,#manage-content2,
+#manage-b-content1,#manage-b-content2
 {
     position: relative;
     border:1px solid #E5E5E5;
@@ -56,7 +56,7 @@ html, body, *{
     width:60px;
     height:60px;
 }
-.calender-p{
+.manage-p{
     position: relative;
     top:34px;
     left:35%;
@@ -64,34 +64,6 @@ html, body, *{
     font-size: 17px;
     line-height: 28px;
     text-align: left;
-}
-#calender-day,#calender-day2, #heart-info,
-#heart-per,#smile-info{
-    position:absolute;
-    top:110px;
-    font-size: 40px;
-    font-weight: 700;
-}
-#calender-day{
-    left:30px;
-    color:#b8b6b6;
-}
-
-#calender-day2{
-    left:88px;
-    color:#28EA53;
-}
-#heart-info{
-    left:30px;
-    color:#28EA53;
-}
-#heart-per{
-    left:80px;
-    color:#b8b6b6;
-}
-#smile-info{
-    left:30px;
-    color:#28EA53;
 }
 #exercise-btn1,#exercise-btn2{
     font-size: 14px;
@@ -103,7 +75,7 @@ html, body, *{
     background-color: white;
 
 }
-#manage-b-content1 >button:hover{
+#manage-content2 >button:hover{
     color:white;
     cursor: pointer;
     background-color: #28EA53;
@@ -131,7 +103,7 @@ html, body, *{
     border-radius: 30px;
     background-color: white;
 }
-#manage-b-content2 >button:hover{
+#manage-b-content1 >button:hover{
     color:white;
     cursor: pointer;
     background-color: #28EA53;
@@ -160,7 +132,7 @@ html, body, *{
     border-radius: 30px;
     background-color: white;
 }
-#manage-b-content3 >button:hover{
+#manage-b-content2 >button:hover{
     color:white;
     cursor: pointer;
     background-color: #28EA53;
@@ -179,10 +151,33 @@ html, body, *{
     border:1px solid #A6A5AB;
     left:25px;   
 }
+#stopDrug-btn1,#stopDrug-btn2{
+    position: relative;
+    top:63px;
+    width:70px;
+    height:45px;
+    border-radius: 30px;
+    background-color: white;
+}
+#manage-content1 >button:hover{
+    color:white;
+    cursor: pointer;
+    background-color: #28EA53;
+}
+#stopDrug-btn1{
+    right:20px;   
+    color:#28EA53;
+    border:1px solid #A6A5AB;
+}
+#stopDrug-btn2{
+    color:#28EA53;
+    border:1px solid #A6A5AB;
+    left:20px;   
+}
 #manage-btn{
     position:relative;
     top:120px;
-    left:430px;
+    left:260px;
     color:white;
     background-color:#28EA53;
     border:none;
