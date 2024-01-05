@@ -27,7 +27,9 @@ function Header(){
                         <Link to="/donate">Donate</Link>
                     </dt>
                     <button id="header-login1" >Login</button>
-                    <button id="header-mypage" >My Page</button>
+                    <button id="header-mypage" >
+                        <Link to="/report">My Page</Link>
+                    </button>
                   </ul>
                 </div>
                  

@@ -4,6 +4,7 @@ import Manage from './component/manage'
 import Home from './component/home'
 import Map from './component/Map'
 import Donate from './component/Donate'
+import Report from './component/report'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 
 function App() {  
@@ -19,6 +20,7 @@ function App() {
         <Route path='/manage' element={<Manage/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate/>}></Route>
+        <Route path='/report' element={<Report/>}></Route>
       </Routes>
       </div>
     </div>

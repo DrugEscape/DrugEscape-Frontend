@@ -14,7 +14,7 @@ function Map(){
   googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
         <GoogleMap
           mapContainerStyle={mapStyles}
-          zoom={13}
+          zoom={7}
           center={defaultCenter}
         />
      </LoadScript>

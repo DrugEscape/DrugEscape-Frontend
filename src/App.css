@@ -98,6 +98,10 @@ html, body, #root{
   background-color:#28EA53;
   color:white;
 }
+#header-mypage >a{
+  text-decoration: none;
+  color: white;
+}
 #header-login1,#header-mypage:hover{
   cursor: pointer;
 }
