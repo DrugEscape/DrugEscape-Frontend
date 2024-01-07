@@ -10,12 +10,24 @@ html, body, *{
     top:104px;
     
 }
+#user-info{
+    position:relative;
+    /* height:400px; */
+}
 #report-chart{
     position: absolute;
     width:500px;
-    height:100%;
-    top:250px;
-    left:120px;
+    height:400px;
+    top:100px;
+}
+#report-chartback{
+    position: relative;
+    top:180px;  /* 여기크기 userinfo크기 포함되서 20차이나는듯 */
+    left:220px;
+    width: 500px;
+    height:480px;
+    background-color:#28EA53;
+    border-radius: 15px;
 }
 #report-title{
     position: absolute;
@@ -35,4 +47,73 @@ html, body, *{
     font-size: 14px;
     color:#9795B5;
     line-height: 30px;
+}
+#report-chartname{
+    position: absolute;
+    font-weight: 700;
+    color:white;
+    left:20px;
+    top:30px;
+    font-size: 20px;
+}
+#report-manage{
+    position: absolute;
+    left:800px;
+    top:200px;
+    width: 500px;
+    height:500px;
+    border-radius: 15px;
+}
+#report-manage1{
+    position: absolute;
+    width:230px;
+    height:230px;
+    left:0;
+    border:1px solid #E5E5E5;
+    border-radius:15px;
+}
+#report-manage2{
+    position:absolute;
+    width:230px;
+    height:230px;
+    border:1px solid #E5E5E5;
+    left:250px;
+    border-radius: 15px;
+}
+#report-manage3{
+    position: absolute;
+    width:230px;
+    height:230px;
+    left:0;
+    top:250px;
+    border:1px solid #E5E5E5;
+    border-radius:15px;
+}
+#report-manage4{
+    position:absolute;
+    width:230px;
+    height:230px;
+    border:1px solid #E5E5E5;
+    border-radius: 15px;
+    left:250px;
+    top:250px;
+
+
+}
+.report-p1{
+    font-weight: 700;
+    font-size: 16px;
+    color:#5D5A88;
+    text-align: left;
+    margin:10px;
+    line-height: 12px;
+
+}
+#report-per{
+    width:130px;
+    height:130px;
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+    top:20px;
 }
