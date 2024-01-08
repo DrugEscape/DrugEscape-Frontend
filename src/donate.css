@@ -1,0 +1,141 @@
+body,html{
+    margin: 0;
+    padding: 0;
+   
+}
+#donate-title{
+    position: relative;
+    top:104px;
+    height:400px;
+}
+#donate-content{
+    position: relative;
+    height: 350px;
+}
+#donate-donate{
+    position: absolute;
+    top:62px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:#28EA53;
+    font-weight:700;
+    font-size: 40px;
+}
+#donate-p, #donate-p1, #donate-p2{
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:#1E1E1E;
+    font-size: 18px;
+    font-weight: 400;
+}
+#donate-p1{
+    top: 150px;
+}
+#donate-p2{
+    top: 180px;
+}
+#donate-point{
+    display:flex;
+    flex-direction:row;
+}
+#donate-form{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    margin-left:220px;
+    margin-right: 220px;
+}
+#donate-input{
+    width:31%;
+    height: 100px;
+    border-radius: 15px;
+    border:1px solid #A6A5AB;
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+
+}
+#donate-input::placeholder{
+    font-size: 50px;
+    color:#A6A5AB;
+    position: absolute;
+    top:25px;
+    left:50%;
+    transform: translate(-50%);
+}
+#donate-input:focus::placeholder {
+    color: transparent; /* 포커스가 있을 때 placeholder를 투명하게 만듭니다. */
+  }
+#donate-points{
+    width: 38%;
+    font-size: 50px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#donate-button{
+    width:31%;
+    height:100px;
+    font-size: 50px;
+    color:#28EA53;
+    border:1px solid #A6A5AB;
+    border-radius: 15px;
+    font-weight: 600;
+    background-color: white;
+}
+
+/* 여기까지 donate-main */
+#donate-complete{
+    position: relative;
+    top:104px;
+    width:1220px;
+    height:550px;
+    background-color: #28EA53;
+    margin-left:150px;
+    margin-right:150px;
+    margin-top: 40px;
+    border:1px solid white;
+    border-radius: 30px;
+}
+.visible{
+    display: block;
+}
+.hidden{
+    display: none;
+}
+#donate-complete1{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;
+    font-size: 40px;
+    font-weight: 700;
+}
+#donate-complete2{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;
+    font-size: 40px;
+    font-weight: 700;
+}
+#donate-complete3, #donate-complete4{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;
+    font-size: 15px;
+    font-weight: 400;
+}
+#donate-complete3{
+    top: 40%;
+}
+#donate-complete4{
+    top: 45%;
+}
