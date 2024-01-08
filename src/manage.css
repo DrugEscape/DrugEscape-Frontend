@@ -75,11 +75,6 @@ html, body, *{
     background-color: white;
 
 }
-#manage-content2 >button:hover{
-    color:white;
-    cursor: pointer;
-    background-color: #28EA53;
-}
 #exercise-btn1{
     right:20px;   
     border:none;
@@ -103,10 +98,12 @@ html, body, *{
     border-radius: 30px;
     background-color: white;
 }
-#manage-b-content1 >button:hover{
-    color:white;
+#manage-b-content1 >button:hover,#manage-b-content2 >button:hover,
+#manage-content1 >button:hover,#manage-content2 >button:hover
+{
     cursor: pointer;
     background-color: #28EA53;
+    color:white;
 }
 #meal-btn1{
     right:25px;   
@@ -132,11 +129,6 @@ html, body, *{
     border-radius: 30px;
     background-color: white;
 }
-#manage-b-content2 >button:hover{
-    color:white;
-    cursor: pointer;
-    background-color: #28EA53;
-}
 #tm-btn1{
     right:25px;   
     color:#28EA53;
@@ -159,15 +151,18 @@ html, body, *{
     border-radius: 30px;
     background-color: white;
 }
-#manage-content1 >button:hover{
-    color:white;
-    cursor: pointer;
-    background-color: #28EA53;
-}
 #stopDrug-btn1{
     right:20px;   
     color:#28EA53;
     border:1px solid #A6A5AB;
+}
+#stopDrug-btn1.checked,#stopDrug-btn2.checked,
+#exercise-btn1.checked,#exercise-btn2.checked,
+#meal-btn1.checked,#meal-btn2.checked,#meal-btn3.checked,
+#tm-btn1.checked,#tm-btn2.checked,#tm-btn3.checked
+{
+    background-color: #28EA53;
+    color:white;
 }
 #stopDrug-btn2{
     color:#28EA53;
@@ -184,7 +179,4 @@ html, body, *{
     border-radius: 30px;
     width:80px;
     height:40px;
-}
-#manage-btn:hover{
-    cursor: pointer;
 }
