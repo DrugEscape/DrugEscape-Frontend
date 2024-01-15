@@ -5,9 +5,11 @@ import Home from './component/home'
 import Map from './component/Map'
 import Donate from './component/Donate'
 import Report from './component/report'
+import Post from './component/post'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
+import Share from './component/share'
 
 function App() { 
   const [data, setData] = useState<Record<string, boolean>>({
@@ -47,6 +49,8 @@ function App() {
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate/>}></Route>
         <Route path='/report' element={<Report/>}></Route>
+        <Route path='/share' element={<Share/>}></Route>
+        <Route path='/create-post' element={<Post/>}></Route>
       </Routes>
       </div>
     </div>
