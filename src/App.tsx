@@ -12,6 +12,7 @@ import axios from 'axios'
 import Share from './component/share'
 
 function App() { 
+  const [view, setView] = useState<{title: string; content:string;}[]>([]);
   const [data, setData] = useState<Record<string, boolean>>({
     stopDrug1: false,
     stopDrug2: false,
@@ -49,8 +50,8 @@ function App() {
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate/>}></Route>
         <Route path='/report' element={<Report/>}></Route>
-        <Route path='/share' element={<Share/>}></Route>
-        <Route path='/create-post' element={<Post/>}></Route>
+        <Route path='/share' element={<Share view={view} setView={setView}/>}></Route>
+        <Route path='/create-post' element={<Post view={view} setView={setView}/>}></Route>
       </Routes>
       </div>
     </div>

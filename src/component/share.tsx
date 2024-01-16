@@ -1,6 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import '../share.css';
-function share(){
+interface ShareProps{
+    view: {title: string; content:string;}[];
+    setView: (value: any) => void;
+
+
+}
+function share({view, setView}:ShareProps){
     const navigate = useNavigate();
     const handleCreatePost = () => {
         navigate('/create-post');
@@ -22,7 +28,11 @@ function share(){
                     <button onClick={handleCreatePost}>+ Create a post</button>
                 </div>
                 <div id='share-content-show'>
-                    
+                    {view.map(element =>
+                        <div>
+                            <h2>{element.title}</h2>
+                        </div>
+                        )}
                 </div>
             </div>
         </div>
