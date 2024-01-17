@@ -1,13 +1,15 @@
 import '../share.css'
 import {CKEditor} from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { useState } from 'react';  
+import { useState } from 'react'; 
+import { useNavigate } from 'react-router-dom';
 interface PostProps{
     view: {title: string; content:string;}[];
     setView: (value: any) => void;
 
 } 
 function post({view, setView}:PostProps){
+    const navigate = useNavigate();
     
     const [postcontent, setPostcontent] = useState({
         title : '',
@@ -46,17 +48,20 @@ function post({view, setView}:PostProps){
                     <div id='post-post3'>
                     <CKEditor
                     editor={ClassicEditor}
-                    data="<p>내용을 입력하세요</p>"
+                    data="내용을 입력하세요"
                     onReady={editor => {
                     // You can store the "editor" and use when it is needed.
                     console.log('Editor is ready to use!', editor);
                     }}
                     onChange={(event, editor) => {
                     const data = editor.getData();
+                    const parser = new DOMParser();
+                    const parsed = parser.parseFromString(data, 'text/html');
+                    const text = parsed.body.textContent || "";  // 데이터 파싱한부분 
                     console.log({ event, editor, data });
                     setPostcontent({
                         ...postcontent,
-                        content : data
+                        content : text
                     });
                     console.log(postcontent);
                  }}
@@ -68,11 +73,14 @@ function post({view, setView}:PostProps){
                     }}
                     />
                     </div>
-                    <button id='share-submit' type='submit' onClick={(e)=>{
+                    <button id='post-submit' type='submit' onClick={(e)=>{
                         e.preventDefault();
                         setView(view.concat({...postcontent}));
+                        navigate('/share');
                     }}>save </button>
-                    <button id='share-cancel'>cancel</button>
+                    <button id='post-cancel' onClick={()=> {
+                        navigate('/share');
+                    }}>cancel</button>
                 </div>
             </div>
         </div>

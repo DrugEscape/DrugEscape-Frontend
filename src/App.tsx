@@ -6,6 +6,7 @@ import Map from './component/Map'
 import Donate from './component/Donate'
 import Report from './component/report'
 import Post from './component/post'
+import ShareContent from './component/shareContent'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
@@ -52,6 +53,7 @@ function App() {
         <Route path='/report' element={<Report/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView}/>}></Route>
+        <Route path='/shareContent' element={<ShareContent/>}></Route>
       </Routes>
       </div>
     </div>

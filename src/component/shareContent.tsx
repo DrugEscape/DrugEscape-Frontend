@@ -1,19 +1,22 @@
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import '../share.css';
-interface ShareProps{
+
+interface shareContentProps{
     view: {title: string; content:string;}[];
     setView: (value: any) => void;
-
-
 }
-function share({view, setView}:ShareProps){
+
+function shareContent(){
+    const location = useLocation();
+    const title = location.state.title;
     const navigate = useNavigate();
     const handleCreatePost = () => {
         navigate('/create-post');
     }
-    return(
+    return( 
         <>
-        <div id="share">
+         <div id="share">
             <div id="share-head">
                 <p id="share-font">Share</p>   
                 <p id="share-servefont">Connecting with people</p>
@@ -24,22 +27,21 @@ function share({view, setView}:ShareProps){
                     <p>D+</p>
                 </div>
                 <div id='share-content-title'>
-                    <p>Community</p>
                     <button onClick={handleCreatePost}>+ Create a post</button>
                 </div>
                 <div id='share-content-show'>
-                    {view.map(element =>
-                        <div id='share-show1'>
-                            <h2 onClick={()=>{
-                                navigate('/shareContent', {state: {title: element.title, content: element.content}})
-                            }}>{element.title}</h2>
-                            <hr/>
+                        <div id='content-title'>
+                            {title}
                         </div>
-                        )}
-                </div>
+                        <div id='content-content'>
+                            <div id='content-content1'>
+                                {location.state.content}
+                            </div>
+                        </div>
+                        </div>
             </div>
         </div>
         </>
     )
 }
-export default share;
+export default shareContent;
