@@ -71,13 +71,54 @@ html, body, *{
     top:50px;
     left:400px;
     width:800px;
-    height:400px;
+    height:420px;
     border:1px solid #D4D2E3;
     border-radius: 15px;  
 }
 #share-show1{
     text-align: left;
     margin:10px;
+}
+#share-show1>p{
+    height:45px;
+    font-weight: 400;
+    font-size: 30px;
+    border-bottom: 1px solid #D4D2E3;
+}
+#share-page-btn{
+    position: absolute;
+    top: 470px;
+    left:50%;
+    transform: translateX(-50%);
+}
+#share-page-btn>button{
+    margin:0 5px;
+    border:none;
+    background-color: #FFFFFF;
+}
+#share-side{
+    position: absolute;
+    top:310px;
+    left :150px;
+}
+#share-side>input{
+    position: absolute;
+    top:10px;
+    height: 35px;
+    width:230px;
+    border-radius: 15px;
+    background-color: whitesmoke;
+}
+#share-side>button{
+    position: absolute;
+    top:60px;
+    height: 35px;
+    width:160px;
+    border-radius: 15px;
+    background-color: #28EA53;
+    border:none;
+    color:#FFFFFF;
+    font-size: 15px;
 }
 /* post 부분 css 시작 */
 #post-content{

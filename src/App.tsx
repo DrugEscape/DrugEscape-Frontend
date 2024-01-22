@@ -32,13 +32,15 @@ function App() {
      setData(prevData => ({ ...prevData, [name]: value})); // name, value값을 onChange함수에 넣어줌
 
   }
- const handleSubmit = async () => {
-  await axios.post('/api/data', data, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-};
+  const handleSubmit = async () => {
+    const serverdata = await axios.post('http://localhost:8080/manage', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: data,  // 데이터를 쿼리 문자열로 전달합니다.
+    });
+    console.log(serverdata);
+  };
   return (
     <>
    <BrowserRouter>
@@ -46,7 +48,8 @@ function App() {
       <div id="wrap">
       <Header />
       <Routes>
-        <Route path='/' element={<Home />}></Route> 
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/drugescape/LoginSignup' element={<Home />}></Route> 
         <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate/>}></Route>

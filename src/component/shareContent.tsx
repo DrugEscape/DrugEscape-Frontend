@@ -2,10 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import '../share.css';
 
-interface shareContentProps{
-    view: {title: string; content:string;}[];
-    setView: (value: any) => void;
-}
 
 function shareContent(){
     const location = useLocation();
@@ -38,7 +34,7 @@ function shareContent(){
                                 {location.state.content}
                             </div>
                         </div>
-                        </div>
+                </div>
             </div>
         </div>
         </>

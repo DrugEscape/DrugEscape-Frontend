@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import '../share.css';
 interface ShareProps{
     view: {title: string; content:string;}[];
@@ -7,6 +8,13 @@ interface ShareProps{
 
 }
 function share({view, setView}:ShareProps){
+    const [page, setPage] = useState(0);
+    const postpage =7;
+    const totalPages = Math.ceil(view.length / postpage);
+    const handlePageClick = (pageNumber: number) => {
+        setPage(pageNumber);
+    };
+
     const navigate = useNavigate();
     const handleCreatePost = () => {
         navigate('/create-post');
@@ -23,21 +31,30 @@ function share({view, setView}:ShareProps){
                     <p>USER Name</p>
                     <p>D+</p>
                 </div>
+                <div id='share-side'>
+                    <input type='text' placeholder='Search for'></input>
+                    <button onClick={handleCreatePost}>+ Create a post</button>
+                </div>
                 <div id='share-content-title'>
                     <p>Community</p>
                     <button onClick={handleCreatePost}>+ Create a post</button>
                 </div>
                 <div id='share-content-show'>
-                    {view.map(element =>
+                    {view.slice(page * postpage, (page + 1) * postpage).map(element =>
                         <div id='share-show1'>
-                            <h2 onClick={()=>{
+                            <p onClick={()=>{
                                 navigate('/shareContent', {state: {title: element.title, content: element.content}})
-                            }}>{element.title}</h2>
-                            <hr/>
+                            }}>{element.title}</p>
                         </div>
                         )}
                 </div>
+                <div id='share-page-btn'>
+                {Array.from({ length: totalPages }, (_, index) => (
+                 <button onClick={() => handlePageClick(index)}>{index + 1}</button>
+                    ))}
+                </div>
             </div>
+            
         </div>
         </>
     )

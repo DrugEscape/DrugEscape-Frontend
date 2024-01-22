@@ -43,8 +43,8 @@ function Manage({onChange, onSubmit} : ManageProps){
                 <div id='manage-content2'>
                     <img className="manage-img" src={exercise}/>
                     <p className="manage-p">Exercise</p>
-                    <button id='exercise-btn1' onClick={handleChange} name="exercise-btn1" value={'true'}className={isCheck['exercise-btn1'] ? 'checked' : ''} >Yes</button>
-                    <button id='exercise-btn2' onClick={handleChange} name="exercise-btn2" value={'true'}className={isCheck['exercise-btn2'] ? 'checked' : ''}>No</button>
+                    <button id='exercise-btn1' onClick={handleChange} name="exerciseBtn1" value={'true'}className={isCheck['exercise-btn1'] ? 'checked' : ''} >Yes</button>
+                    <button id='exercise-btn2' onClick={handleChange} name="exerciseBtn2" value={'true'}className={isCheck['exercise-btn2'] ? 'checked' : ''}>No</button>
                     
                 </div>
             </div>
@@ -64,7 +64,7 @@ function Manage({onChange, onSubmit} : ManageProps){
                     <button id='tm-btn1' onClick={handleChange} name="medicine1" value={'true'} className={isCheck['tm-btn1'] ? 'checked' : ''} >morning</button>
                     <button id='tm-btn2' onClick={handleChange} name="medicine2" value={'true'} className={isCheck['tm-btn2'] ? 'checked' : ''}>lunch</button>
                     <button id='tm-btn3' onClick={handleChange} name="medicine3"  value={'true'} className={isCheck['tm-btn3'] ? 'checked' : ''}>evening</button> 
-                    <button id='tm-btn4' onClick={handleChange} name="medicine-none" value={'false'}className={isCheck['tm-btn4'] ? 'checked' : ''}>none</button>
+                    <button id='tm-btn4' onClick={handleChange} name="medicineNone" value={'false'}className={isCheck['tm-btn4'] ? 'checked' : ''}>none</button>
                 </div>
             </div>
                  <button type='submit' id="manage-btn">Submit</button>

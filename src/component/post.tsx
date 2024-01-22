@@ -48,7 +48,7 @@ function post({view, setView}:PostProps){
                     <div id='post-post3'>
                     <CKEditor
                     editor={ClassicEditor}
-                    data="내용을 입력하세요"
+                    data=""
                     onReady={editor => {
                     // You can store the "editor" and use when it is needed.
                     console.log('Editor is ready to use!', editor);
