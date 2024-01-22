@@ -14,21 +14,21 @@ import Share from './component/share'
 
 function App() { 
   const [view, setView] = useState<{title: string; content:string;}[]>([]);
-  const [data, setData] = useState<Record<string, boolean>>({
-    stopDrug1: false,
-    stopDrug2: false,
-    exercise1: false,
-    exercise2: false,
-    meal1: false,
-    meal2: false,
-    meal3: false,
-    medicine1: false,
-    medicine2: false,
-    medicine3: false,
+  const [data, setData] = useState<Record<string, number>>({
+    stopDrug1: 0,
+    stopDrug2: 0,
+    exercise1: 0,
+    exercise2: 0,
+    meal1: 0,
+    meal2: 0,
+    meal3: 0,
+    medicine1: 0,
+    medicine2: 0,
+    medicine3: 0,
   });
   
 
-  const handleChange = (name: string, value: boolean) => {
+  const handleChange = (name: string, value: number) => {
      setData(prevData => ({ ...prevData, [name]: value})); // name, value값을 onChange함수에 넣어줌
 
   }

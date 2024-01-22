@@ -5,7 +5,7 @@ import meal from '../assets/spoon-and-fork.png';
 import pill from '../assets/pill.png';
 import { useState } from 'react';
 interface ManageProps {
-    onChange: (name: string, value: boolean) => void;
+    onChange: (name: string, value: number) => void;
     onSubmit: () => void;
 
 }
@@ -37,14 +37,14 @@ function Manage({onChange, onSubmit} : ManageProps){
                     <img className="manage-img" src={heart}/>
                     <p className="manage-p">Didn't you</p>
                     <p className='manage-p'>take drugs today?</p>
-                    <button id='stopDrug-btn1' onClick={handleChange} name='stopDrug1' value={'true'}  className={isCheck['stopDrug-btn1'] ? 'checked' : ''}>Yes</button>
-                    <button id='stopDrug-btn2' onClick={handleChange} name='stopDrug2' value={'true'} className={isCheck['stopDrug-btn2'] ? 'checked' : ''}>No</button>
+                    <button id='stopDrug-btn1' onClick={handleChange} name='stopDrug1' value={1}  className={isCheck['stopDrug-btn1'] ? 'checked' : ''}>Yes</button>
+                    <button id='stopDrug-btn2' onClick={handleChange} name='stopDrug2' value={2} className={isCheck['stopDrug-btn2'] ? 'checked' : ''}>No</button>
                 </div>
                 <div id='manage-content2'>
                     <img className="manage-img" src={exercise}/>
                     <p className="manage-p">Exercise</p>
-                    <button id='exercise-btn1' onClick={handleChange} name="exerciseBtn1" value={'true'}className={isCheck['exercise-btn1'] ? 'checked' : ''} >Yes</button>
-                    <button id='exercise-btn2' onClick={handleChange} name="exerciseBtn2" value={'true'}className={isCheck['exercise-btn2'] ? 'checked' : ''}>No</button>
+                    <button id='exercise-btn1' onClick={handleChange} name="exerciseBtn1" value={1}className={isCheck['exercise-btn1'] ? 'checked' : ''} >Yes</button>
+                    <button id='exercise-btn2' onClick={handleChange} name="exerciseBtn2" value={2}className={isCheck['exercise-btn2'] ? 'checked' : ''}>No</button>
                     
                 </div>
             </div>
@@ -53,18 +53,18 @@ function Manage({onChange, onSubmit} : ManageProps){
                 <div id='manage-b-content1'>
                     <img className="manage-img" src={meal}/>
                     <p className="manage-p">Meal</p>
-                    <button id='meal-btn1' onClick={handleChange} name="meal1" value={'true'} className={isCheck['meal-btn1'] ? 'checked' : ''}>breakfast</button>
-                    <button id='meal-btn2' onClick={handleChange} name="meal2" value={'true'} className={isCheck['meal-btn2'] ? 'checked' : ''}>lunch</button>
-                    <button id='meal-btn3' onClick={handleChange} name="meal3" value={'true'} className={isCheck['meal-btn3'] ? 'checked' : ''}>dinner</button>
+                    <button id='meal-btn1' onClick={handleChange} name="meal1" value={1} className={isCheck['meal-btn1'] ? 'checked' : ''}>breakfast</button>
+                    <button id='meal-btn2' onClick={handleChange} name="meal2" value={2} className={isCheck['meal-btn2'] ? 'checked' : ''}>lunch</button>
+                    <button id='meal-btn3' onClick={handleChange} name="meal3" value={3} className={isCheck['meal-btn3'] ? 'checked' : ''}>dinner</button>
                 </div>
                 <div id='manage-b-content2'>
                     <img className="manage-img" src={pill}/>
                     <p className="manage-p">Take</p>
                     <p className='manage-p'>medicine</p> 
-                    <button id='tm-btn1' onClick={handleChange} name="medicine1" value={'true'} className={isCheck['tm-btn1'] ? 'checked' : ''} >morning</button>
-                    <button id='tm-btn2' onClick={handleChange} name="medicine2" value={'true'} className={isCheck['tm-btn2'] ? 'checked' : ''}>lunch</button>
-                    <button id='tm-btn3' onClick={handleChange} name="medicine3"  value={'true'} className={isCheck['tm-btn3'] ? 'checked' : ''}>evening</button> 
-                    <button id='tm-btn4' onClick={handleChange} name="medicineNone" value={'false'}className={isCheck['tm-btn4'] ? 'checked' : ''}>none</button>
+                    <button id='tm-btn1' onClick={handleChange} name="medicine1" value={1} className={isCheck['tm-btn1'] ? 'checked' : ''} >morning</button>
+                    <button id='tm-btn2' onClick={handleChange} name="medicine2" value={2} className={isCheck['tm-btn2'] ? 'checked' : ''}>lunch</button>
+                    <button id='tm-btn3' onClick={handleChange} name="medicine3"  value={3} className={isCheck['tm-btn3'] ? 'checked' : ''}>evening</button> 
+                    <button id='tm-btn4' onClick={handleChange} name="medicineNone" value={4}className={isCheck['tm-btn4'] ? 'checked' : ''}>none</button>
                 </div>
             </div>
                  <button type='submit' id="manage-btn">Submit</button>
