@@ -13,7 +13,7 @@ import axios from 'axios'
 import Share from './component/share'
 
 function App() { 
-  const [view, setView] = useState<{title: string; content:string;}[]>([]);
+  const [view, setView] = useState<{title: string; content:string; id:number}[]>([]);
   const [data, setData] = useState<Record<string, number>>({
     stopDrug1: 0,
     stopDrug2: 0,
@@ -26,6 +26,9 @@ function App() {
     medicine2: 0,
     medicine3: 0,
   });
+
+  const [comment, setComment] = useState<{[key:string]: string[]}>({});
+  const [input, setInput] = useState('');
   
 
   const handleChange = (name: string, value: number) => {
@@ -56,7 +59,7 @@ function App() {
         <Route path='/report' element={<Report/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView}/>}></Route>
-        <Route path='/shareContent' element={<ShareContent/>}></Route>
+        <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput} />}></Route>
       </Routes>
       </div>
     </div>

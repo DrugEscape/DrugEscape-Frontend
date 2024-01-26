@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../share.css';
+import { set } from 'mobx';
 interface ShareProps{
-    view: {title: string; content:string;}[];
+    view: {title: string; content:string; id:number}[];
     setView: (value: any) => void;
 
 
@@ -40,12 +41,14 @@ function share({view, setView}:ShareProps){
                     <button onClick={handleCreatePost}>+ Create a post</button>
                 </div>
                 <div id='share-content-show'>
-                    {view.slice(page * postpage, (page + 1) * postpage).map(element =>
-                        <div id='share-show1'>
+                    {view.slice(page * postpage, (page + 1) * postpage).map((element, index) =>
+                        <div id='share-show1' key={index}>
                             <p onClick={()=>{
-                                navigate('/shareContent', {state: {title: element.title, content: element.content}})
+                                navigate('/shareContent', {state: {id: element.id,title: element.title, content: element.content}})
+                                console.log(element.id);
                             }}>{element.title}</p>
                         </div>
+                    
                         )}
                 </div>
                 <div id='share-page-btn'>

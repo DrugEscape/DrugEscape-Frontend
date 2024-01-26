@@ -1,15 +1,36 @@
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import '../share.css';
+import { HTMLInputTypeAttribute, useState } from 'react';
 
+interface shareContentProps {
+    comment: { [key: string]: string[]; };
+    input: string;
+    setComment: (comment: { [key: string]: string[]; }) => void;
+    setInput: (input: string) => void;
+}
+function shareContent({comment, input, setComment, setInput}: shareContentProps){
+    const handleComment = (e: any) => {
+        setInput(e.target.value);
+    }
+    const postclick = () => {
+        const postId = location.state.id;
+        console.log(postId);
+        setComment({
+            ...comment,
+            [postId]: [...(comment[postId] || []), input]
+        });
+        setInput('');
+        console.log(location.state.title);
+    }
 
-function shareContent(){
     const location = useLocation();
     const title = location.state.title;
     const navigate = useNavigate();
     const handleCreatePost = () => {
         navigate('/create-post');
     }
+   
     return( 
         <>
          <div id="share">
@@ -34,6 +55,25 @@ function shareContent(){
                                 {location.state.content}
                             </div>
                         </div>
+                </div>
+                <div id='share-comment'>
+                    <div id='share-comment1'>
+                        <div id='comment-p'>
+                            <p>Comment</p>
+                        </div>
+                        {comment[location.state.id]?.map((comment, index) => (
+                        <div id='share-comment2' key={index}>
+                            <div id='comment-p1'>
+                                 <p>{comment}</p>
+                             </div>
+                         </div>
+                        ))}
+                    </div>
+                    <input type='text' id='share-comment-input' value={input} onChange={handleComment} />
+            
+                    <button id='share-comment-button' onClick={postclick}>Post</button>
+                   
+                   
                 </div>
             </div>
         </div>

@@ -13,7 +13,8 @@ function post({view, setView}:PostProps){
     
     const [postcontent, setPostcontent] = useState({
         title : '',
-        content : ''
+        content : '',
+        id:0
     });
     const getValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -61,7 +62,8 @@ function post({view, setView}:PostProps){
                     console.log({ event, editor, data });
                     setPostcontent({
                         ...postcontent,
-                        content : text
+                        content : text,
+                        id: Date.now(),
                     });
                     console.log(postcontent);
                  }}

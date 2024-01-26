@@ -235,3 +235,53 @@ html, body, *{
     margin:15px;
 
 }
+#share-comment{
+    width:100%;
+    position:relative;
+    left:400px;
+    top:500px;
+    width:800px;
+    height:300px;;
+
+}
+#share-comment1{
+    position:absolute;
+    top:0;
+    left:0;
+    width:800px;
+    height:230px;
+    border:1px solid #D4D2E3;
+    border-radius: 15px;
+}
+#share-comment>input{
+    position:absolute;
+    top:250px;
+    left:0;
+    width:800px;
+    height:70px;
+    border:1px solid #D4D2E3;
+    border-radius: 15px;
+    
+}
+#comment-p{
+    position: absolute;
+    width:800px;
+    height:50px;
+    border-bottom: 1px solid #D4D2E3;
+
+}
+#comment-p>p{
+    position:absolute;
+    top:0;
+    left:0;
+    margin:10px;
+    font-weight: 400;
+    font-size: 20px;
+}
+#share-comment-button{
+    position: relative;
+    top:250px;
+    width:40px;
+    height:70px;
+    left:370px;
+}
