@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import '../share.css';
-import { HTMLInputTypeAttribute, useState } from 'react';
 
 interface shareContentProps {
     comment: { [key: string]: string[]; };
