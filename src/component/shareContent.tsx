@@ -9,11 +9,13 @@ interface shareContentProps {
     setInput: (input: string) => void;
 }
 function shareContent({comment, input, setComment, setInput}: shareContentProps){
+    
     const handleComment = (e: any) => {
         setInput(e.target.value);
     }
     const postclick = () => {
         const postId = location.state.id;
+        
         console.log(postId);
         setComment({
             ...comment,
@@ -22,8 +24,9 @@ function shareContent({comment, input, setComment, setInput}: shareContentProps)
         setInput('');
         console.log(location.state.title);
     }
-
+    
     const location = useLocation();
+    const postdate = new Date(location.state.id);
     const title = location.state.title;
     const navigate = useNavigate();
     const handleCreatePost = () => {
@@ -47,7 +50,8 @@ function shareContent({comment, input, setComment, setInput}: shareContentProps)
                 </div>
                 <div id='share-content-show'>
                         <div id='content-title'>
-                            {title}
+                            <p id="posttitle">{title}</p>
+                            <p id="postdate">{postdate.toLocaleDateString()}{postdate.toLocaleTimeString('ko-KR', {hour: '2-digit', minute:'2-digit', second:'2-digit', hour12: false})}</p>
                         </div>
                         <div id='content-content'>
                             <div id='content-content1'>

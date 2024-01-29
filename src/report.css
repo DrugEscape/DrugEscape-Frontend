@@ -109,6 +109,14 @@ html, body, *{
     line-height: 12px;
 
 }
+#report-random{
+    color:#28EA53;
+    position: relative;
+    top:60px;
+    font-weight: 500;
+    font-size: 20px;
+
+}
 #report-per{
     width:130px;
     height:130px;

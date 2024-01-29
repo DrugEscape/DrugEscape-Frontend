@@ -216,12 +216,18 @@ html, body, *{
 }
 
 /* shareContent css 시작*/
-#content-title{
-    color:#28EA53;
+
+#posttitle{
     font-size: 20px;
     margin-top: 15px;
     position:absolute;
     left:20px;
+}
+#postdate{
+    font-size: 15px;
+    position:absolute;
+    left:650px;
+    margin-top: 15px;
 }
 #content-content{
     width:100%;

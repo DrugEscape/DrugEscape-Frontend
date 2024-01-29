@@ -8,6 +8,8 @@ import '../report.css'
 Chart.register(CategoryScale, LinearScale, PointElement, BarController, BarElement); // LineElement를 BarController와 BarElement로 변경
 
 function report() {
+    const messages =['Close your eyes for 30 seconds and take a deep breath in and out','Stretch and exercise for 10 minutes','Eat a healthy meal','Take your medicine'];
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     const percentage = 25;
     let data = {
         labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -80,7 +82,7 @@ function report() {
                 </div>
                 <div id='report-manage3'>
                     <p className='report-p1'>Accumulated</p>
-                    <p className='report-p1'>drug-free days</p>
+                    <p id="report-random">{randomMessage}</p>
                 </div>
                 <div id='report-manage4'>
                     <p className='report-p1'>Achieve</p>
