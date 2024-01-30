@@ -118,20 +118,20 @@ html, body, #root{
   font-weight: 700;
   font-size: 32px;
   position:absolute;
-  top:50px;
+  top:150px;
   left: 50%;
   transform: translate(-50%, 0);
 }
 #content-message2{
   color:#A6A5AB;
   position:relative;
-  top:210px;
+  top:300px;
   font-size: 14px;
   line-height: 15px;
 }
 #content-button{
   position: relative;
-  top: 250px;
+  top: 350px;
 }
 #content-start{
   margin-right: 50px;
@@ -144,6 +144,63 @@ html, body, #root{
   color:#28EA53;
   cursor: pointer;
 }
-
+#content-bottom-message{
+  position: relative;
+  top: 600px;
+  height:200px;
+  border-bottom: 1px solid #A6A5AB;
+}
+#content-bottom-title{
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color:#28EA53;
+}
+.content-bottom-message2{
+  font-size: 14px;
+  color:black;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+#content-bottom2{
+  position: relative;
+  top: 650px;
+}
+#content-bottom2-message{
+  position: absolute;
+  width:100%;
+  height:300px;
+  display:flex;
+}
+#content-bottom2-message1{
+  display:inline-block;
+  width:23%;
+  height:200px;
+  border:1px solid #A6A5AB;
+  border-radius: 15px;
+  margin-right: 80px;
+}
+#content-bottom2-title1{
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color:#28EA53;
+  padding-top: 30px;
+}
+#content-bottom2-message2{
+  display: inline-block;
+  width:23%;
+  height:200px;
+  border:1px solid #A6A5AB;
+  border-radius: 15px;
+}
+#content-bottom2-message3{
+  margin-left: 80px;
+  display:inline-block;
+  width:23%;
+  height:200px;
+  border:1px solid #A6A5AB;
+  border-radius: 15px;
+}
 /*------------------ 메인 페이지 css */
 

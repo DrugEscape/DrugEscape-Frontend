@@ -36,7 +36,7 @@ function App() {
 
   }
   const handleSubmit = async () => {
-    const serverdata = await axios.post('http://localhost:8080/manage', {
+    const serverdata = await axios.post('http://104.196.251.103:8080/drugescape/manage', {
       headers: {
         'Content-Type': 'application/json',
       },
