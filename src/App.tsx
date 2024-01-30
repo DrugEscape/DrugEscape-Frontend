@@ -6,7 +6,9 @@ import Map from './component/Map'
 import Donate from './component/Donate'
 import Report from './component/report'
 import Post from './component/post'
+import LoginHome from './component/loginHome'
 import ShareContent from './component/shareContent'
+import Sharemy from './component/sharemy'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
@@ -52,7 +54,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/drugescape/LoginSignup' element={<Home />}></Route> 
+        <Route path='/drugescape/LoginSignup' element={<LoginHome />}></Route> 
         <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate/>}></Route>
@@ -60,6 +62,7 @@ function App() {
         <Route path='/share' element={<Share view={view} setView={setView}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView}/>}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput} />}></Route>
+        <Route path='/sharemy' element={<Sharemy view={view} setView={setView}/>}></Route>
       </Routes>
       </div>
     </div>

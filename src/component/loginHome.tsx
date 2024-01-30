@@ -1,6 +1,11 @@
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
-function Home(){
+function loginHome(){
+    const navigate = useNavigate();
+    const goManage = () => {
+        navigate('/manage');
+    }
     return(
         <>
         <div id="content">
@@ -14,7 +19,7 @@ function Home(){
                <p> that you are not alone on this path.</p>
           </div>
           <div id="content-button">
-            <button id="content-login-start">Get Started</button>
+            <button id="content-login-start" onClick={goManage}>Manage</button>
           </div>
           <div id ='content-bottom-message'>
             <p id='content-bottom-title'>Our goals</p>
@@ -55,4 +60,4 @@ function Home(){
         </>
     )
 }
-export default Home;
+export default loginHome;

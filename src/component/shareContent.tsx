@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import '../share.css';
-
+// 게시글 클릭시 오는 페이지
 interface shareContentProps {
     comment: { [key: string]: string[]; };
     input: string;
@@ -44,6 +44,8 @@ function shareContent({comment, input, setComment, setInput}: shareContentProps)
                 <div id="share-content-user">
                     <p>USER Name</p>
                     <p>D+</p>
+                    <p id='share-content-mypost'>My posts</p>
+                    <p id='share-content-mycomment'>My comments</p>
                 </div>
                 <div id='share-content-title'>
                     <button onClick={handleCreatePost}>+ Create a post</button>

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../share.css';
 import { set } from 'mobx';
+// 게시글 보여주는 페이지, 게시글 작성시 오는 페이지
 interface ShareProps{
     view: {title: string; content:string; id:number}[];
     setView: (value: any) => void;
@@ -11,14 +12,18 @@ interface ShareProps{
 function share({view, setView}:ShareProps){
     const [page, setPage] = useState(0);
     const postpage =7;
+    const navigate = useNavigate();
     const totalPages = Math.ceil(view.length / postpage);
     const handlePageClick = (pageNumber: number) => {
         setPage(pageNumber);
     };
 
-    const navigate = useNavigate();
+    
     const handleCreatePost = () => {
         navigate('/create-post');
+    }
+    const gosharemy = () => {
+        navigate('/sharemy');
     }
     return(
         <>
@@ -31,6 +36,8 @@ function share({view, setView}:ShareProps){
                 <div id="share-content-user">
                     <p>USER Name</p>
                     <p>D+</p>
+                    <p id='share-content-mypost' onClick={gosharemy}>My posts</p>
+                    <p id='share-content-mycomment' onClick={gosharemy}>My comments</p>
                 </div>
                 <div id='share-side'>
                     <input type='text' placeholder='Search for'></input>
