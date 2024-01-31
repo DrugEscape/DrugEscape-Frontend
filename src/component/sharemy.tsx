@@ -8,14 +8,10 @@ interface ShareProps{
 
 
 }
-function sharemy({view, setView}:ShareProps){
+function sharemy({view}:ShareProps){
     const [page, setPage] = useState(0);
     const postpage =7;
     const navigate = useNavigate();
-    const totalPages = Math.ceil(view.length / postpage);
-    const handlePageClick = (pageNumber: number) => {
-        setPage(pageNumber);
-    };
 
     
     const handleCreatePost = () => {

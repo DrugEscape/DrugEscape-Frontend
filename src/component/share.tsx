@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../share.css';
-import { set } from 'mobx';
 // 게시글 보여주는 페이지, 게시글 작성시 오는 페이지
 interface ShareProps{
     view: {title: string; content:string; id:number}[];
@@ -9,7 +8,7 @@ interface ShareProps{
 
 
 }
-function share({view, setView}:ShareProps){
+function share({view}:ShareProps){
     const [page, setPage] = useState(0);
     const postpage =7;
     const navigate = useNavigate();

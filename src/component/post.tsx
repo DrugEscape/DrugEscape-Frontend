@@ -70,12 +70,6 @@ function post({view, setView}:PostProps){
                     });
                     console.log(postcontent);
                  }}
-                    onBlur={(event, editor) => {
-                    console.log('Blur.', editor);
-                    }}
-                    onFocus={(event, editor) => {
-                    console.log('Focus.', editor);
-                    }}
                     />
                     </div>
                     <button id='post-submit' type='submit' onClick={(e)=>{
