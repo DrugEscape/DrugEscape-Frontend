@@ -81,7 +81,7 @@ html, body, #root{
   text-decoration: none;
   cursor: pointer;
 }
-#header-login1, #header-mypage,#content-start,#content-login{
+#header-login1, #header-mypage,#content-start,#content-login,#header-login2{
   font-size: 18px;
   font-family: "poppins", Sans-serif;
   border: 1px solid #D4D2E3;
@@ -93,6 +93,12 @@ html, body, #root{
 }
 #header-login1{
   color: rgba(34, 33, 33, 0.7);
+  background-color: #28EA53;
+  color:white;
+}
+#header-login2{
+  color: #28EA53;
+  background-color: white;
 }
 #header-mypage{
   background-color:#28EA53;
@@ -112,7 +118,7 @@ html, body, #root{
   position:relative;
 }
 #content-message{
-  line-height:56px;
+  line-height:50px;
   height:130px;
   width:500px;
   font-weight: 700;
@@ -121,6 +127,20 @@ html, body, #root{
   top:150px;
   left: 50%;
   transform: translate(-50%, 0);
+}
+#home-left-btn,#home-right-btn{
+  position: relative;
+  top: 230px;
+  border:none;
+  background-color: white;
+  font-size: 20px;
+}
+#home-left-btn{
+  right: 400px;
+}
+#home-right-btn{
+  left: 400px;
+
 }
 #content-message2{
   color:#A6A5AB;

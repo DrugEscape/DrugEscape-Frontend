@@ -58,9 +58,6 @@ function report() {
     return (
         <>
         <div id='report-content'>
-            <div id='user-info'>
-                <p>welcome user1234</p>
-            </div>
             <div id='report-title'>
                 <p id='report-title1'>Report</p>
                 <p id="report-title2">View a report on your efforts</p>
@@ -68,7 +65,7 @@ function report() {
             <div id="report-chartback">
                 <p id="report-chartname">Statistics for this week</p>
                 <div id='report-chart'>
-              <Bar data={data} options={options} />
+                     <Bar data={data} options={options} />
                 </div>
             </div>
             <div id="report-manage">

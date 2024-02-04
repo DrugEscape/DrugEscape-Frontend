@@ -10,10 +10,6 @@ html, body, *{
     top:104px;
     
 }
-#user-info{
-    position:relative;
-    /* height:400px; */
-}
 #report-chart{
     position: absolute;
     width:500px;
@@ -21,9 +17,9 @@ html, body, *{
     top:100px;
 }
 #report-chartback{
-    position: relative;
-    top:180px;  /* 여기크기 userinfo크기 포함되서 20차이나는듯 */
-    left:220px;
+    position: absolute;
+    top:200px;  /* 여기크기 userinfo크기 포함되서 20차이나는듯 */
+    left:13%;
     width: 500px;
     height:480px;
     background-color:#28EA53;
@@ -58,7 +54,7 @@ html, body, *{
 }
 #report-manage{
     position: absolute;
-    left:800px;
+    left:53%;
     top:200px;
     width: 500px;
     height:500px;

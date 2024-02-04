@@ -23,8 +23,8 @@ function Header(){
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`
           },
+            body: JSON.stringify({ accessToken }),
         })
         .then(() => {
           setIsLogin(false);
@@ -33,7 +33,7 @@ function Header(){
           console.error('Logout failed:', error);
         });
       };
-    useEffect(() => {
+      useEffect(() => {
         if (code) {
           fetch(`http://104.196.251.103:8080/drugescape/callback?code=${code}`, { // URL에 code 쿼리 파라미터 추가
             method: 'GET',
@@ -41,17 +41,36 @@ function Header(){
               'Content-Type': 'application/json',
             },
           })
-          .then(response => response.text())
+          .then(response => {
+            if (response.status === 500) { // accessToken이 만료되었음
+              return fetch(`http://104.196.251.103:8080/drugescape/refresh`,{
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ accessToken }),
+              })
+              .then(res => res.text()) // 새로운 accessToken을 받아옵니다.
+              .then(newToken => {
+                setIsLogin(true);
+                setAccessToken(newToken);
+                console.log('New Access Token:', newToken);     
+                return newToken;
+              });
+              
+            } else {
+              return response.text();
+            }
+          })
           .then(data => {
             if(data){
-                setIsLogin(true);
-                setAccessToken(data);
-                console.log('Access Token:', data);
+              setIsLogin(true);
+              setAccessToken(data);
+              console.log('Access Token:', data);
             }
           });
         }
       }, [code]);
-
 
     return(
         <>
@@ -65,7 +84,7 @@ function Header(){
               <div id="header-index">
                  <ul id="header-ul">
                     <dt>
-                        <Link to="/drugescape/login">Home</Link>
+                        <Link to="/">Home</Link>
                     </dt>
                     <dt>
                         <Link to="/manage">Manage</Link>
@@ -83,7 +102,7 @@ function Header(){
                         <Link to="/report">Report</Link>
                     </dt>
                     {isLogin ?(
-                        <button id="header-login1" onClick={handleLogout} >Logout</button>
+                        <button id="header-login2" onClick={handleLogout} >Logout</button>
                     ):(
                         <button id="header-login1" onClick={handleLogin} >Login</button>
                     

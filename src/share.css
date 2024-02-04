@@ -31,13 +31,13 @@ html, body, *{
     line-height: 30px;
 }
 #share-content{
-    position:relative;
+    position:absolute;
     width:100%;
     top:160px;
 }
 #share-content-user{
     position:absolute;
-    margin-left: 150px;
+    left:14%;
     border:1px solid #D4D2E3;
     border-radius: 15px;
     width:230px;
@@ -45,7 +45,7 @@ html, body, *{
 }
 #share-content-title{
     position:absolute;
-    left:400px;
+    left:30%;
     width:800px;
 }
 #share-content-mypost{
@@ -82,7 +82,7 @@ html, body, *{
 #share-content-show{
     position:absolute;
     top:50px;
-    left:400px;
+    left:30%;
     width:800px;
     height:420px;
     border:1px solid #D4D2E3;
@@ -112,7 +112,7 @@ html, body, *{
 #share-side{
     position: absolute;
     top:310px;
-    left :150px;
+    left :14%;
 }
 #share-side>input{
     position: absolute;

@@ -1,13 +1,26 @@
 import '../App.css';
-
+import { useState } from 'react';
 function Home(){
+  const homemsg= ['Remember, progress, no matter how small, is still progress.',
+  'Stay resilient, stay hopeful, and know that you are not alone on this path.,',
+ ' Breaking free from addiction is tough, but you are equally strong and courageous.',
+    'We can fight this together and discover a brighter future'
+];
+  const [msg, setMsg] = useState(0);
+  const handlePrevClick = () => {
+    setMsg((prevIndex) => prevIndex === 0 ? homemsg.length - 1 : prevIndex - 1);
+  };
+  const handleNextClick = () => {
+    setMsg((prevIndex) => prevIndex === homemsg.length - 1 ? 0 : prevIndex + 1);
+  }
     return(
         <>
         <div id="content">
+        <button id='home-left-btn' onClick={handlePrevClick}>←</button> 
+        <button id='home-right-btn' onClick={handleNextClick}>→</button>
           <div id="content-message">
-            <p>Remember, progress, no matter
-                 how small, is still progress.
-            </p>
+            <p>{homemsg[msg]}</p>
+             
           </div>
           <div id="content-message2">
             <p> Stay resilient, stay hopeful, and know</p>
@@ -19,7 +32,7 @@ function Home(){
           <div id ='content-bottom-message'>
             <p id='content-bottom-title'>Our goals</p>
             <p className='content-bottom-message2'>“To provide resources for safe and effective drug-free living and</p>
-             <p className='content-bottom-message2'>help you move toward a healthy,sustainable life. We support your</p>
+             <p className='content-bottom-message2'>help you move toward a healthy, sustainable life. We support your</p>
               <p className='content-bottom-message2'> resolve and work with you to make successful changes.”</p>
               
           </div>

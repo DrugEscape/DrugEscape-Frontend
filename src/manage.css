@@ -188,10 +188,16 @@ html, body, *{
     position:relative;
     top:120px;
     left:260px;
-    color:white;
-    background-color:#28EA53;
-    border:none;
     border-radius: 30px;
     width:80px;
     height:40px;
+}
+#manage-btn.enabled{
+    background-color: #28EA53;
+    color:white;
+    border:none;
+}
+#manage-btn.disabled{
+    background-color: white;
+    color:#28EA53;
 }
