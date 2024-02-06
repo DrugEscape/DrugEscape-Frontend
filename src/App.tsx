@@ -8,12 +8,14 @@ import Report from './component/report'
 import Post from './component/post'
 import ShareContent from './component/shareContent'
 import Sharemy from './component/sharemy'
+import SharemyComment from './component/sharemyComment'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 import Share from './component/share'
 
 function App() { 
+  
   const [view, setView] = useState<{title: string; content:string; id:number}[]>([]);
   const [data, setData] = useState<Record<string, number>>({
     stopDrug1: 0,
@@ -31,7 +33,14 @@ function App() {
   const [comment, setComment] = useState<{[key:string]: string[]}>({});
   const [input, setInput] = useState('');
   
+  const [isChecked, setIsChecked] = useState<{ [key: number]: boolean }>({});
 
+  const handleCheckboxChange = (postId:number) => {
+    setIsChecked(prevState => ({
+      ...prevState,
+      [postId]: !prevState[postId]
+  }));
+  };
   const handleChange = (name: string, value: number) => {
      setData(prevData => ({ ...prevData, [name]: value})); // name, value값을 onChange함수에 넣어줌
 
@@ -58,10 +67,11 @@ function App() {
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate/>}></Route>
         <Route path='/report' element={<Report/>}></Route>
-        <Route path='/share' element={<Share view={view} setView={setView}/>}></Route>
-        <Route path='/create-post' element={<Post view={view} setView={setView}/>}></Route>
+        <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
+        <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}    />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput} />}></Route>
         <Route path='/sharemy' element={<Sharemy view={view} setView={setView}/>}></Route>
+        <Route path='/sharemyComment' element={<SharemyComment view={view} setView={setView} />}></Route>
       </Routes>
       </div>
     </div>

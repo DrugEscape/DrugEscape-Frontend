@@ -7,13 +7,13 @@ html, body, *{
     position:relative;
     width:100%;
     height:100%;
-    top:104px;
+    top:14vh;
     
 
 }
 #share-head{
     position:absolute;
-    top:52px;
+    top:3vh;
     left:50%;
     transform: translateX(-50%);
 }
@@ -21,45 +21,51 @@ html, body, *{
     font-family:DM Sans;
     font-weight: 700;
     color:#28EA53;
-    font-size: 24px;
+    font-size: 1.5vw;
 }
 #share-servefont{
     font-family:DM Sans;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1vw;
     color:#9795B5;
     line-height: 30px;
 }
 #share-content{
     position:absolute;
     width:100%;
-    top:160px;
+    top:18vh;
 }
 #share-content-user{
     position:absolute;
     left:14%;
     border:1px solid #D4D2E3;
     border-radius: 15px;
-    width:230px;
-    height:300px;
+    width:15vw;
+    height:44vh;
 }
 #share-content-title{
     position:absolute;
     left:30%;
-    width:800px;
+    width:52vw;
 }
 #share-content-mypost{
     color:#28EA53;
     position: relative;
-    top:120px;
-    right:70px;
+    top:17vh;
+    right:28%;
 }
 #share-content-mycomment{
     color:#28EA53;
     position: relative;
-    top:130px;
-    right: 51px;
+    top:19vh;
+    right: 20%;
 
+}
+#share-content-mylike{
+    color:#28EA53;
+    position: relative;
+    top:21vh;
+    right:29.5%;
 }
 #share-content-title>p{
     position: absolute;
@@ -75,16 +81,16 @@ html, body, *{
     border-radius: 30px;
     border:none;
     color:#FFFFFF;
-    height:35px;
-    width:160px;
+    height:5vh;
+    width:10vw;
     font-size: 15px;
 }
 #share-content-show{
     position:absolute;
-    top:50px;
+    top:7vh;
     left:30%;
-    width:800px;
-    height:420px;
+    width:52vw;
+    height:62vh;
     border:1px solid #D4D2E3;
     border-radius: 15px;  
 }
@@ -93,14 +99,14 @@ html, body, *{
     margin:10px;
 }
 #share-show1>p{
-    height:45px;
+    height:6.22vh;
     font-weight: 400;
     font-size: 30px;
     border-bottom: 1px solid #D4D2E3;
 }
 #share-page-btn{
     position: absolute;
-    top: 470px;
+    top: 72vh;
     left:50%;
     transform: translateX(-50%);
 }
@@ -111,22 +117,22 @@ html, body, *{
 }
 #share-side{
     position: absolute;
-    top:310px;
+    top:45vh;
     left :14%;
 }
 #share-side>input{
     position: absolute;
-    top:10px;
-    height: 35px;
-    width:230px;
+    top:1vh;
+    height: 5vh;
+    width:15vw;
     border-radius: 15px;
     background-color: whitesmoke;
 }
 #share-side>button{
     position: absolute;
-    top:60px;
-    height: 35px;
-    width:160px;
+    top:8vh;
+    height: 5vh;
+    width:10vw;
     border-radius: 15px;
     background-color: #28EA53;
     border:none;
@@ -136,9 +142,9 @@ html, body, *{
 /* post 부분 css 시작 */
 #post-content{
     position:absolute;
-    left:400px;
-    width:800px;
-    height:500px;
+    left:30%;
+    width:52vw;
+    height:75vh;
     border:1px solid #D4D2E3;
     border-radius: 15px;  
 }
@@ -147,8 +153,8 @@ html, body, *{
     position:absolute;
     top:0;
     left:0;
-    width:800px;
-    height:50px;
+    width:52vw;
+    height:7.5vh;
     border-bottom:1px solid #D4D2E3;
 }
 #post-post1 >p{
@@ -156,15 +162,15 @@ html, body, *{
     text-align: left;
     margin:10px;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 1.7vw;
     color:#28EA53;
 }
 #post-post2{
     position:absolute;
-    top:50px;
+    top:7vh;
     left:0;
-    width:800px;
-    height:50px;
+    width:52vw;
+    height:7vh;
     border-bottom:1px solid #D4D2E3;
 }
 #post-post2 >p{
@@ -172,27 +178,50 @@ html, body, *{
     text-align: left;
     margin:10px;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 1.7vw;
     color:#28EA53;
 }
-#post-post2 >input{
+#post-input-title{
     position:absolute;
-    left:50px;
-    width:720px;
-    height:40px;
-    margin:8px;
+    left:7%;
+    width:40vw;
+    height:6vh;
+    margin:1%;
     padding-left: 5px;
     border:none;
-    font-size: 20px;
+    font-size: 1.5vw;
+}
+#diary{
+    position:absolute;
+    left:92%;
+    width:2vw;
+    height:6vh;
+    margin:1%;
+    padding-left: 5px;
+    font-size: 1.5vw;
+}
+.hidden-checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5vh;
+    width:2vw;
+    opacity: 0;
+    cursor: pointer;
+
+}
+.lock{
+    position:relative;
+    cursor: pointer;
 }
 #post-post2 >input:focus {
     outline: none;
 }
 #post-post3{
     position:absolute;
-    top:100px;
+    top:14vh;
     left:0;
-    width:800px;
+    width:52vw;
     height:100%;
     border-bottom:1px solid #D4D2E3;
 }
@@ -205,25 +234,26 @@ html, body, *{
 .ck.ck-editor__editable:not(.ck-editor__nested-editable) {
     min-height: 400px;
     max-height: 400px;
+    
 }
 #post-submit{
     position:absolute;
-    top:550px;
-    left:650px;
-    width:70px;
+    top:78vh;
+    left:80%;
+    width:4.5vw;
     border-radius: 30px;
-    height:50px;
+    height:7vh;
     border:none;
     background-color: #28EA53;
     color:#FFFFFF;
 }
 #post-cancel{
     position:absolute;
-    top:550px;
-    left:730px;
-    width:70px;
+    top:78vh;
+    left:91%;
+    width:4.5vw;
     border-radius: 30px;
-    height:50px;
+    height:7vh;
     background-color: #FFFFFF;
     border:1px solid #A6A5AB;
     color:#28EA53;
@@ -232,62 +262,66 @@ html, body, *{
 /* shareContent css 시작*/
 
 #posttitle{
-    font-size: 20px;
-    margin-top: 15px;
+    font-size: 2vw;
+    margin-top: 1vh;
     position:absolute;
-    left:20px;
+    left:2%;
+    color:#28EA53;
+
 }
 #postdate{
-    font-size: 15px;
+    font-size: 1vw;
     position:absolute;
-    left:650px;
+    left:82%;
     margin-top: 15px;
 }
 #content-content{
     width:100%;
     position: absolute;
-    top:50px;
+    top:12vh;
     height: 100%;
-    border-top: 1px solid #D4D2E3;
 }
 #content-content1{
     position: absolute;
     margin:15px;
 
 }
+#content-title{
+    height:14vh;
+    border-bottom: 1px solid #D4D2E3;
+}
 #share-comment{
-    width:100%;
     position:relative;
-    left:400px;
-    top:500px;
-    width:800px;
-    height:300px;;
+    left:30%;
+    top:72vh;
+    width:52vw;
+    height:50vh;
 
 }
 #share-comment1{
     position:absolute;
     top:0;
     left:0;
-    width:800px;
-    height:230px;
+    width:52vw;
+    height:33vh;
     border:1px solid #D4D2E3;
     border-radius: 15px;
     overflow-y: scroll;
 }
 #share-comment>input{
     position:absolute;
-    top:250px;
+    top:35vh;
     left:0;
-    width:800px;
-    height:70px;
+    width:52vw;
+    height:10vh;
     border:1px solid #D4D2E3;
     border-radius: 15px;
     
 }
 #comment-p{
     position: absolute;
-    width:800px;
-    height:50px;
+    width:52vw;
+    height:7vh;
     border-bottom: 1px solid #D4D2E3;
 
 }
@@ -297,14 +331,14 @@ html, body, *{
     left:0;
     margin:10px;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 2vw;
 }
 #share-comment-button{
-    position: relative;
-    top:250px;
-    width:40px;
-    height:70px;
-    left:370px;
+    position: absolute;
+    top:35vh;
+    width:4vw;
+    height:10.2vh;
+    right:0;
 }
 #comment-p1{
     display:flex;
@@ -320,27 +354,61 @@ html, body, *{
     font-weight: 400;
     font-size: 20px;
 }
+
+#postlike-label{
+    margin-top: 1.5vh;
+    position: absolute;
+    right:6%;
+    top:5vh;
+    width:3vw;
+    font-size: 2vw;
+
+}
+#faheart{
+    position:absolute;
+    z-index: 1;
+}
+#postlike{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5vh;
+    width:5vw;
+    opacity: 0;
+    cursor: pointer;
+    z-index:2;
+}
+.postlike-red{
+    color:red;
+}
+.postlike-white{
+    color:rgba(57, 39, 39, 0.292);
+}
 /* sharemy 시작 */
 #sharemy-user{
     position:relative;
-    left:400px;
-    width:800px;
-    height:150px;
+    left:30%;
+    width:52vw;
+    height:20vh;
     border:1px solid #D4D2E3;
     border-radius: 15px;
 }
+#sharemy-show{
+    position: relative;
+    width:52vw;
+    left:30%;
+}
 #sharemy-Showtitle{
     position: relative;
-    left:400px;
     margin-bottom: 30px;
-    width:800px;
-    height: 50px;
+    width:52vw;
+    height: 5vh;;
 }
 #share-showpost{
     position: absolute;
-    top:25px;
-    font-size:20px;
-    left:10px;
+    top:4vh;
+    font-size:1.5vw;
+    left:2%;
 }
 #share-showpost:hover{
     color:#28EA53;
@@ -349,28 +417,37 @@ html, body, *{
 
 #share-showcomment{
     position: absolute;
-    top:25px;
-    left:110px;
-    font-size:20px;
+    top:4vh;
+    left:17%;
+    font-size:1.5vw;
     
 }
 #share-showcomment:hover{
     color:#28EA53;
 
 }
+#share-showlike{
+    position: absolute;
+    top:4vh;
+    left:40%;
+    font-size:1.5vw;
+}
+#share-showlike:hover{
+    color:#28EA53;
+
+}
 #sharemy-show1{
     position: relative;
-    width:800px;
-    height: 220px;
+    width:52vw;
+    height: 30vh;
     border : 1px solid #D4D2E3;
     border-radius: 15px;
-    left:400px;
+    left:30%;
 }
 #sharemy-myshow{
     position: relative;
-    left:400px;
-    width:800px;
-    height:220px;
+    width:52vw;
+    height:30vh;
     border:1px solid #D4D2E3;
     border-radius: 15px;
 }

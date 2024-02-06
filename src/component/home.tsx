@@ -38,30 +38,32 @@ function Home(){
           </div>
         
           <div id='content-bottom2'>
-            <p id='content-bottom-title'>Our Values</p>
+            <p id='content-bottom2-title'>Our Values</p>
+            <div id='content-bottom2-1'>
             <div id='content-bottom2-message1'>
               <p id='content-bottom2-title1'>Management&Reporting</p>
-              <p>To support and manage our continued</p>
-               <p>growth. You can save your journeys on</p>
-                <p>the website. When you save a day, you</p>
-                <p>earn points. You can view your saved</p>
-                 <p id='content-1234'>information on the Report page.</p>
+              <p className='content-1234'>To support and manage our continued</p>
+               <p className='content-1234' >growth. You can save your journeys on</p>
+                <p className='content-1234'>the website. When you save a day, you</p>
+                <p className='content-1234'>earn points. You can view your saved</p>
+                 <p className='content-1234'>information on the Report page.</p>
             </div>
             <div id='content-bottom2-message2'>
             <p id='content-bottom2-title1'>Donation system</p>
-              <p>Donate the points you collect in</p>   
-               <p>Manage to a good cause. Donations</p>
-                <p>made with points go to centers that</p>
-                <p>support the fight against drugs.</p>
-                <p>Let's help and recover together</p>
+              <p className='content-1234'>Donate the points you collect in</p>   
+               <p className='content-1234'>Manage to a good cause. Donations</p>
+                <p className='content-1234'>made with points go to centers that</p>
+                <p className='content-1234'>support the fight against drugs.</p>
+    
             </div>
             <div id='content-bottom2-message3'>
             <p id='content-bottom2-title1'>Community</p>
-              <p>Connect with people who have the</p>    
-               <p>same goals as you in the community.</p>
-                <p>You can support someone starting a</p>
-                <p>new journey, celebrate a success,</p>
-                 <p>or share tips for staying drug-free.</p>
+              <p className='content-1234'>Connect with people who have the</p>    
+               <p className='content-1234'>same goals as you in the community.</p>
+                <p className='content-1234'>You can support someone starting a</p>
+                <p className='content-1234'>new journey, celebrate a success,</p>
+                 <p className='content-1234'>or share tips for staying drug-free.</p>
+            </div>
             </div>
           </div>
         </div>

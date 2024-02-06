@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import {FaHeart} from 'react-icons/fa';
 import '../share.css';
+import post from './post';
+import { useState } from 'react';
 // 게시글 클릭시 오는 페이지
 interface shareContentProps {
     comment: { [key: string]: string[]; };
@@ -9,13 +12,22 @@ interface shareContentProps {
     setInput: (input: string) => void;
 }
 function shareContent({comment, input, setComment, setInput}: shareContentProps){
+    const [likes, setLikes] = useState<{ [key: number]: boolean }>({});
+    const gosharemy = () => {
+        navigate('/sharemy');
+    }
+    const handleLike = (postId: number) => {
+        setLikes(prevState => ({
+            ...prevState,
+            [postId]: !prevState[postId]
+        }));
+    }
+        
     
     const handleComment = (e: any) => {
         setInput(e.target.value);
     }
     const postclick = () => {
-        const postId = location.state.id;
-        
         console.log(postId);
         setComment({
             ...comment,
@@ -27,6 +39,7 @@ function shareContent({comment, input, setComment, setInput}: shareContentProps)
     
     const location = useLocation();
     const postdate = new Date(location.state.id);
+    const postId = location.state.id;
     const title = location.state.title;
     const navigate = useNavigate();
     const handleCreatePost = () => {
@@ -44,8 +57,9 @@ function shareContent({comment, input, setComment, setInput}: shareContentProps)
                 <div id="share-content-user">
                     <p>USER Name</p>
                     <p>D+</p>
-                    <p id='share-content-mypost'>My posts</p>
-                    <p id='share-content-mycomment'>My comments</p>
+                    <p id='share-content-mypost' onClick={gosharemy}>My posts</p>
+                    <p id='share-content-mycomment' onClick={gosharemy}>My comments</p>
+                    <p id='share-content-mylike' onClick={gosharemy}>My likes</p>
                 </div>
                 <div id='share-content-title'>
                     <button onClick={handleCreatePost}>+ Create a post</button>
@@ -54,6 +68,12 @@ function shareContent({comment, input, setComment, setInput}: shareContentProps)
                         <div id='content-title'>
                             <p id="posttitle">{title}</p>
                             <p id="postdate">{postdate.toLocaleDateString()}{postdate.toLocaleTimeString('ko-KR', {hour: '2-digit', minute:'2-digit', second:'2-digit', hour12: false})}</p>
+                           
+                            <label htmlFor='postlike' id='postlike-label' className={likes[postId] ? 'postlike-red' :'postlike-white'}>
+                                <FaHeart id='Faheart' />
+                                <input type='checkbox' id='postlike' onClick={()=> handleLike(postId)}></input>
+                            </label>
+                           
                         </div>
                         <div id='content-content'>
                             <div id='content-content1'>

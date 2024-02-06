@@ -5,12 +5,13 @@ import '../share.css';
 interface ShareProps{
     view: {title: string; content:string; id:number}[];
     setView: (value: any) => void;
-
+    isChecked: { [key: number]: boolean };
 
 }
-function share({view}:ShareProps){
+function share({view,isChecked}:ShareProps){
+    console.log(isChecked);
     const [page, setPage] = useState(0);
-    const postpage =7;
+    const postpage =8;
     const navigate = useNavigate();
     const totalPages = Math.ceil(view.length / postpage);
     const handlePageClick = (pageNumber: number) => {
@@ -37,6 +38,7 @@ function share({view}:ShareProps){
                     <p>D+</p>
                     <p id='share-content-mypost' onClick={gosharemy}>My posts</p>
                     <p id='share-content-mycomment' onClick={gosharemy}>My comments</p>
+                    <p id='share-content-mylike' onClick={gosharemy}>My likes</p>
                 </div>
                 <div id='share-side'>
                     <input type='text' placeholder='Search for'></input>
@@ -48,12 +50,14 @@ function share({view}:ShareProps){
                 </div>
                 <div id='share-content-show'>
                     {view.slice(page * postpage, (page + 1) * postpage).map((element, index) =>
+                        isChecked[element.id] ? null : (
                         <div id='share-show1' key={index}>
                             <p onClick={()=>{
                                 navigate('/shareContent', {state: {id: element.id,title: element.title, content: element.content}})
                                 console.log(element.id);
                             }}>{element.title}</p>
                         </div>
+                        )
                     
                         )}
                 </div>

@@ -19,7 +19,7 @@ function Header(){
   
     };
     const handleLogout = () => {
-        fetch('http://104.196.251.103:8080/drugescape/logout', {
+        fetch('https://104.196.251.103:8080/drugescape/logout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ function Header(){
         });
       };
       useEffect(() => {
-        if (code) {
+        if (code) { 
           fetch(`http://104.196.251.103:8080/drugescape/callback?code=${code}`, { // URL에 code 쿼리 파라미터 추가
             method: 'GET',
             headers: {

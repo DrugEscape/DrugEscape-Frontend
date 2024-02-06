@@ -17,7 +17,7 @@ html, body, #root{
   width: 100%;
   padding-bottom: 20px;
   padding-top: 20px;
-  height: 64px;
+  height: 7vh;;
   top:0;
   background-color: white;
   z-index: 100;
@@ -38,12 +38,12 @@ html, body, #root{
   display: flex;
   align-items: center;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 2vw;
   
 }
 #logo{
-  width: 170px;
-  height: 100px;
+  width: 9vw;
+  height: 9vh;
 
 }
 
@@ -63,7 +63,7 @@ html, body, #root{
 #header-ul > *{
   margin-left: 30px;
   font-family: "Poppins", Sans-serif;
-  font-size: 18px;
+  font-size: 1.3vw;
   font-weight: 500;
   transition: all 0.1s ease-in-out;
 }
@@ -82,7 +82,7 @@ html, body, #root{
   cursor: pointer;
 }
 #header-login1, #header-mypage,#content-start,#content-login,#header-login2{
-  font-size: 18px;
+  font-size: 1.3vw;
   font-family: "poppins", Sans-serif;
   border: 1px solid #D4D2E3;
   border-radius: 30px;
@@ -113,45 +113,45 @@ html, body, #root{
 }
 
 #content{
-  margin-top: 104.8px;
-  height:598.4px;
+  top:13vh;
+  height:90vh;
   position:relative;
 }
 #content-message{
-  line-height:50px;
-  height:130px;
-  width:500px;
+  line-height: 6vh;
+  height:5vh;
+  width:50vw;
   font-weight: 700;
   font-size: 32px;
   position:absolute;
-  top:150px;
+  top:23vh;
   left: 50%;
   transform: translate(-50%, 0);
 }
 #home-left-btn,#home-right-btn{
   position: relative;
-  top: 230px;
+  top: 33vh;
   border:none;
   background-color: white;
-  font-size: 20px;
+  font-size: 2vw;
 }
 #home-left-btn{
-  right: 400px;
+  right: 35%;
 }
 #home-right-btn{
-  left: 400px;
+  left: 35%;
 
 }
 #content-message2{
   color:#A6A5AB;
   position:relative;
-  top:300px;
-  font-size: 14px;
-  line-height: 15px;
+  top: 40vh;
+  font-size: 1vw;
+  line-height: 4vh;
 }
 #content-button{
   position: relative;
-  top: 350px;
+  top: 44vh;
 }
 #content-start{
   margin-right: 50px;
@@ -159,68 +159,71 @@ html, body, #root{
   color: white;
   cursor: pointer;
 }
-#content-login{
-  width:144px;
-  color:#28EA53;
-  cursor: pointer;
-}
 #content-bottom-message{
   position: relative;
-  top: 600px;
-  height:200px;
+  top: 70vh;
+  height:30vh;
   border-bottom: 1px solid #A6A5AB;
 }
 #content-bottom-title{
-  font-size: 30px;
+  font-size: 2vw;
   font-weight: 700;
   margin-bottom: 40px;
   color:#28EA53;
 }
 .content-bottom-message2{
-  font-size: 14px;
   color:black;
   margin-bottom: 5px;
   font-weight: 400;
 }
 #content-bottom2{
   position: relative;
-  top: 650px;
+  top: 80vh;
+  height: 40vh;
 }
-#content-bottom2-message{
-  position: absolute;
+#content-bottom2-1{
   width:100%;
-  height:300px;
   display:flex;
+  margin-left: 10vw;
+}
+#content-bottom2-title{
+  position: relative;
+  top: -5vh;
+  left:50%;
+  transform: translateX(-50%);
+  font-size: 2vw;
+  font-weight: 700;
+  color:#28EA53;
 }
 #content-bottom2-message1{
-  display:inline-block;
   width:23%;
-  height:200px;
   border:1px solid #A6A5AB;
   border-radius: 15px;
-  margin-right: 80px;
+  margin-right: 5.2%;
 }
 #content-bottom2-title1{
-  font-size: 15px;
+  font-size: 1.3vw;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 0.5vw;
   color:#28EA53;
-  padding-top: 30px;
+  padding-top:1vw;
 }
 #content-bottom2-message2{
-  display: inline-block;
   width:23%;
-  height:200px;
+  height:30vh;
   border:1px solid #A6A5AB;
   border-radius: 15px;
 }
 #content-bottom2-message3{
-  margin-left: 80px;
-  display:inline-block;
+  margin-left: 5.2%;
   width:23%;
-  height:200px;
+  height:30vh;
   border:1px solid #A6A5AB;
   border-radius: 15px;
+}
+.content-1234{
+  line-height: 4vh;
+  font-size: 1.2vw;
 }
 /*------------------ 메인 페이지 css */
 

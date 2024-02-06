@@ -8,9 +8,12 @@ interface ShareProps{
 
 
 }
-function sharemy({view}:ShareProps){
+function sharemyComment({view}:ShareProps){
     const gosharemy = () => {
         navigate('/sharemy');
+    }
+    const gosharecomment = () =>{
+        navigate('/sharemyComment');
     }
     const [page, setPage] = useState(0);
     const postpage =7;
@@ -32,7 +35,7 @@ function sharemy({view}:ShareProps){
                     <p>USER Name</p>
                     <p>D+</p>
                     <p id='share-content-mypost' onClick={gosharemy}>My posts</p>
-                    <p id='share-content-mycomment' onClick={gosharemy}>My comments</p>
+                    <p id='share-content-mycomment'>My comments</p>
                     <p id='share-content-mylike' onClick={gosharemy}>My likes</p>
                 </div>
                 <div id='share-side'>
@@ -44,8 +47,8 @@ function sharemy({view}:ShareProps){
                 </div>
                 <div id='sharemy-show'>
                     <div id='sharemy-Showtitle'>
-                        <p id='share-showpost'>My posts</p>
-                        <p id='share-showcomment'>My comments</p>
+                        <p id='share-showpost' onClick={gosharemy}>My posts</p>
+                        <p id='share-showcomment' onClick={gosharecomment}>My comments</p>
                         <p id='share-showlike'>My likes</p>
                     </div>
                     <div id='sharemy-myshow'>
@@ -66,4 +69,4 @@ function sharemy({view}:ShareProps){
         </>
     )
 }
-export default sharemy;
+export default sharemyComment;
