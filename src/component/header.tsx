@@ -13,13 +13,12 @@ function Header(){
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     const handleLogin = () => {
-        const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${client_id}&redirect_uri=https://drugescape.duckdns.org/drugescape/callback&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email`;
-
-        window.location.href = url; // Google 로그인 페이지로 리다이렉트합니다.
+        const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${client_id}&redirect_uri=${window.location.origin}/drugescape/callback&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email`;
+        window.location.href = url;  // Google 로그인 페이지로 리다이렉트합니다.
   
     };
     const handleLogout = () => {
-        fetch('https://drugescape.duckdns.org/drugescape/logout', {
+        fetch('http://drugescape.duckdns.org/drugescape/logout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -67,6 +66,7 @@ function Header(){
               setIsLogin(true);
               setAccessToken(data);
               console.log('Access Token:', data);
+              
             }
           });
         }
