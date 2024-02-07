@@ -25,6 +25,9 @@ function share({view,isChecked}:ShareProps){
     const gosharemy = () => {
         navigate('/sharemy');
     }
+    const gosharecomment = () =>{
+        navigate('/sharemyComment');
+    }
     return(
         <>
         <div id="share">

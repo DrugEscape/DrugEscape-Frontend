@@ -10,18 +10,23 @@ interface shareContentProps {
     input: string;
     setComment: (comment: { [key: string]: string[]; }) => void;
     setInput: (input: string) => void;
+    likes: { [key: number]: boolean };
+    setLikes: (likes: { [key: number]: boolean }) => void;
+    handleLike: (postId: number) => void;
+
 }
-function shareContent({comment, input, setComment, setInput}: shareContentProps){
-    const [likes, setLikes] = useState<{ [key: number]: boolean }>({});
+function shareContent({comment, input, setComment, setInput, likes, handleLike}: shareContentProps){
+    
     const gosharemy = () => {
         navigate('/sharemy');
     }
-    const handleLike = (postId: number) => {
-        setLikes(prevState => ({
-            ...prevState,
-            [postId]: !prevState[postId]
-        }));
+    const gosharecomment = () =>{
+        navigate('/sharemyComment');
     }
+    const gosharelike = () =>{
+        navigate('/sharemyLike');
+    }
+    
         
     
     const handleComment = (e: any) => {
@@ -58,8 +63,8 @@ function shareContent({comment, input, setComment, setInput}: shareContentProps)
                     <p>USER Name</p>
                     <p>D+</p>
                     <p id='share-content-mypost' onClick={gosharemy}>My posts</p>
-                    <p id='share-content-mycomment' onClick={gosharemy}>My comments</p>
-                    <p id='share-content-mylike' onClick={gosharemy}>My likes</p>
+                    <p id='share-content-mycomment' onClick={gosharecomment}>My comments</p>
+                    <p id='share-content-mylike' onClick={gosharelike}>My likes</p>
                 </div>
                 <div id='share-content-title'>
                     <button onClick={handleCreatePost}>+ Create a post</button>

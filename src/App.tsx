@@ -9,6 +9,7 @@ import Post from './component/post'
 import ShareContent from './component/shareContent'
 import Sharemy from './component/sharemy'
 import SharemyComment from './component/sharemyComment'
+import SharemyLike from './component/sharemyLike'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
@@ -19,16 +20,17 @@ function App() {
   const [view, setView] = useState<{title: string; content:string; id:number}[]>([]);
   const [data, setData] = useState<Record<string, number>>({
     stopDrug1: 0,
-    stopDrug2: 0,
     exercise1: 0,
-    exercise2: 0,
     meal1: 0,
-    meal2: 0,
-    meal3: 0,
     medicine1: 0,
-    medicine2: 0,
-    medicine3: 0,
   });
+  const [likes, setLikes] = useState<{ [key: number]: boolean }>({});
+  const handleLike = (postId: number) => {
+    setLikes(prevState => ({
+        ...prevState,
+        [postId]: !prevState[postId]
+    }));
+}
 
   const [comment, setComment] = useState<{[key:string]: string[]}>({});
   const [input, setInput] = useState('');
@@ -69,9 +71,12 @@ function App() {
         <Route path='/report' element={<Report/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}    />}></Route>
-        <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput} />}></Route>
+        <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
+         likes={likes} setLikes={setLikes} handleLike={handleLike} />}></Route>
         <Route path='/sharemy' element={<Sharemy view={view} setView={setView}/>}></Route>
-        <Route path='/sharemyComment' element={<SharemyComment view={view} setView={setView} />}></Route>
+        <Route path='/sharemyComment' element={<SharemyComment view={view} setView={setView} comment={comment} />}></Route>
+        <Route path='/sharemyLike' element={<SharemyLike view={view} setView={setView}
+         likes={likes} setLikes={setLikes} handleLike={handleLike} />}></Route>
       </Routes>
       </div>
     </div>

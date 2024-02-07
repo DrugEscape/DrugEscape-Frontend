@@ -5,16 +5,19 @@ import '../share.css';
 interface ShareProps{
     view: {title: string; content:string; id:number}[];
     setView: (value: any) => void;
-
-
+    comment: { [key: number]: string[]; };
 }
-function sharemyComment({view}:ShareProps){
+function sharemyComment({view,comment}:ShareProps){
     const gosharemy = () => {
         navigate('/sharemy');
+    }
+    const gosharelike = () =>{
+        navigate('/sharemyLike');
     }
     const gosharecomment = () =>{
         navigate('/sharemyComment');
     }
+    
     const [page, setPage] = useState(0);
     const postpage =7;
     const navigate = useNavigate();
@@ -35,8 +38,8 @@ function sharemyComment({view}:ShareProps){
                     <p>USER Name</p>
                     <p>D+</p>
                     <p id='share-content-mypost' onClick={gosharemy}>My posts</p>
-                    <p id='share-content-mycomment'>My comments</p>
-                    <p id='share-content-mylike' onClick={gosharemy}>My likes</p>
+                    <p id='share-content-mycomment'onClick={gosharemy}>My comments</p>
+                    <p id='share-content-mylike' onClick={gosharelike}>My likes</p>
                 </div>
                 <div id='share-side'>
                     <input type='text' placeholder='Search for'></input>
@@ -49,17 +52,18 @@ function sharemyComment({view}:ShareProps){
                     <div id='sharemy-Showtitle'>
                         <p id='share-showpost' onClick={gosharemy}>My posts</p>
                         <p id='share-showcomment' onClick={gosharecomment}>My comments</p>
-                        <p id='share-showlike'>My likes</p>
+                        <p id='share-showlike' onClick={gosharelike}>My likes</p>
                     </div>
                     <div id='sharemy-myshow'>
-                        {view.slice(page * postpage, (page + 1) * postpage).map((element, index) =>
+                    {view.slice(page * postpage, (page + 1) * postpage).map((element, index) =>
+                        comment[element.id] && String(comment[element.id]).trim() !== '' ? (
                             <div key={index}>
-                                <p onClick={()=>{
+                                <p id='sharemy-mc' onClick={()=>{
                                     navigate('/shareContent', {state: {id: element.id,title: element.title, content: element.content}})
                                     console.log(element.id);
-                                }}>{element.title}</p>
-                            </div>
-                        
+                                     }}>{comment[element.id]}</p>
+                                    </div>
+                                ) : null
                             )}
                     </div>
                 </div>

@@ -12,13 +12,13 @@ html, body, *{
 }
 #report-chart{
     position: absolute;
-    width:500px;
-    height:400px;
-    top:100px;
+    width:33vw;
+    height:58vh;
+    top:15vh;
 }
 #report-chartback{
     position: relative;
-    top:200px;  /* 여기크기 userinfo크기 포함되서 20차이나는듯 */
+    top: 28vh; /* 여기크기 userinfo크기 포함되서 20차이나는듯 */
     left: 14%;
     width: 33vw;
     height:70vh;
@@ -27,7 +27,7 @@ html, body, *{
 }
 #report-title{
     position: absolute;
-    top:90px;
+    top:10vh;
     left:50%;
     transform: translateX(-50%);
 }
@@ -48,57 +48,57 @@ html, body, *{
     position: absolute;
     font-weight: 700;
     color:white;
-    left:20px;
-    top:30px;
-    font-size: 20px;
+    left:5%;
+    top:5vh;
+    font-size: 1.5vw;
 }
 #report-manage{
     position: absolute;
     left:53%;
-    top:200px;
+    top:28vh;
     width: 33vw;
     height:70vh;
     border-radius: 15px;
 }
 #report-manage1{
     position: absolute;
-    width:230px;
-    height:230px;
+    width:15vw;
+    height:33vh;
     left:0;
     border:1px solid #E5E5E5;
     border-radius:15px;
 }
 #report-manage2{
     position:absolute;
-    width:230px;
-    height:230px;
+    width:15vw;
+    height:33vh;
     border:1px solid #E5E5E5;
-    left:250px;
+    left:52%;
     border-radius: 15px;
 }
 #report-manage3{
     position: absolute;
-    width:230px;
-    height:230px;
+    width:15vw;
+    height:33vh;
     left:0;
-    top:250px;
+    top:35.5vh;
     border:1px solid #E5E5E5;
     border-radius:15px;
 }
 #report-manage4{
     position:absolute;
-    width:230px;
-    height:230px;
+    width:15vw;
+    height:33vh;
     border:1px solid #E5E5E5;
     border-radius: 15px;
-    left:250px;
-    top:250px;
+    left:52%;
+    top:35.5vh;
 
 
 }
 .report-p1{
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1vw;
     color:#5D5A88;
     text-align: left;
     margin:10px;
@@ -108,16 +108,16 @@ html, body, *{
 #report-random{
     color:#28EA53;
     position: relative;
-    top:60px;
+    top:8vh;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 1vw;
 
 }
 #report-per{
-    width:130px;
-    height:130px;
+    width:9vw;
+    height:9vh;
     position: relative;
     left:50%;
     transform: translateX(-50%);
-    top:20px;
+    top:2vh;
 }

@@ -1,15 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../share.css';
-import sharemyComment from './sharemyComment';
 // mycomment와 mypost클릭시 오는 페이지
 interface ShareProps{
     view: {title: string; content:string; id:number}[];
     setView: (value: any) => void;
+    likes: { [key: number]: boolean };
+    setLikes: (likes: { [key: number]: boolean }) => void;
+    handleLike: (postId: number) => void;
 
 
 }
-function sharemy({view}:ShareProps){
+function sharemyLike({view, likes, setLikes, handleLike}:ShareProps){
     const gosharemy = () => {
         navigate('/sharemy');
     }
@@ -19,6 +21,7 @@ function sharemy({view}:ShareProps){
     const gosharelike = () =>{
         navigate('/sharemyLike');
     }
+    
     const [page, setPage] = useState(0);
     const postpage =7;
     const navigate = useNavigate();
@@ -39,7 +42,7 @@ function sharemy({view}:ShareProps){
                     <p>USER Name</p>
                     <p>D+</p>
                     <p id='share-content-mypost' onClick={gosharemy}>My posts</p>
-                    <p id='share-content-mycomment' onClick={gosharecomment}>My comments</p>
+                    <p id='share-content-mycomment'onClick={gosharecomment}>My comments</p>
                     <p id='share-content-mylike' onClick={gosharelike}>My likes</p>
                 </div>
                 <div id='share-side'>
@@ -57,14 +60,15 @@ function sharemy({view}:ShareProps){
                     </div>
                     <div id='sharemy-myshow'>
                         {view.slice(page * postpage, (page + 1) * postpage).map((element, index) =>
-                            <div key={index}>
-                                <p id='sharemy-mc' onClick={()=>{
-                                    navigate('/shareContent', {state: {id: element.id,title: element.title, content: element.content}})
-                                    console.log(element.id);
-                                }}>{element.title}</p>
-                            </div>
-                        
-                            )}
+                            likes[element.id] ?  (
+                                <div key={index}>
+                                    <p id='sharemy-mc' onClick={()=>{
+                                        navigate('/shareContent', {state: {id: element.id,title: element.title, content: element.content}})
+                                        console.log(element.id);
+                                    }}>{element.title}</p>
+                                </div>
+                                ) : null
+                        )}
                     </div>
                 </div>
             </div>
@@ -73,4 +77,4 @@ function sharemy({view}:ShareProps){
         </>
     )
 }
-export default sharemy;
+export default sharemyLike;
