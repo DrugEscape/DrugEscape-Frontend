@@ -19,7 +19,7 @@ function Header(){
   
     };
     const handleLogout = () => {
-        fetch('https://104.196.251.103:8080/drugescape/logout', {
+        fetch('https://drugescape.duckdns.org/drugescape/logout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ function Header(){
       };
       useEffect(() => {
         if (code) { 
-          fetch(`http://104.196.251.103:8080/drugescape/callback?code=${code}`, { // URL에 code 쿼리 파라미터 추가
+          fetch(`http://drugescape.duckdns.org/drugescape/callback?code=${code}`, { // URL에 code 쿼리 파라미터 추가
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ function Header(){
           })
           .then(response => {
             if (response.status === 500) { // accessToken이 만료되었음
-              return fetch(`http://104.196.251.103:8080/drugescape/refresh`,{
+              return fetch(`http://drugescape.duckdns.org/drugescape/refresh`,{
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
