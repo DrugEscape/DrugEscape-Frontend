@@ -11,7 +11,7 @@ interface ShareProps{
 
 
 }
-function sharemyLike({view, likes, setLikes, handleLike}:ShareProps){
+function sharemyLike({view, likes}:ShareProps){
     const gosharemy = () => {
         navigate('/sharemy');
     }
