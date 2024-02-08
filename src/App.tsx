@@ -22,7 +22,12 @@ function App() {
     stopDrug1: 0,
     exercise1: 0,
     meal1: 0,
+    meal2: 0,
+    meal3:0,
     medicine1: 0,
+    medicine2: 0,
+    medicine3: 0,
+    medicine4:0,
   });
   const [likes, setLikes] = useState<{ [key: number]: boolean }>({});
   const handleLike = (postId: number) => {
@@ -48,7 +53,7 @@ function App() {
 
   }
   const handleSubmit = async () => {
-    const serverdata = await axios.post('http://104.196.251.103:8080/drugescape/manage', {
+    const serverdata = await axios.post('https://drugescape.duckdns.org/drugescape/manage', {
       headers: {
         'Content-Type': 'application/json',
       },
