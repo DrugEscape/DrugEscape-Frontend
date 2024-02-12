@@ -28,9 +28,9 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
         console.log(selections);
         if (areaNumber) {
             let newValue = parseInt(value);
-            if (areaNumber === 'medicine' && newValue === 4) {
+            if (areaNumber === 'medication' && newValue === 4) {
                 setSelections({ ...selections, [areaNumber]: newValue });
-            } else if (areaNumber === 'meal' || areaNumber === 'medicine') {
+            } else if (areaNumber === 'meal' || areaNumber === 'medication') {
                 newValue += selections[areaNumber];
                 setSelections({ ...selections, [areaNumber]: newValue > 3 ? 3 : newValue });
             } else {
@@ -51,7 +51,7 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
             case 'meal':
                 setButtondiv3(true);
                 break;
-            case 'medicine':
+            case 'medication':
                 setButtondiv4(true);
                 break;
         }
@@ -112,10 +112,10 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
                     <p className="manage-p">Did you take any</p>
                     <p className='manage-p'>prescription</p>
                     <p className='manage-p'>medications today?</p> 
-                    <button id='tm-btn1' data-area={'medicine'} onClick={handleBoth} name="medicine1" value={1} className={isCheck['tm-btn1'] ? 'checked' : ''} >morning</button>
-                    <button id='tm-btn2'data-area={'medicine'}  onClick={handleBoth} name="medicine2" value={1} className={isCheck['tm-btn2'] ? 'checked' : ''}>lunch</button>
-                    <button id='tm-btn3'data-area={'medicine'}  onClick={handleBoth} name="medicine3"  value={1} className={isCheck['tm-btn3'] ? 'checked' : ''}>evening</button> 
-                    <button id='tm-btn4'data-area={'medicine'}  onClick={handleBoth} name="medicine4" value={4}className={isCheck['tm-btn4'] ? 'checked' : ''}>none</button>
+                    <button id='tm-btn1' data-area={'medication'} onClick={handleBoth} name="medicine1" value={1} className={isCheck['tm-btn1'] ? 'checked' : ''} >morning</button>
+                    <button id='tm-btn2'data-area={'medication'}  onClick={handleBoth} name="medicine2" value={1} className={isCheck['tm-btn2'] ? 'checked' : ''}>lunch</button>
+                    <button id='tm-btn3'data-area={'medication'}  onClick={handleBoth} name="medicine3"  value={1} className={isCheck['tm-btn3'] ? 'checked' : ''}>evening</button> 
+                    <button id='tm-btn4'data-area={'medication'}  onClick={handleBoth} name="medicine4" value={4}className={isCheck['tm-btn4'] ? 'checked' : ''}>none</button>
                 </div>
             </div>
                  <button disabled={!(buttondiv1 && buttondiv2 && buttondiv3 && buttondiv4) } type='submit' id="manage-btn" className={!(buttondiv1 && buttondiv2 && buttondiv3 && buttondiv4) ? 'disabled' : 'enabled' }>Submit</button>
