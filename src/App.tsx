@@ -16,7 +16,9 @@ import axios from 'axios'
 import Share from './component/share'
 
 function App() { 
+  const [Token, setToken] = useState('null');
   const [accessToken, setAccessToken] = useState('null');
+  const [refreshToken, setRefreshToken] = useState('null');
   const [view, setView] = useState<{title: string; content:string; id:number}[]>([]);
   
   const [data, setData] = useState<Record<string, number>>({
@@ -56,6 +58,7 @@ function App() {
   const [managementDTO, setSelections] = useState<Record<string,number>>({ stopDrug: 0, exercise: 0, meal: 0, medication: 0 });
   const handleSubmit = async () => {
     console.log(managementDTO);
+    console.log(accessToken);
     const serverdata = await axios.post('https://drugescape.duckdns.org/drugescape/manage', managementDTO, {
       headers: {
         'Content-Type': 'application/json',
@@ -69,7 +72,7 @@ function App() {
    <BrowserRouter>
     <div id="container">
       <div id="wrap">
-      <Header accessToken={accessToken} setAccessToken={setAccessToken} />
+      <Header accessToken={accessToken} setAccessToken={setAccessToken} refreshToken={refreshToken} setRefreshToken={setRefreshToken} />
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/path' element={<Home />}></Route> 

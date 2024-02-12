@@ -6,10 +6,14 @@ import { useNavigate } from 'react-router-dom';
 interface HeaderProps{
   accessToken: string;
   setAccessToken: React.Dispatch<React.SetStateAction<string>>;
+  refreshToken: string;
+  setRefreshToken: React.Dispatch<React.SetStateAction<string>>;
+
 }
 
 function Header({accessToken, setAccessToken } : HeaderProps){
     const navigate = useNavigate();
+    const [refreshToken, setRefreshToken] = useState('');
     const [isLogin, setIsLogin] = useState(false);
     const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
     
@@ -30,7 +34,7 @@ function Header({accessToken, setAccessToken } : HeaderProps){
           headers: {
             'Content-Type': 'application/json',
           },
-            body: JSON.stringify({ accessToken }),
+            body: JSON.stringify({ accessToken, refreshToken}),
         })
         .then(() => {
           setIsLogin(false);
@@ -71,10 +75,13 @@ function Header({accessToken, setAccessToken } : HeaderProps){
           })
           .then(data => {
             if(data){
+              const parsedData = JSON.parse(data);
+              const { accessToken, refreshToken } = parsedData;
               setIsLogin(true);
+              setAccessToken(accessToken);
+              setRefreshToken(refreshToken);
               console.log(isLogin);
-              setAccessToken(data);
-              console.log('Access Token:', data);
+              console.log('Access Token:', accessToken);
             }
           });
         }
