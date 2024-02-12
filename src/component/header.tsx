@@ -25,7 +25,7 @@ function Header({accessToken, setAccessToken } : HeaderProps){
     };
     
     const handleLogout = () => {
-        fetch('http://drugescape.duckdns.org/drugescape/logout', {
+        fetch('https://drugescape.duckdns.org/drugescape/logout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

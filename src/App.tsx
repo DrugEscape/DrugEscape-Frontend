@@ -55,6 +55,7 @@ function App() {
   }
   const [managementDTO, setSelections] = useState<Record<string,number>>({ stopDrug: 0, exercise: 0, meal: 0, medication: 0 });
   const handleSubmit = async () => {
+    console.log(managementDTO);
     const serverdata = await axios.post('https://drugescape.duckdns.org/drugescape/manage', managementDTO, {
       headers: {
         'Content-Type': 'application/json',
