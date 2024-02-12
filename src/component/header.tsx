@@ -13,9 +13,10 @@ function Header(){
     console.log(window.location.origin);
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
+    console.log(window.location.origin);
     
     const handleLogin = () => {
-        const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${client_id}&redirect_uri=${window.location.origin}/drugescape/callback&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email`;
+        const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${client_id}&redirect_uri=https://drugescape.duckdns.org/drugescape/callback&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email`;
         window.location.href = url  // Google 로그인 페이지로 리다이렉트합니다.
 
     };
@@ -39,14 +40,13 @@ function Header(){
         if (code) { 
           console.log('code:', code); 
           fetch(`https://drugescape.duckdns.org/drugescape/callback?code=${code}`, { // URL에 code 쿼리 파라미터 추가
-          mode: 'no-cors',
           method: 'GET',
             headers: {
               'Content-Type': 'application/json',
             },
           })
           .then(response => {
-            if (response.status === 500) { // accessToken이 만료되었음
+            if (response.status === 400) { // accessToken이 만료되었음
               return fetch(`http://drugescape.duckdns.org/drugescape/refresh`,{
                 method: 'POST',
                 headers: {
@@ -69,6 +69,7 @@ function Header(){
           .then(data => {
             if(data){
               setIsLogin(true);
+              console.log(isLogin);
               setAccessToken(data);
               console.log('Access Token:', data);
             }
