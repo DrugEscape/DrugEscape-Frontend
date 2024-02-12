@@ -18,6 +18,7 @@ import Share from './component/share'
 function App() { 
   
   const [view, setView] = useState<{title: string; content:string; id:number}[]>([]);
+  
   const [data, setData] = useState<Record<string, number>>({
     stopDrug1: 0,
     exercise1: 0,
@@ -52,12 +53,13 @@ function App() {
      setData(prevData => ({ ...prevData, [name]: value})); // name, value값을 onChange함수에 넣어줌
 
   }
+  const [selections, setSelections] = useState<Record<string,number>>({ stopDrug: 0, exercise: 0, meal: 0, medicine: 0 });
   const handleSubmit = async () => {
     const serverdata = await axios.post('https://drugescape.duckdns.org/drugescape/manage', {
       headers: {
         'Content-Type': 'application/json',
       },
-      params: data,  // 데이터를 쿼리 문자열로 전달합니다.
+      params: selections,  // 데이터를 쿼리 문자열로 전달합니다.
     });
     console.log(serverdata);
   };
@@ -70,7 +72,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/path' element={<Home />}></Route> 
-        <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit}/>}></Route>
+        <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit} selections={selections} setSelections={setSelections}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate/>}></Route>
         <Route path='/report' element={<Report/>}></Route>
