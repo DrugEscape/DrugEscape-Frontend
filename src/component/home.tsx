@@ -1,6 +1,16 @@
 import '../App.css';
 import { useState } from 'react';
-function Home(){
+import { useNavigate } from 'react-router-dom';
+
+interface HomeProps{
+  handleLogin: () => void;
+  isLogin: boolean;
+}
+function Home({handleLogin, isLogin}: HomeProps){
+  const goManage = () => {
+    navigate('/manage');
+  }
+  const navigate = useNavigate();
   const homemsg= ['Remember, progress, no matter how small, is still progress.',
   'Stay resilient, stay hopeful, and know that you are not alone on this path.,',
  ' Breaking free from addiction is tough, but you are equally strong and courageous.',
@@ -27,7 +37,11 @@ function Home(){
                <p> that you are not alone on this path.</p>
           </div>
           <div id="content-button">
-            <button id="content-login-start">Get Started</button>
+            {isLogin ? (
+              <button id="content-login-start" onClick={goManage} >Manage</button>
+            ) : (
+              <button id="content-login-start" onClick={handleLogin}>Get Started</button>
+            )}
           </div>
           <div id ='content-bottom-message'>
             <p id='content-bottom-title'>Our goals</p>

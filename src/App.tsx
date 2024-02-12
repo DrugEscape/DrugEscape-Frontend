@@ -16,6 +16,13 @@ import axios from 'axios'
 import Share from './component/share'
 
 function App() { 
+  const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
+  const handleLogin = () => {
+    const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${client_id}&redirect_uri=https://drugescape.duckdns.org/drugescape/callback&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email`;
+    window.location.href = url  // Google 로그인 페이지로 리다이렉트합니다.
+
+};
+  const [isLogin, setIsLogin] = useState(false);
   const [Token, setToken] = useState('null');
   const [accessToken, setAccessToken] = useState('null');
   const [refreshToken, setRefreshToken] = useState('null');
@@ -72,10 +79,11 @@ function App() {
    <BrowserRouter>
     <div id="container">
       <div id="wrap">
-      <Header accessToken={accessToken} setAccessToken={setAccessToken} refreshToken={refreshToken} setRefreshToken={setRefreshToken} />
+      <Header accessToken={accessToken} setAccessToken={setAccessToken} refreshToken={refreshToken} setRefreshToken={setRefreshToken}
+                    isLogin={isLogin} setIsLogin={setIsLogin} />
       <Routes>
-        <Route path='/' element={<Home />}></Route>
-        <Route path='/path' element={<Home />}></Route> 
+        <Route path='/' element={<Home handleLogin={handleLogin} isLogin={isLogin}/>}></Route>
+        <Route path='/path' element={<Home handleLogin={handleLogin} isLogin={isLogin} />}></Route> 
         <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit}
          selections={managementDTO} setSelections={setSelections}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>

@@ -8,15 +8,14 @@ interface HeaderProps{
   setAccessToken: React.Dispatch<React.SetStateAction<string>>;
   refreshToken: string;
   setRefreshToken: React.Dispatch<React.SetStateAction<string>>;
+  isLogin : boolean;
+  setIsLogin : React.Dispatch<React.SetStateAction<boolean>>;
 
 }
 
-function Header({accessToken, setAccessToken } : HeaderProps){
+function Header({accessToken, setAccessToken, refreshToken, setRefreshToken, isLogin, setIsLogin } : HeaderProps){
     const navigate = useNavigate();
-    const [refreshToken, setRefreshToken] = useState('');
-    const [isLogin, setIsLogin] = useState(false);
     const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
-    
     console.log(window.location.origin);
     const urlParams = new URLSearchParams(window.location.search);
     const sessionToken = urlParams.get('sessionToken');
@@ -104,21 +103,50 @@ function Header({accessToken, setAccessToken } : HeaderProps){
                     <dt>
                         <Link to="/">Home</Link>
                     </dt>
-                    <dt>
+                    {isLogin ? (
+                     <dt>
                         <Link to="/manage">Manage</Link>
                     </dt>
+                    ) : (
                     <dt>
-                        <Link to="/share">Share</Link>
+                      <a onClick={() => alert("로그인이 필요합니다.")}>Manage</a>
                     </dt>
+                  )}
+                   {isLogin ? (
+                     <dt>
+                     <Link to="/share">Share</Link>
+                      </dt>
+                    ) : (
+                    <dt>
+                      <a onClick={() => alert("로그인이 필요합니다.")}>Share</a>
+                    </dt>
+                  )} 
+                    
+                    
                     <dt>
                         <Link to="/map">Map</Link>
                     </dt>
+                    {isLogin ? (
+                     <dt>
+                     <Link to="/donate">Donate</Link>
+                       </dt>
+                    ) : (
                     <dt>
-                        <Link to="/donate">Donate</Link>
+                      <a onClick={() => alert("로그인이 필요합니다.")}>Donate</a>
                     </dt>
+                  )} 
+                   {isLogin ? (
+                     <dt>
+                     <Link to="/report">Report</Link>
+                 </dt>
+                    ) : (
                     <dt>
-                        <Link to="/report">Report</Link>
+                      <a onClick={() => alert("로그인이 필요합니다.")}>Report</a>
                     </dt>
+                  )} 
+
+                    
+                    
                     {isLogin ?(
                         <button id="header-login2" onClick={handleLogout} >Logout</button>
                     ):(

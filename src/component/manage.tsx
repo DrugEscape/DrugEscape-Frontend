@@ -4,6 +4,7 @@ import exercise from '../assets/exercise.png';
 import meal from '../assets/spoon-and-fork.png';
 import pill from '../assets/pill.png';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 interface ManageProps {
     onChange: (name: string, value: number) => void;
     onSubmit: () => void;
@@ -11,6 +12,10 @@ interface ManageProps {
     setSelections: React.Dispatch<React.SetStateAction<Record<string, number>>>;
 }
 function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps){
+    const navigate = useNavigate();
+    const goReport = () => {
+        navigate('/report');
+    }
   
     const [isCheck,setIsCheck] = useState<Record<string, boolean>>({});
     const [buttondiv1, setButtondiv1] = useState<boolean>(false);
@@ -118,7 +123,7 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
                     <button id='tm-btn4'data-area={'medication'}  onClick={handleBoth} name="medicine4" value={4}className={isCheck['tm-btn4'] ? 'checked' : ''}>none</button>
                 </div>
             </div>
-                 <button disabled={!(buttondiv1 && buttondiv2 && buttondiv3 && buttondiv4) } type='submit' id="manage-btn" className={!(buttondiv1 && buttondiv2 && buttondiv3 && buttondiv4) ? 'disabled' : 'enabled' }>Submit</button>
+                 <button disabled={!(buttondiv1 && buttondiv2 && buttondiv3 && buttondiv4) } type='submit' id="manage-btn" onClick={goReport} className={!(buttondiv1 && buttondiv2 && buttondiv3 && buttondiv4) ? 'disabled' : 'enabled' }>Submit</button>
             </form>
             
 
