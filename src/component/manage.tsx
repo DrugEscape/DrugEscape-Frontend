@@ -10,7 +10,7 @@ interface ManageProps {
     selections: Record<string, number>;
     setSelections: React.Dispatch<React.SetStateAction<Record<string, number>>>;
 }
-function Manage({onChange, onSubmit, selections, setSelections } : ManageProps){
+function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps){
   
     const [isCheck,setIsCheck] = useState<Record<string, boolean>>({});
     const [buttondiv1, setButtondiv1] = useState<boolean>(false);

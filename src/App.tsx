@@ -16,7 +16,7 @@ import axios from 'axios'
 import Share from './component/share'
 
 function App() { 
-  
+  const [accessToken, setAccessToken] = useState('null');
   const [view, setView] = useState<{title: string; content:string; id:number}[]>([]);
   
   const [data, setData] = useState<Record<string, number>>({
@@ -55,11 +55,11 @@ function App() {
   }
   const [selections, setSelections] = useState<Record<string,number>>({ stopDrug: 0, exercise: 0, meal: 0, medicine: 0 });
   const handleSubmit = async () => {
-    const serverdata = await axios.post('https://drugescape.duckdns.org/drugescape/manage', {
+    const serverdata = await axios.post('https://drugescape.duckdns.org/drugescape/manage', selections, {
       headers: {
         'Content-Type': 'application/json',
-      },
-      params: selections,  // 데이터를 쿼리 문자열로 전달합니다.
+        'Authorization': `Bearer ${accessToken}`
+      }
     });
     console.log(serverdata);
   };
@@ -68,11 +68,12 @@ function App() {
    <BrowserRouter>
     <div id="container">
       <div id="wrap">
-      <Header />
+      <Header accessToken={accessToken} setAccessToken={setAccessToken} />
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/path' element={<Home />}></Route> 
-        <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit} selections={selections} setSelections={setSelections}/>}></Route>
+        <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit}
+         selections={selections} setSelections={setSelections}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate/>}></Route>
         <Route path='/report' element={<Report/>}></Route>

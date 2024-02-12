@@ -3,13 +3,16 @@ import drugescape from '../assets/drugescape.png'
 import { Link} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+interface HeaderProps{
+  accessToken: string;
+  setAccessToken: React.Dispatch<React.SetStateAction<string>>;
+}
 
-
-function Header(){
+function Header({accessToken, setAccessToken } : HeaderProps){
     const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState(false);
     const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
-    const [accessToken, setAccessToken] = useState('null');
+    
     console.log(window.location.origin);
     const urlParams = new URLSearchParams(window.location.search);
     const sessionToken = urlParams.get('sessionToken');
