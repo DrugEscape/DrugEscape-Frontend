@@ -53,9 +53,9 @@ function App() {
      setData(prevData => ({ ...prevData, [name]: value})); // name, value값을 onChange함수에 넣어줌
 
   }
-  const [selections, setSelections] = useState<Record<string,number>>({ stopDrug: 0, exercise: 0, meal: 0, medication: 0 });
+  const [managementDTO, setSelections] = useState<Record<string,number>>({ stopDrug: 0, exercise: 0, meal: 0, medication: 0 });
   const handleSubmit = async () => {
-    const serverdata = await axios.post('https://drugescape.duckdns.org/drugescape/manage', selections, {
+    const serverdata = await axios.post('https://drugescape.duckdns.org/drugescape/manage', managementDTO, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${accessToken}`
@@ -73,7 +73,7 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='/path' element={<Home />}></Route> 
         <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit}
-         selections={selections} setSelections={setSelections}/>}></Route>
+         selections={managementDTO} setSelections={setSelections}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate/>}></Route>
         <Route path='/report' element={<Report/>}></Route>
