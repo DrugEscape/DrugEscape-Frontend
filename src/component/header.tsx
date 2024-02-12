@@ -39,7 +39,7 @@ function Header(){
       useEffect(() => {
         if (sessionToken) { 
           console.log('sessionToken:', sessionToken); 
-          fetch(`https://drugescape.duckdns.org/retriveTokens?sessionToken=${sessionToken}`, { // URL에 code 쿼리 파라미터 추가
+          fetch(`https://drugescape.duckdns.org/retrieveTokens?sessionToken=${sessionToken}`, { // URL에 code 쿼리 파라미터 추가
           method: 'GET',
             headers: {
               'Content-Type': 'application/json',
