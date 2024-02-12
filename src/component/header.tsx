@@ -12,7 +12,7 @@ function Header(){
     const [accessToken, setAccessToken] = useState('null');
     console.log(window.location.origin);
     const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
+    const sessionToken = urlParams.get('sessionToken');
     console.log(window.location.origin);
     
     const handleLogin = () => {
@@ -37,9 +37,9 @@ function Header(){
         });
       };
       useEffect(() => {
-        if (code) { 
-          console.log('code:', code); 
-          fetch(`https://drugescape.duckdns.org/drugescape/callback?code=${code}`, { // URL에 code 쿼리 파라미터 추가
+        if (sessionToken) { 
+          console.log('sessionToken:', sessionToken); 
+          fetch(`https://drugescape.duckdns.org/retriveToken?sessionToken=${sessionToken}`, { // URL에 code 쿼리 파라미터 추가
           method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ function Header(){
           })
           .then(response => {
             if (response.status === 400) { // accessToken이 만료되었음
-              return fetch(`http://drugescape.duckdns.org/drugescape/refresh`,{
+              return fetch(`http://drugescape.duckdns.org/refresh`,{
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ function Header(){
             }
           });
         }
-      }, [code]);
+      }, [sessionToken]);
       
 
 

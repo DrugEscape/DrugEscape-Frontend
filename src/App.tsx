@@ -69,7 +69,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/drugescape/callback' element={<Home />}></Route> 
+        <Route path='/path' element={<Home />}></Route> 
         <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate/>}></Route>
