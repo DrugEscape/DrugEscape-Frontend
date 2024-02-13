@@ -11,7 +11,7 @@ import Sharemy from './component/sharemy'
 import SharemyComment from './component/sharemyComment'
 import SharemyLike from './component/sharemyLike'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Share from './component/share'
 
@@ -74,6 +74,19 @@ function App() {
     });
     console.log(serverdata);
   };
+  useEffect(() => {
+    fetch('https://drugescape.duckdns.org/drugescape/report', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+  }, []);
   return (
     <>
    <BrowserRouter>
