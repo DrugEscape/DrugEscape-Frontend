@@ -143,10 +143,7 @@ function Header({accessToken, setAccessToken, refreshToken, setRefreshToken, isL
                     <dt>
                       <a onClick={() => alert("로그인이 필요합니다.")}>Report</a>
                     </dt>
-                  )} 
-
-                    
-                    
+                  )}      
                     {isLogin ?(
                         <button id="header-login2" onClick={handleLogout} >Logout</button>
                     ):(
