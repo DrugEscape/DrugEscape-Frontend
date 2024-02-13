@@ -6,8 +6,15 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import '../report.css'
 
 Chart.register(CategoryScale, LinearScale, PointElement, BarController, BarElement); // LineElement를 BarController와 BarElement로 변경
+interface reportProps {
+    reportData: Record<string, number>;
+    setReportData: React.Dispatch<React.SetStateAction<Record<string, number>>>;
+    weekdata: any[];
+    setweekdata: React.Dispatch<React.SetStateAction<any[]>>;
+}
 
-function report() {
+function report({ reportData,  weekdata}: reportProps) {
+    const dailygoal = reportData.dailyGoals;
     const messages =['Close your eyes for 30 seconds and take a deep breath in and out','Stretch and exercise for 10 minutes','Eat a healthy meal','Take your medicine'];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     const percentage = 25;
@@ -17,7 +24,7 @@ function report() {
             {
                 label: '일주일간 manage수치',
                 backgroundColor: 'white',
-                data: [0, 10, 5, 2, 20, 30, 100],
+                data: weekdata,
                 borderColor: 'white',
                 borderWidth: 2,
             },
@@ -72,6 +79,7 @@ function report() {
                 <div id='report-manage1'>
                     <p className='report-p1'>Days currently</p>
                     <p className='report-p1'>accumulated</p>
+                    <p>{dailygoal}</p>
                 </div>
                 <div id='report-manage2'>
                     <p className='report-p1'>Maximum</p>
@@ -85,7 +93,7 @@ function report() {
                     <p className='report-p1'>Achieve</p>
                     <p className='report-p1'>your daily goals</p>
                         <div id='report-per'>
-                            <CircularProgressbar value={percentage} text={`${percentage}%`}
+                            <CircularProgressbar value={percentage} text={`${dailygoal}%`}
                             styles={{
                                 path: {
                                     stroke: "#28EA53"

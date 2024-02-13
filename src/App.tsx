@@ -14,6 +14,8 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Share from './component/share'
+import { prefix } from '@fortawesome/free-solid-svg-icons'
+import { get } from 'mobx'
 
 function App() { 
   const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
@@ -63,6 +65,9 @@ function App() {
 
   }
   const [managementDTO, setSelections] = useState<Record<string,number>>({ stopDrug: 0, exercise: 0, meal: 0, medication: 0 });
+  const [reportData, setReportData] = useState<Record<string, number>>({});
+  const [weekData, setWeekData] = useState<any[]>([]);
+ 
   const handleSubmit = async () => {
     console.log(managementDTO);
     console.log(accessToken);
@@ -79,8 +84,20 @@ function App() {
         'Authorization': `Bearer ${accessToken}`
       }
     });
-    console.log(getData);
+    setWeekData(prevData => {
+      const newData = [...prevData, getData.data.dailyGoals];
+      // 배열의 길이가 7을 초과하면 첫 번째 요소를 제거
+      if (newData.length > 7) {
+        newData.shift();
+      }
+      return newData;
+    });
+    setReportData(getData.data);
+    
   };
+  
+
+
   return (
     <>
    <BrowserRouter>
@@ -95,7 +112,8 @@ function App() {
          selections={managementDTO} setSelections={setSelections}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate accessToken={accessToken} />}></Route>
-        <Route path='/report' element={<Report/>}></Route>
+        <Route path='/report' element={<Report reportData={reportData} setReportData={setReportData}
+         weekdata={weekData} setweekdata={setWeekData}/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}    />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
