@@ -73,20 +73,14 @@ function App() {
       }
     });
     console.log(serverdata);
-  };
-  useEffect(() => {
-    fetch('https://drugescape.duckdns.org/drugescape/report', {
-      method: 'GET',
+    const getData = await axios.get('https://drugescape.duckdns.org/drugescape/report', {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${accessToken}`
       }
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    })
-  }, []);
+    });
+    console.log(getData);
+  };
   return (
     <>
    <BrowserRouter>
