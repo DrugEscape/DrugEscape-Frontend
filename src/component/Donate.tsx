@@ -35,6 +35,7 @@ function Donate({accessToken} : DonateProps){
             'Authorization': `Bearer ${accessToken}`
           }
         });
+        console.log(serverdata.data);
     }
 
     return(
