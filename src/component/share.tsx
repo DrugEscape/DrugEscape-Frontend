@@ -36,29 +36,31 @@ function share({view,isChecked}:ShareProps){
                 <p id="share-servefont">Connecting with people</p>
             </div>
             <div id='share-content'>
-                <div id="share-content-user">
-                    <p>USER Name</p>
-                    <p>D+</p>
-                    <p id='share-content-mypost' onClick={gosharemy}>My posts</p>
-                    <p id='share-content-mycomment' onClick={gosharemy}>My comments</p>
-                    <p id='share-content-mylike' onClick={gosharemy}>My likes</p>
-                </div>
+               
                 <div id='share-side'>
                     <input type='text' placeholder='Search for'></input>
                     <button onClick={handleCreatePost}>+ Create a post</button>
                 </div>
+                
                 <div id='share-content-title'>
-                    <p>Community</p>
-                    <button onClick={handleCreatePost}>+ Create a post</button>
-                </div>
+                        <p id='t1'>Title</p>
+                        <p id='t2'>User</p>
+                        <p id='t3'>Likes</p>
+                        <p id='t4'>Comments</p>
+                        <p id='t5'>Date</p>
+                    </div>
                 <div id='share-content-show'>
                     {view.slice(page * postpage, (page + 1) * postpage).map((element, index) =>
                         isChecked[element.id] ? null : (
                         <div id='share-show1' key={index}>
-                            <p onClick={()=>{
+                            <p id='element_id'onClick={()=>{
                                 navigate('/shareContent', {state: {id: element.id,title: element.title, content: element.content}})
                                 console.log(element.id);
                             }}>{element.title}</p>
+                            <p id='element_user'>user</p>
+                            <p id='element_Likes'>Likes</p>
+                            <p id='element_Comments'>Comments</p>
+                            <p id='element_Date'>Date</p>
                         </div>
                         )
                     

@@ -112,15 +112,15 @@ function Header({accessToken, setAccessToken, refreshToken, setRefreshToken, isL
                       <a onClick={() => alert("로그인이 필요합니다.")}>Manage</a>
                     </dt>
                   )}
-                   {isLogin ? (
+                   {/* {isLogin ? ( */}
                      <dt>
                      <Link to="/share">Share</Link>
                       </dt>
-                    ) : (
-                    <dt>
-                      <a onClick={() => alert("로그인이 필요합니다.")}>Share</a>
-                    </dt>
-                  )} 
+                    {/* ) : ( */}
+                    {/* <dt> */}
+                      {/* <a onClick={() => alert("로그인이 필요합니다.")}>Share</a> */}
+                    {/* </dt> */}
+                  {/* )}  */}
                     
                     
                     <dt>

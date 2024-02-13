@@ -59,17 +59,7 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike}:
                 <p id="share-servefont">Connecting with people</p>
             </div>
             <div id='share-content'>
-                <div id="share-content-user">
-                    <p>USER Name</p>
-                    <p>D+</p>
-                    <p id='share-content-mypost' onClick={gosharemy}>My posts</p>
-                    <p id='share-content-mycomment' onClick={gosharecomment}>My comments</p>
-                    <p id='share-content-mylike' onClick={gosharelike}>My likes</p>
-                </div>
-                <div id='share-content-title'>
-                    <button onClick={handleCreatePost}>+ Create a post</button>
-                </div>
-                <div id='share-content-show'>
+                <div id='share-content-show1'>
                         <div id='content-title'>
                             <p id="posttitle">{title}</p>
                             <p id="postdate">{postdate.toLocaleDateString()}{postdate.toLocaleTimeString('ko-KR', {hour: '2-digit', minute:'2-digit', second:'2-digit', hour12: false})}</p>

@@ -34,6 +34,8 @@ html, body, *{
     position:absolute;
     width:100%;
     top:18vh;
+    
+    height: 100%;
 }
 #share-content-user{
     position:absolute;
@@ -43,11 +45,7 @@ html, body, *{
     width:15vw;
     height:44vh;
 }
-#share-content-title{
-    position:absolute;
-    left:30%;
-    width:52vw;
-}
+
 #share-content-mypost{
     color:#28EA53;
     position: absolute;
@@ -67,43 +65,60 @@ html, body, *{
     top:33vh;
     margin-left: 2vw;
 }
-#share-content-title>p{
-    position: absolute;
-    left:0;
-    font-weight: 400;
-    font-size: 24px;
-    color:#28EA53;
-}
-#share-content-title>button{
-    position:absolute;
-    right:0;
-    background-color:#28EA53;
-    border-radius: 30px;
-    border:none;
-    color:#FFFFFF;
-    height:5vh;
-    width:10vw;
-    font-size: 15px;
-}
 #share-content-show{
-    position:absolute;
-    top:7vh;
-    left:30%;
-    width:52vw;
-    height:62vh;
+    position:relative;
+    width:80%;
+    height:50vh;
     border:1px solid #D4D2E3;
     border-radius: 15px;  
+    left:50%;
+    transform: translateX(-50%);
+    top:12vh;
 }
-#share-show1{
+#share-content-title{
     text-align: left;
-    margin:10px;
+    position:absolute;
+    width:80%;
+    height:7vh;
+    left:50%;
+    transform: translateX(-50%);
+    top:5vh;
+    display:flex;
+    align-items: center;
 }
-#share-show1>p{
-    height:6.22vh;
-    font-weight: 400;
-    font-size: 30px;
+#share-content-title>*{
+   
+    color:#28EA53;
+    font-size: 18px;
+}
+#t1{
+    width:40%;
+    padding-left: 2%;
+}
+#t2, #t3, #t4, #t5{
+    width:15%;
+}
+
+#share-show1{  
+    text-align: left;
+    width: 100%;
+    display:flex;
     border-bottom: 1px solid #D4D2E3;
+    height:6.13vh;
+    font-weight: 400;
+    font-size: 18px;
 }
+#element_id{
+    width:40%;
+    padding-left: 2%;
+}
+#element_user, #element_Date, #element_Likes, #element_Comments{
+    width:15%;
+
+}
+
+
+
 #share-page-btn{
     position: absolute;
     top: 72vh;
@@ -116,23 +131,26 @@ html, body, *{
     background-color: #FFFFFF;
 }
 #share-side{
+    top:-2vh;
     position: absolute;
-    top:45vh;
-    left :14%;
+    left:50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    width:80%;
+    
+
 }
 #share-side>input{
-    position: absolute;
-    top:1vh;
     height: 5vh;
-    width:15vw;
+    width:80%;
     border-radius: 15px;
     background-color: whitesmoke;
+    margin-right: 5%;
 }
 #share-side>button{
-    position: absolute;
-    top:8vh;
     height: 5vh;
-    width:10vw;
+    width:15%;
     border-radius: 15px;
     background-color: #28EA53;
     border:none;
@@ -142,7 +160,8 @@ html, body, *{
 /* post 부분 css 시작 */
 #post-content{
     position:absolute;
-    left:30%;
+    left:50%;
+    transform: translateX(-50%);
     width:52vw;
     height:75vh;
     border:1px solid #D4D2E3;
@@ -260,6 +279,15 @@ html, body, *{
 
 /* shareContent css 시작*/
 
+#share-content-show1{
+        position:relative;
+        width:60%;
+        height:55vh;
+        border:1px solid #D4D2E3;
+        border-radius: 15px;  
+        left:50%;
+        transform: translateX(-50%);
+}
 #posttitle{
     font-size: 2vw;
     margin-top: 1vh;
@@ -292,16 +320,17 @@ html, body, *{
 #share-comment{
     position:relative;
     left:30%;
-    top:72vh;
-    width:52vw;
+    width:60%;
+    left:50%;
+    transform: translateX(-50%);
     height:50vh;
-
+    top:3vh;
 }
 #share-comment1{
     position:absolute;
     top:0;
     left:0;
-    width:52vw;
+    width:100%;
     height:33vh;
     border:1px solid #D4D2E3;
     border-radius: 15px;
@@ -311,7 +340,7 @@ html, body, *{
     position:absolute;
     top:35vh;
     left:0;
-    width:52vw;
+    width:100%;
     height:10vh;
     border:1px solid #D4D2E3;
     border-radius: 15px;
@@ -319,7 +348,7 @@ html, body, *{
 }
 #comment-p{
     position: absolute;
-    width:52vw;
+    width:100%;
     height:7vh;
     border-bottom: 1px solid #D4D2E3;
 

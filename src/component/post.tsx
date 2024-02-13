@@ -43,13 +43,7 @@ function post({view, setView,isChecked,handleCheckboxChange}:PostProps){
                 <p id="share-servefont">Connecting with people</p>
             </div>
             <div id='share-content'>
-                <div id="share-content-user">
-                    <p>USER Name</p>
-                    <p>D+</p>
-                    <p id='share-content-mypost' onClick={gosharemy}>My posts</p>
-                    <p id='share-content-mycomment' onClick={gosharemy}>My comments</p>
-                    <p id='share-content-mylike' onClick={gosharemy}>My likes</p>
-                </div>
+               
                 <div id='post-content'>
                     <div id='post-post1'>
                         <p>Community</p>
