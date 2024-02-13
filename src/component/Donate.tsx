@@ -1,11 +1,16 @@
-
 import '../donate.css';
 import React, { useState } from 'react';
+import axios from 'axios';
 
-function Donate(){
+interface DonateProps {
+    accessToken: string;
+}
+
+function Donate({accessToken} : DonateProps){
     const [isVisible, setIsVisible] = useState(false);
     const [placeHolder,setplaceHolder] = useState('20000');
     const [inputValue, setInputValue] = useState('');
+
     function handlesubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
         if (Number(inputValue)>Number(placeHolder)){
@@ -17,8 +22,19 @@ function Donate(){
             setInputValue('');
         }
     }
+
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         setInputValue(event.target.value);
+    }
+
+    const donatesubmit = async () => {
+        console.log(accessToken);
+        const serverdata = await axios.get('https://drugescape.duckdns.org/drugescape/donate', {
+          headers: {
+            'Content-Type': 'application/json', 
+            'Authorization': `Bearer ${accessToken}`
+          }
+        });
     }
 
     return(
@@ -44,11 +60,12 @@ function Donate(){
                     >
                     </input>
                     <p id="donate-points">Points</p>
-                    <button type='submit' id="donate-button">Donated</button>
+                    <button type='submit' id="donate-button" onClick={donatesubmit}>Donated</button>
                 </form>
             </div>
         </div>
         </>
-    )
+    );
 }
+
 export default Donate;

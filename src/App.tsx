@@ -94,7 +94,7 @@ function App() {
         <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit}
          selections={managementDTO} setSelections={setSelections}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
-        <Route path='/donate' element={<Donate/>}></Route>
+        <Route path='/donate' element={<Donate accessToken={accessToken} />}></Route>
         <Route path='/report' element={<Report/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}    />}></Route>
@@ -112,4 +112,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
