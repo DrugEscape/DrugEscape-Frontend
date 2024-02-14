@@ -241,7 +241,16 @@ html, body, *{
     top:14vh;
     left:0;
     width:52vw;
+    height:60.5vh;
     border-bottom:1px solid #D4D2E3;
+}
+.ck.ck-editor .ck.ck-toolbar__items {
+    width:52vw;
+    height: 5vh;
+}
+.ck.ck-editor .ck.ck-editor__main {
+    width:52vw;
+    height:50.5vh;
 }
 #post-post3 >textarea{
     position:absolute;

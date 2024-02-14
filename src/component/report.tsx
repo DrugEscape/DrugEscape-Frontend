@@ -94,7 +94,7 @@ function report({savedWeekData, pointdata, maxday, dailygoal}: reportProps) {
                     <p className='report-p1'>Achieve</p>
                     <p className='report-p1'>your daily goals</p>
                         <div id='report-per'>
-                            <CircularProgressbar value={percentage} text={`${dailygoal}%`}
+                            <CircularProgressbar value={dailygoal} text={`${dailygoal}%`}
                             styles={{
                                 path: {
                                     stroke: "#28EA53"

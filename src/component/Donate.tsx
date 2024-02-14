@@ -4,11 +4,12 @@ import axios from 'axios';
 
 interface DonateProps {
     accessToken: string;
+    pointdata : number;
 }
 
-function Donate({accessToken} : DonateProps){
+function Donate({accessToken, pointdata} : DonateProps){
     const [isVisible, setIsVisible] = useState(false);
-    const [placeHolder,setplaceHolder] = useState('20000');
+    const [placeHolder,setplaceHolder] = useState<number>(pointdata);
     const [inputValue, setInputValue] = useState('');
 
     function handlesubmit(event: React.FormEvent<HTMLFormElement>){
@@ -18,7 +19,7 @@ function Donate({accessToken} : DonateProps){
             setInputValue('');
         }else{
             setIsVisible(!isVisible);
-            setplaceHolder(String(Number(placeHolder)-Number(inputValue)));
+            setplaceHolder(((placeHolder)-Number(inputValue)));
             setInputValue('');
         }
     }
@@ -28,6 +29,13 @@ function Donate({accessToken} : DonateProps){
     }
 
     const donatesubmit = async () => {
+        const donatepost = await axios.post('https://drugescape.duckdns.org/drugescape/donate', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+
+            }
+        });
         console.log(accessToken);
         const serverdata = await axios.get('https://drugescape.duckdns.org/drugescape/donate', {
           headers: {
@@ -35,6 +43,8 @@ function Donate({accessToken} : DonateProps){
             'Authorization': `Bearer ${accessToken}`
           }
         });
+        setplaceHolder(serverdata.data);
+
         console.log(serverdata.data);
     }
 
@@ -56,7 +66,7 @@ function Donate({accessToken} : DonateProps){
         <div id="donate-content">
             <div id="donate-point">
                 <form id="donate-form" onSubmit={handlesubmit}>
-                    <input type="number" id="donate-input" placeholder={placeHolder} value={inputValue}
+                    <input type="number" id="donate-input" placeholder={placeHolder.toString()} value={inputValue}
                     onChange={handleChange}
                     >
                     </input>
