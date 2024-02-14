@@ -67,6 +67,7 @@ function App() {
   const [managementDTO, setSelections] = useState<Record<string,number>>({ stopDrug: 0, exercise: 0, meal: 0, medication: 0 });
   const [reportData, setReportData] = useState<Record<string, number>>({});
   const [weekData, setWeekData] = useState<any[]>([]);
+  const [pointdata, setpointdata] = useState('');
   const weekDataItem = localStorage.getItem('weekData');
   const reportDataItem = localStorage.getItem('reportData');
   const savedWeekData = weekDataItem ? JSON.parse(weekDataItem) : null;
@@ -97,7 +98,9 @@ function App() {
       return newData;
     });
     setReportData(getData.data);
+    setpointdata(getData.data.points);
     console.log(savedWeekData);
+    console.log(reportData);
     
   };
   

@@ -68,6 +68,12 @@ html, body, *{
     border:1px solid #E5E5E5;
     border-radius:15px;
 }
+#daliygoal{
+    position:absolute;
+    color:#28EA53;  
+    top: 8vh;
+    font-size: 1vw;
+}
 #report-manage2{
     position:absolute;
     width:15vw;

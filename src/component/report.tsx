@@ -81,7 +81,7 @@ function report({ reportData, savedWeekData}: reportProps) {
                 <div id='report-manage1'>
                     <p className='report-p1'>Days currently</p>
                     <p className='report-p1'>accumulated</p>
-                    <p>{dailygoal}</p>
+                    <p id='daliygoal'>{dailygoal}</p>
                 </div>
                 <div id='report-manage2'>
                     <p className='report-p1'>Maximum</p>
