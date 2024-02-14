@@ -6,25 +6,21 @@ import { useEffect } from 'react';
 interface DonateProps {
     accessToken: string;
     pointdata : number;
+    setpointdata: (pointdata: number) => void;
 }
 
-function Donate({accessToken, pointdata} : DonateProps){
+function Donate({accessToken, pointdata,setpointdata} : DonateProps){
     const [isVisible, setIsVisible] = useState(false);
-    const [placeholder,setplaceHolder] = useState<number>(pointdata);
     const [donationDTO, setInputValue] = useState<number>(0);
-    useEffect(() => {
-        localStorage.setItem('placeholder', JSON.stringify(placeholder));
-        console.log(placeholder); // 상태 업데이트 확인
-    }, [placeholder]);
 
     function handlesubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
-        if (Number(donationDTO)>Number(placeholder)){
+        if (Number(donationDTO)>Number(pointdata)){
             alert("포인트가 부족합니다.");
             setInputValue(0);
         }else{
             setIsVisible(!isVisible);
-            setplaceHolder(((placeholder)-Number(donationDTO)));
+            setpointdata(((pointdata)-Number(donationDTO)));
             setInputValue(0);
         }
     }
@@ -41,7 +37,6 @@ function Donate({accessToken, pointdata} : DonateProps){
             'Authorization': `Bearer ${accessToken}`
           }
         });
-        setplaceHolder(serverdata.data);
         console.log(serverdata.data);
         const donatepost = await axios.post('https://drugescape.duckdns.org/drugescape/donate',{value: donationDTO}, {
             headers: {
@@ -71,7 +66,7 @@ function Donate({accessToken, pointdata} : DonateProps){
         <div id="donate-content">
             <div id="donate-point">
                 <form id="donate-form" onSubmit={handlesubmit}>
-                    <input type="number" id="donate-input" placeholder={placeholder.toString()} value={donationDTO}
+                    <input type="number" id="donate-input" placeholder={pointdata.toString()} value={donationDTO}
                     onChange={handleChange}
                     >
                     </input>

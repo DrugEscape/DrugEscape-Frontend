@@ -202,7 +202,7 @@ const [maxday, setmaxday] = useState<number>(0);
         <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit}
          selections={managementDTO} setSelections={setSelections}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
-        <Route path='/donate' element={<Donate accessToken={accessToken}  pointdata={pointdata} />}></Route>
+        <Route path='/donate' element={<Donate accessToken={accessToken}  pointdata={pointdata} setpointdata={setpointdata} />}></Route>
         <Route path='/report' element={<Report dailygoal={dailygoal}
          weekdata={weekData}  savedWeekData={savedWeekData} pointdata={pointdata} maxday={maxday}/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
