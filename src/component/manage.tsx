@@ -27,6 +27,12 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
     const [buttondiv2, setButtondiv2] = useState<boolean>(false);
     const [buttondiv3, setButtondiv3] = useState<boolean>(false);
     const [buttondiv4, setButtondiv4] = useState<boolean>(false);
+    useEffect(() => {
+        const lastDate = localStorage.getItem('lastSubmittedDate');
+        if (lastDate) {
+            setLastSubmittedDate(new Date(lastDate));
+        }
+    }, []);
     const handleBoth = (event: React.MouseEvent<HTMLButtonElement>) =>{
         handleChange(event);
         handleButtonClick(event);
@@ -85,6 +91,7 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
         const currentDate = new Date();
         currentDate.setHours(0, 0, 0, 0);
         setLastSubmittedDate(currentDate);
+        localStorage.setItem('lastSubmittedDate', currentDate.toString());
     }
     return(
         <>
