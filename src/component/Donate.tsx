@@ -9,33 +9,26 @@ interface DonateProps {
 
 function Donate({accessToken, pointdata} : DonateProps){
     const [isVisible, setIsVisible] = useState(false);
-    const [DonationDTO,setplaceHolder] = useState<number>(pointdata);
-    const [inputValue, setInputValue] = useState('');
+    const [placeholder,setplaceHolder] = useState<number>(pointdata);
+    const [donationDTO, setInputValue] = useState<number>(0);
 
     function handlesubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
-        if (Number(inputValue)>Number(DonationDTO)){
+        if (Number(donationDTO)>Number(placeholder)){
             alert("포인트가 부족합니다.");
-            setInputValue('');
+            setInputValue(0);
         }else{
             setIsVisible(!isVisible);
-            setplaceHolder(((DonationDTO)-Number(inputValue)));
-            setInputValue('');
+            setplaceHolder(((placeholder)-Number(donationDTO)));
+            setInputValue(0);
         }
     }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setInputValue(event.target.value);
+        setInputValue(Number(event.target.value));
     }
 
     const donatesubmit = async () => {
-        const donatepost = await axios.post('https://drugescape.duckdns.org/drugescape/donate',DonationDTO, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-
-            }
-        });
         console.log(accessToken);
         const serverdata = await axios.get('https://drugescape.duckdns.org/drugescape/donate', {
           headers: {
@@ -44,8 +37,16 @@ function Donate({accessToken, pointdata} : DonateProps){
           }
         });
         setplaceHolder(serverdata.data);
-
+        localStorage.setItem('placeholder', JSON.stringify(placeholder));
         console.log(serverdata.data);
+        const donatepost = await axios.post('https://drugescape.duckdns.org/drugescape/donate',donationDTO, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+
+            }
+        });
+        console.log(donatepost);
     }
 
     return(
@@ -66,7 +67,7 @@ function Donate({accessToken, pointdata} : DonateProps){
         <div id="donate-content">
             <div id="donate-point">
                 <form id="donate-form" onSubmit={handlesubmit}>
-                    <input type="number" id="donate-input" placeholder={DonationDTO.toString()} value={inputValue}
+                    <input type="number" id="donate-input" placeholder={placeholder.toString()} value={donationDTO}
                     onChange={handleChange}
                     >
                     </input>
