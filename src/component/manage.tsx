@@ -82,7 +82,9 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
     function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
         onSubmit();
-        setLastSubmittedDate(new Date());
+        const currentDate = new Date();
+        currentDate.setHours(0, 0, 0, 0);
+        setLastSubmittedDate(currentDate);
     }
     return(
         <>
