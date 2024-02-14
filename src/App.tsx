@@ -27,12 +27,6 @@ function App() {
 
 };
 useEffect(() => {
-  localStorage.removeItem('accessToken');
-  localStorage.removeItem('refreshToken');
-  localStorage.removeItem('maxDay');
-  localStorage.removeItem('pointData');
-  localStorage.removeItem('dailyGoal');
-  localStorage.removeItem('weekData');
 
   if (sessionToken) { 
     console.log('sessionToken:', sessionToken); 
