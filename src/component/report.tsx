@@ -11,9 +11,11 @@ interface reportProps {
     setReportData: React.Dispatch<React.SetStateAction<Record<string, number>>>;
     weekdata: any[];
     setweekdata: React.Dispatch<React.SetStateAction<any[]>>;
+    savedWeekData: any[] | null;
 }
 
-function report({ reportData,  weekdata}: reportProps) {
+function report({ reportData, savedWeekData}: reportProps) {
+    
     const dailygoal = reportData.dailyGoals;
     const messages =['Close your eyes for 30 seconds and take a deep breath in and out','Stretch and exercise for 10 minutes','Eat a healthy meal','Take your medicine'];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
@@ -24,7 +26,7 @@ function report({ reportData,  weekdata}: reportProps) {
             {
                 label: '일주일간 manage수치',
                 backgroundColor: 'white',
-                data: weekdata,
+                data: savedWeekData,
                 borderColor: 'white',
                 borderWidth: 2,
             },

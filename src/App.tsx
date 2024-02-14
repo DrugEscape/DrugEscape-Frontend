@@ -67,7 +67,11 @@ function App() {
   const [managementDTO, setSelections] = useState<Record<string,number>>({ stopDrug: 0, exercise: 0, meal: 0, medication: 0 });
   const [reportData, setReportData] = useState<Record<string, number>>({});
   const [weekData, setWeekData] = useState<any[]>([]);
- 
+  const weekDataItem = localStorage.getItem('weekData');
+  const reportDataItem = localStorage.getItem('reportData');
+  const savedWeekData = weekDataItem ? JSON.parse(weekDataItem) : null;
+  const savedReportData = reportDataItem ? JSON.parse(reportDataItem) : null;
+
   const handleSubmit = async () => {
     console.log(managementDTO);
     console.log(accessToken);
@@ -93,6 +97,7 @@ function App() {
       return newData;
     });
     setReportData(getData.data);
+    console.log(savedWeekData);
     
   };
   
@@ -113,7 +118,7 @@ function App() {
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate accessToken={accessToken} />}></Route>
         <Route path='/report' element={<Report reportData={reportData} setReportData={setReportData}
-         weekdata={weekData} setweekdata={setWeekData}/>}></Route>
+         weekdata={weekData} setweekdata={setWeekData} savedWeekData={savedWeekData}/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}    />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
