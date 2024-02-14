@@ -43,7 +43,7 @@ function Donate({accessToken, pointdata} : DonateProps){
         });
         setplaceHolder(serverdata.data);
         console.log(serverdata.data);
-        const donatepost = await axios.post('https://drugescape.duckdns.org/drugescape/donate',donationDTO, {
+        const donatepost = await axios.post('https://drugescape.duckdns.org/drugescape/donate',{value: donationDTO}, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${accessToken}`
