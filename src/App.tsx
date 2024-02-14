@@ -101,7 +101,7 @@ function App() {
     setReportData(getData.data);
     setmaxday(getData.data.maxday);
     setpointdata(getData.data.points);
-    console.log(serverdata);
+    console.log(getData);
     
   };
   
