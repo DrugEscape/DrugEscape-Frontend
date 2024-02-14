@@ -1,6 +1,7 @@
 import '../donate.css';
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 interface DonateProps {
     accessToken: string;
@@ -11,6 +12,10 @@ function Donate({accessToken, pointdata} : DonateProps){
     const [isVisible, setIsVisible] = useState(false);
     const [placeholder,setplaceHolder] = useState<number>(pointdata);
     const [donationDTO, setInputValue] = useState<number>(0);
+    useEffect(() => {
+        localStorage.setItem('placeholder', JSON.stringify(placeholder));
+        console.log(placeholder); // 상태 업데이트 확인
+    }, [placeholder]);
 
     function handlesubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
@@ -37,7 +42,6 @@ function Donate({accessToken, pointdata} : DonateProps){
           }
         });
         setplaceHolder(serverdata.data);
-        localStorage.setItem('placeholder', JSON.stringify(placeholder));
         console.log(serverdata.data);
         const donatepost = await axios.post('https://drugescape.duckdns.org/drugescape/donate',donationDTO, {
             headers: {
