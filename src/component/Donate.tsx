@@ -11,22 +11,22 @@ interface DonateProps {
 
 function Donate({accessToken, pointdata,setpointdata} : DonateProps){
     const [isVisible, setIsVisible] = useState(false);
-    const [donationDTO, setInputValue] = useState<number>(0);
+    const [donationDTO, setInputValue] = useState('');
 
     function handlesubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
         if (Number(donationDTO)>Number(pointdata)){
             alert("포인트가 부족합니다.");
-            setInputValue(0);
+            setInputValue('');
         }else{
             setIsVisible(!isVisible);
             setpointdata(((pointdata)-Number(donationDTO)));
-            setInputValue(0);
+            setInputValue('');
         }
     }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setInputValue(Number(event.target.value));
+        setInputValue((event.target.value));
     }
 
     const donatesubmit = async () => {
@@ -66,7 +66,7 @@ function Donate({accessToken, pointdata,setpointdata} : DonateProps){
         <div id="donate-content">
             <div id="donate-point">
                 <form id="donate-form" onSubmit={handlesubmit}>
-                    <input type="number" id="donate-input" placeholder={pointdata.toString()} value={pointdata}
+                    <input type="number" id="donate-input" placeholder={pointdata.toString()} value={donationDTO}
                     onChange={handleChange}
                     >
                     </input>
