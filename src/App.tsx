@@ -99,8 +99,8 @@ function App() {
       return newData;
     });
     setReportData(getData.data);
-    setmaxday(getData.data.maxday);
-    setpointdata(getData.data.points);
+    setmaxday(getData.data.maximumDays);
+    setpointdata(getData.data.point);
     console.log(getData);
     
   };
