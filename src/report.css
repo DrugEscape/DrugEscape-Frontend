@@ -72,7 +72,9 @@ html, body, *{
     position:absolute;
     color:#28EA53;  
     top: 8vh;
-    font-size: 1vw;
+    font-size: 3vw;
+    left:50%;
+    transform: translateX(-50%);
 }
 #report-manage2{
     position:absolute;

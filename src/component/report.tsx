@@ -12,9 +12,10 @@ interface reportProps {
     weekdata: any[];
     setweekdata: React.Dispatch<React.SetStateAction<any[]>>;
     savedWeekData: any[] | null;
+    pointdata : string;
 }
 
-function report({ reportData, savedWeekData}: reportProps) {
+function report({ reportData, savedWeekData, pointdata}: reportProps) {
     
     const dailygoal = reportData.dailyGoals;
     const messages =['Close your eyes for 30 seconds and take a deep breath in and out','Stretch and exercise for 10 minutes','Eat a healthy meal','Take your medicine'];
@@ -81,7 +82,7 @@ function report({ reportData, savedWeekData}: reportProps) {
                 <div id='report-manage1'>
                     <p className='report-p1'>Days currently</p>
                     <p className='report-p1'>accumulated</p>
-                    <p id='daliygoal'>{dailygoal}</p>
+                    <p id='daliygoal'>{pointdata}Points</p>
                 </div>
                 <div id='report-manage2'>
                     <p className='report-p1'>Maximum</p>

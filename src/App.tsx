@@ -68,6 +68,7 @@ function App() {
   const [reportData, setReportData] = useState<Record<string, number>>({});
   const [weekData, setWeekData] = useState<any[]>([]);
   const [pointdata, setpointdata] = useState('');
+  const [maxday, setmaxday] = useState('');
   const weekDataItem = localStorage.getItem('weekData');
   const reportDataItem = localStorage.getItem('reportData');
   const savedWeekData = weekDataItem ? JSON.parse(weekDataItem) : null;
@@ -98,9 +99,9 @@ function App() {
       return newData;
     });
     setReportData(getData.data);
+    setmaxday(getData.data.maxday);
     setpointdata(getData.data.points);
-    console.log(savedWeekData);
-    console.log(reportData);
+    console.log(serverdata);
     
   };
   
@@ -121,7 +122,7 @@ function App() {
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate accessToken={accessToken} />}></Route>
         <Route path='/report' element={<Report reportData={reportData} setReportData={setReportData}
-         weekdata={weekData} setweekdata={setWeekData} savedWeekData={savedWeekData}/>}></Route>
+         weekdata={weekData} setweekdata={setWeekData} savedWeekData={savedWeekData} pointdata={pointdata}/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}    />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
