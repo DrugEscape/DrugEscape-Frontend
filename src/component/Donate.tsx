@@ -20,7 +20,9 @@ function Donate({accessToken, pointdata,setpointdata} : DonateProps){
             setInputValue('');
         }else{
             setIsVisible(!isVisible);
-            setpointdata(((pointdata)-Number(donationDTO)));
+            const newPointData = pointdata - Number(donationDTO);
+            setpointdata(newPointData);
+            localStorage.setItem('pointData', JSON.stringify(newPointData));
             setInputValue('');
         }
     }
