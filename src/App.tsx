@@ -100,18 +100,19 @@ const [maxday, setmaxday] = useState<number>(0);
       return newData;
     });
     setReportData(getData.data);
-    setmaxday(maxday => {
+    setmaxday(() => {
       const newMaxDay = getData.data.maximumDays;
       localStorage.setItem('maxDay', JSON.stringify(newMaxDay));
       return newMaxDay;
     });
     
-    setpointdata(pointdata => {
+    setpointdata(() => {
       const newPointData = getData.data.point;
       localStorage.setItem('pointData', JSON.stringify(newPointData));
       return newPointData;
     });
-    setdailygoal(dailygoal =>{
+    
+    setdailygoal(() =>{
       const newdailygoal = getData.data.daliyGoals;
       localStorage.setItem('daliygoal', JSON.stringify(newdailygoal));
       return newdailygoal
