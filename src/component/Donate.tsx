@@ -9,17 +9,17 @@ interface DonateProps {
 
 function Donate({accessToken, pointdata} : DonateProps){
     const [isVisible, setIsVisible] = useState(false);
-    const [placeHolder,setplaceHolder] = useState<number>(pointdata);
+    const [DonationDTO,setplaceHolder] = useState<number>(pointdata);
     const [inputValue, setInputValue] = useState('');
 
     function handlesubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
-        if (Number(inputValue)>Number(placeHolder)){
+        if (Number(inputValue)>Number(DonationDTO)){
             alert("포인트가 부족합니다.");
             setInputValue('');
         }else{
             setIsVisible(!isVisible);
-            setplaceHolder(((placeHolder)-Number(inputValue)));
+            setplaceHolder(((DonationDTO)-Number(inputValue)));
             setInputValue('');
         }
     }
@@ -29,7 +29,7 @@ function Donate({accessToken, pointdata} : DonateProps){
     }
 
     const donatesubmit = async () => {
-        const donatepost = await axios.post('https://drugescape.duckdns.org/drugescape/donate', {
+        const donatepost = await axios.post('https://drugescape.duckdns.org/drugescape/donate',DonationDTO, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${accessToken}`
@@ -66,7 +66,7 @@ function Donate({accessToken, pointdata} : DonateProps){
         <div id="donate-content">
             <div id="donate-point">
                 <form id="donate-form" onSubmit={handlesubmit}>
-                    <input type="number" id="donate-input" placeholder={placeHolder.toString()} value={inputValue}
+                    <input type="number" id="donate-input" placeholder={DonationDTO.toString()} value={inputValue}
                     onChange={handleChange}
                     >
                     </input>
