@@ -7,17 +7,14 @@ import '../report.css'
 
 Chart.register(CategoryScale, LinearScale, PointElement, BarController, BarElement); // LineElement를 BarController와 BarElement로 변경
 interface reportProps {
-    reportData: Record<string, number>;
-    setReportData: React.Dispatch<React.SetStateAction<Record<string, number>>>;
     weekdata: any[];
-    setweekdata: React.Dispatch<React.SetStateAction<any[]>>;
     savedWeekData: any[] | null;
-    pointdata : string;
+    pointdata : number;
+    maxday:number;
+    dailygoal:number;
 }
 
-function report({ reportData, savedWeekData, pointdata}: reportProps) {
-    
-    const dailygoal = reportData.dailyGoals;
+function report({savedWeekData, pointdata, maxday, dailygoal}: reportProps) {
     const messages =['Close your eyes for 30 seconds and take a deep breath in and out','Stretch and exercise for 10 minutes','Eat a healthy meal','Take your medicine'];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     const percentage = 25;
@@ -87,6 +84,7 @@ function report({ reportData, savedWeekData, pointdata}: reportProps) {
                 <div id='report-manage2'>
                     <p className='report-p1'>Maximum</p>
                     <p className='report-p1'>accumulated days</p>
+                    <p id='daliygoal'>D+{maxday}</p>
                 </div>
                 <div id='report-manage3'>
                     <p className='report-p1'>Accumulated</p>

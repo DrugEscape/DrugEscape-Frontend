@@ -67,12 +67,11 @@ function App() {
   const [managementDTO, setSelections] = useState<Record<string,number>>({ stopDrug: 0, exercise: 0, meal: 0, medication: 0 });
   const [reportData, setReportData] = useState<Record<string, number>>({});
   const [weekData, setWeekData] = useState<any[]>([]);
-  const [pointdata, setpointdata] = useState('');
-  const [maxday, setmaxday] = useState('');
+  const [pointdata, setpointdata] = useState<number>(0);
+  const [dailygoal, setdailygoal] = useState<number>(0);
+const [maxday, setmaxday] = useState<number>(0);
   const weekDataItem = localStorage.getItem('weekData');
-  const reportDataItem = localStorage.getItem('reportData');
-  const savedWeekData = weekDataItem ? JSON.parse(weekDataItem) : null;
-  const savedReportData = reportDataItem ? JSON.parse(reportDataItem) : null;
+  const savedWeekData = weekDataItem ? JSON.parse(weekDataItem) : [];
 
   const handleSubmit = async () => {
     console.log(managementDTO);
@@ -96,11 +95,27 @@ function App() {
       if (newData.length > 7) {
         newData.shift();
       }
+      // newData를 로컬 스토리지에 저장
+      localStorage.setItem('weekData', JSON.stringify(newData));
       return newData;
     });
     setReportData(getData.data);
-    setmaxday(getData.data.maximumDays);
-    setpointdata(getData.data.point);
+    setmaxday(maxday => {
+      const newMaxDay = getData.data.maximumDays;
+      localStorage.setItem('maxDay', JSON.stringify(newMaxDay));
+      return newMaxDay;
+    });
+    
+    setpointdata(pointdata => {
+      const newPointData = getData.data.point;
+      localStorage.setItem('pointData', JSON.stringify(newPointData));
+      return newPointData;
+    });
+    setdailygoal(dailygoal =>{
+      const newdailygoal = getData.data.daliyGoals;
+      localStorage.setItem('daliygoal', JSON.stringify(newdailygoal));
+      return newdailygoal
+    })
     console.log(getData);
     
   };
@@ -121,8 +136,8 @@ function App() {
          selections={managementDTO} setSelections={setSelections}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate accessToken={accessToken} />}></Route>
-        <Route path='/report' element={<Report reportData={reportData} setReportData={setReportData}
-         weekdata={weekData} setweekdata={setWeekData} savedWeekData={savedWeekData} pointdata={pointdata}/>}></Route>
+        <Route path='/report' element={<Report dailygoal={dailygoal}
+         weekdata={weekData}  savedWeekData={savedWeekData} pointdata={pointdata} maxday={maxday}/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}    />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}

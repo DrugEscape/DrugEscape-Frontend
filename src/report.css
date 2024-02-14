@@ -71,7 +71,7 @@ html, body, *{
 #daliygoal{
     position:absolute;
     color:#28EA53;  
-    top: 8vh;
+    top: 10vh;
     font-size: 3vw;
     left:50%;
     transform: translateX(-50%);
