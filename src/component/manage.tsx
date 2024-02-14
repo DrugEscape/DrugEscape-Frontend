@@ -5,6 +5,7 @@ import meal from '../assets/spoon-and-fork.png';
 import pill from '../assets/pill.png';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 interface ManageProps {
     onChange: (name: string, value: number) => void;
     onSubmit: () => void;
@@ -12,11 +13,15 @@ interface ManageProps {
     setSelections: React.Dispatch<React.SetStateAction<Record<string, number>>>;
 }
 function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps){
+    const [lastSubmittedDate, setLastSubmittedDate] = useState<Date | null>(null);
+    const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const isSubmitDisabled = lastSubmittedDate?.getTime() === today.getTime();
     const navigate = useNavigate();
     const goReport = () => {
         navigate('/report');
     }
-  
+
     const [isCheck,setIsCheck] = useState<Record<string, boolean>>({});
     const [buttondiv1, setButtondiv1] = useState<boolean>(false);
     const [buttondiv2, setButtondiv2] = useState<boolean>(false);
@@ -30,6 +35,8 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
     const handleSelection = (event: React.MouseEvent<HTMLButtonElement>) => { 
         const areaNumber = event.currentTarget.getAttribute('data-area');
         const { value } = event.target as HTMLButtonElement;
+        
+        
         console.log(selections);
         if (areaNumber) {
             let newValue = parseInt(value);
@@ -75,6 +82,7 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
     function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
         onSubmit();
+        setLastSubmittedDate(new Date());
     }
     return(
         <>
@@ -123,7 +131,7 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
                     <button id='tm-btn4'data-area={'medication'}  onClick={handleBoth} name="medicine4" value={4}className={isCheck['tm-btn4'] ? 'checked' : ''}>none</button>
                 </div>
             </div>
-                 <button disabled={!(buttondiv1 && buttondiv2 && buttondiv3 && buttondiv4) } type='submit' id="manage-btn" className={!(buttondiv1 && buttondiv2 && buttondiv3 && buttondiv4) ? 'disabled' : 'enabled' }>Submit</button>
+                 <button disabled={!(buttondiv1 && buttondiv2 && buttondiv3 && buttondiv4) || isSubmitDisabled } type='submit' id="manage-btn" className={!(buttondiv1 && buttondiv2 && buttondiv3 && buttondiv4) ? 'disabled' : 'enabled' }>Submit</button>
             </form>
             
 

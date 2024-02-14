@@ -27,6 +27,11 @@ function App() {
 
 };
 useEffect(() => {
+  localStorage.removeItem('accessToken');
+  localStorage.removeItem('maxDay');
+  localStorage.removeItem('pointData');
+  localStorage.removeItem('daliygoal');
+  localStorage.removeItem('weekData');
   if (sessionToken) { 
     console.log('sessionToken:', sessionToken); 
     fetch(`https://drugescape.duckdns.org/drugescape/retrieveTokens?sessionToken=${sessionToken}`, { // URL에 code 쿼리 파라미터 추가
