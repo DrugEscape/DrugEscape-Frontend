@@ -19,13 +19,79 @@ import Share from './component/share'
 
 function App() { 
   const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
+  const urlParams = new URLSearchParams(window.location.search);
+  const sessionToken = urlParams.get('sessionToken');
   const handleLogin = () => {
     const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${client_id}&redirect_uri=https://drugescape.duckdns.org/drugescape/callback&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email`;
     window.location.href = url  // Google 로그인 페이지로 리다이렉트합니다.
 
 };
+useEffect(() => {
+  if (sessionToken) { 
+    console.log('sessionToken:', sessionToken); 
+    fetch(`https://drugescape.duckdns.org/drugescape/retrieveTokens?sessionToken=${sessionToken}`, { // URL에 code 쿼리 파라미터 추가
+    method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => {
+      if (response.status === 400) { // accessToken이 만료되었음
+        return fetch(`http://drugescape.duckdns.org/refresh`,{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ accessToken }),
+        })
+        .then(res => res.text()) // 새로운 accessToken을 받아옵니다.
+        .then(newToken => {
+          setIsLogin(true);
+          setAccessToken(newToken);
+          console.log('New Access Token:', newToken);     
+          return newToken;
+        });
+        
+      } else {
+        return response.text();
+      }
+    })
+    .then(data => {
+      if(data){
+        const parsedData = JSON.parse(data);
+        const { accessToken, refreshToken } = parsedData;
+        setIsLogin(true);
+        setAccessToken(accessToken);
+        setRefreshToken(refreshToken);
+        localStorage.setItem('accessToken',accessToken);
+        console.log(isLogin);
+        console.log('Access Token:', accessToken);
+
+        const storedMaxDay = localStorage.getItem('maxDay');
+        const storedPointData = localStorage.getItem('pointData');
+        const storedDailyGoal = localStorage.getItem('daliygoal');
+        const storedWeekdata = localStorage.getItem('weekData');
+
+        if (storedMaxDay) {
+          setmaxday(JSON.parse(storedMaxDay));
+        }
+
+        if (storedPointData) {
+          setpointdata(JSON.parse(storedPointData));
+        }
+
+        if (storedDailyGoal) {
+          setdailygoal(JSON.parse(storedDailyGoal));
+        }
+
+        if (storedWeekdata) {
+          setWeekData(JSON.parse(storedWeekdata));
+        }
+      }
+    });
+  }
+}, [sessionToken]);
   const [isLogin, setIsLogin] = useState(false);
-  const [Token, setToken] = useState('null');
   const [accessToken, setAccessToken] = useState('null');
   const [refreshToken, setRefreshToken] = useState('null');
   const [view, setView] = useState<{title: string; content:string; id:number}[]>([]);
@@ -113,7 +179,7 @@ const [maxday, setmaxday] = useState<number>(0);
     });
     
     setdailygoal(() =>{
-      const newdailygoal = getData.data.daliyGoals;
+      const newdailygoal = getData.data.dailyGoals;
       localStorage.setItem('daliygoal', JSON.stringify(newdailygoal));
       return newdailygoal
     })
@@ -129,7 +195,7 @@ const [maxday, setmaxday] = useState<number>(0);
     <div id="container">
       <div id="wrap">
       <Header accessToken={accessToken} setAccessToken={setAccessToken} refreshToken={refreshToken} setRefreshToken={setRefreshToken}
-                    isLogin={isLogin} setIsLogin={setIsLogin} />
+                    isLogin={isLogin} setIsLogin={setIsLogin} handleLogin={handleLogin} />
       <Routes>
         <Route path='/' element={<Home handleLogin={handleLogin} isLogin={isLogin}/>}></Route>
         <Route path='/path' element={<Home handleLogin={handleLogin} isLogin={isLogin} />}></Route> 
