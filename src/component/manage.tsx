@@ -88,17 +88,17 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
     function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
         const currentDate = new Date();
-        currentDate.setHours(0, 0, 0, 0);
+        // currentDate.setHours(0, 0, 0, 0);
         
-        // 마지막 제출 날짜가 오늘인지 확인
-        if (lastSubmittedDate?.getTime() === currentDate.getTime()) {
-            alert("하루에 한 번만 제출할 수 있습니다.");
-            return;
-        }
+        // // 마지막 제출 날짜가 오늘인지 확인
+        // if (lastSubmittedDate?.getTime() === currentDate.getTime()) {
+        //     alert("하루에 한 번만 제출할 수 있습니다.");
+        //     return;
+        // }
     
         onSubmit();
-        setLastSubmittedDate(currentDate);
-        localStorage.setItem('lastSubmittedDate', currentDate.toString());
+        // setLastSubmittedDate(currentDate);
+        // localStorage.setItem('lastSubmittedDate', currentDate.toString());
     }
     return(
         <>
