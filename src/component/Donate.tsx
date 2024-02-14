@@ -21,7 +21,7 @@ function Donate({accessToken, pointdata,setpointdata} : DonateProps){
         }else{
             setIsVisible(!isVisible);
             setpointdata(((pointdata)-Number(donationDTO)));
-            
+            setInputValue('');
         }
     }
 
