@@ -66,7 +66,7 @@ function Donate({accessToken, pointdata,setpointdata} : DonateProps){
         <div id="donate-content">
             <div id="donate-point">
                 <form id="donate-form" onSubmit={handlesubmit}>
-                    <input type="number" id="donate-input" placeholder={pointdata.toString()} value={donationDTO}
+                    <input type="number" id="donate-input" placeholder={pointdata.toString()} value={pointdata}
                     onChange={handleChange}
                     >
                     </input>
