@@ -77,17 +77,17 @@ function report({savedWeekData, pointdata, maxday, dailygoal, labeldata}: report
             </div>
             <div id="report-manage">
                 <div id='report-manage1'>
-                    <p className='report-p1'>Days currently</p>
-                    <p className='report-p1'>accumulated</p>
+                    <p className='report-p1'>My</p>
+                    <p className='report-p1'>Points</p>
                     <p id='daliygoal'>{pointdata}Points</p>
                 </div>
                 <div id='report-manage2'>
-                    <p className='report-p1'>Maximum</p>
-                    <p className='report-p1'>accumulated days</p>
+                    <p className='report-p1'>Total accumulated</p>
+                    <p className='report-p1'>days</p>
                     <p id='daliygoal'>D+{maxday}</p>
                 </div>
                 <div id='report-manage3'>
-                    <p className='report-p1'>Accumulated</p>
+                    <p className='report-p1'>Suggestions</p>
                     <p id="report-random">{randomMessage}</p>
                 </div>
                 <div id='report-manage4'>
