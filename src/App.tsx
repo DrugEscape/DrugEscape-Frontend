@@ -161,7 +161,7 @@ const [maxday, setmaxday] = useState<number>(0);
     setWeekData(prevData => {
       let newData = [...prevData, getData.data.dailyGoals];
       if (newData.length > 7) {
-        setFirstData(prevData => prevData + 7);
+        setLabelData(prevData => prevData.map(data => data + 7));
         newData = [getData.data.dailyGoals];
       }
       localStorage.setItem('weekData', JSON.stringify(newData));
