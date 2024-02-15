@@ -27,7 +27,6 @@ function App() {
 
 };
 useEffect(() => {
-  localStorage.removeItem('lastSubmittedDate');
 
   if (sessionToken) { 
     console.log('sessionToken:', sessionToken); 

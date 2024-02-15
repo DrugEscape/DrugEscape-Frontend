@@ -99,6 +99,7 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
         onSubmit();
         setLastSubmittedDate(currentDate);
         localStorage.setItem('lastSubmittedDate', currentDate.toString());
+        console.log(lastSubmittedDate);
     }
     return(
         <>
