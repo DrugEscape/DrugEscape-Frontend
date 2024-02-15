@@ -55,15 +55,15 @@ function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } :
                     <dt>
                         <Link to="/">Home</Link>
                     </dt>
-                    {isLogin ? (
+                    {/* {isLogin ? ( */}
                      <dt>
                         <Link to="/manage">Manage</Link>
                     </dt>
-                    ) : (
+                    {/* ) : (
                     <dt>
                       <a onClick={() => alert("로그인이 필요합니다.")}>Manage</a>
                     </dt>
-                  )}
+                  )} */}
                    {/* {isLogin ? ( */}
                      <dt>
                      <Link to="/share">Share</Link>
