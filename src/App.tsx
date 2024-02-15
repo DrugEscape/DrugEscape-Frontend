@@ -12,12 +12,12 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Share from './component/share'
+import { useNavigate } from 'react-router-dom';
 
 
 
 function App() { 
-  const storedAccessToken = localStorage.getItem('accessToken');
-  const storedRefreshToken = localStorage.getItem('refreshToken');
+  const navigate = useNavigate();
   const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
   const urlParams = new URLSearchParams(window.location.search);
   const sessionToken = urlParams.get('sessionToken');
@@ -27,12 +27,6 @@ function App() {
 
 };
 useEffect(() => {
-  if (storedAccessToken && storedRefreshToken) {
-    setIsLogin(true);
-    setAccessToken(storedAccessToken);
-    setRefreshToken(storedRefreshToken);
-}
-
   if (sessionToken) { 
     console.log('sessionToken:', sessionToken); 
     fetch(`https://drugescape.duckdns.org/drugescape/retrieveTokens?sessionToken=${sessionToken}`, { // URL에 code 쿼리 파라미터 추가
@@ -72,7 +66,7 @@ useEffect(() => {
         localStorage.setItem('accessToken',accessToken);
         console.log(isLogin);
         console.log('Access Token:', accessToken);
-        window.location.href ='https://drugescape.netlify.app/'
+        navigate('/');
 
         const storedMaxDay = localStorage.getItem('maxDay');
         const storedPointData = localStorage.getItem('pointData');
