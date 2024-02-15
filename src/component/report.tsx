@@ -79,7 +79,8 @@ function report({savedWeekData, pointdata, maxday, dailygoal, labeldata}: report
                 <div id='report-manage1'>
                     <p className='report-p1'>My</p>
                     <p className='report-p1'>Points</p>
-                    <p id='daliygoal'>{pointdata}Points</p>
+                    <p id='daliygoal'>{pointdata}</p>
+                    <p id='report-point'>Points</p>
                 </div>
                 <div id='report-manage2'>
                     <p className='report-p1'>Total accumulated</p>

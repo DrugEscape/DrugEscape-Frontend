@@ -67,14 +67,17 @@ html, body, *{
     left:0;
     border:1px solid #E5E5E5;
     border-radius:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #daliygoal{
-    position:absolute;
     color:#28EA53;  
-    top: 10vh;
     font-size: 3vw;
-    left:50%;
-    transform: translateX(-50%);
+}
+#report-point{
+    color:gray;
+
 }
 #report-manage2{
     position:absolute;
