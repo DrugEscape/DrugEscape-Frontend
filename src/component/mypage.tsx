@@ -35,15 +35,15 @@ function mypage() {
     <div id='mypage'>
       
       <img id='userlogo' src={picture} alt='profile'/>
-      <p id='username'>반가워요. {username}님</p>
+      <p id='username'>Welcome. {username}</p>
       <p id='useremail'>{email}</p>
 
       <div id='total-point'>
         <div id='total-named'>
-        <p id='total-name'>우리의 모금 기록들</p>
+        <p id='total-name'>All the points we donated</p>
         </div>
         <div id='point-content'>
-          <p id='total-points'>Total Points</p>
+         
           <div id='point-content2'>
             <p id='total-points2'>{totalpoint}</p>
             <p id='total-points3'>points</p>

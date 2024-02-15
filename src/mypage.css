@@ -42,7 +42,7 @@ html, body, *{
 }
 #total-named{
     position:absolute;
-    width:80%;
+    width:60%;
     transform: translateX(-50%);
     left:50%;
 
@@ -51,7 +51,7 @@ html, body, *{
 #point-content{
     position:absolute;
     top:80px;
-    width:80%;
+    width:60%;
     height:50vh;
     border:1px solid #D4D2E3;
     border-radius: 15px;

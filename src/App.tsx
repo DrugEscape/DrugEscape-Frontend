@@ -66,6 +66,7 @@ useEffect(() => {
         localStorage.setItem('accessToken',accessToken);
         console.log(isLogin);
         console.log('Access Token:', accessToken);
+        window.location.href ='https://drugescape.netlify.app/'
 
         const storedMaxDay = localStorage.getItem('maxDay');
         const storedPointData = localStorage.getItem('pointData');
