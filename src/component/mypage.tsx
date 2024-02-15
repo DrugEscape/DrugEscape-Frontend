@@ -7,6 +7,7 @@ function mypage() {
   const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [picture, setPicture] = useState('');
+    const [totalpoint, setTotalPoint] = useState(0);
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
     if (accessToken) {
@@ -21,6 +22,7 @@ function mypage() {
                 setUsername(response.data.name);
                 setEmail(response.data.email);
                 setPicture(response.data.picture);
+                setTotalPoint(response.data.totalDonatedPoints);
             })
             .catch(error => {
                 console.error('mypage failed:', error);
@@ -36,6 +38,18 @@ function mypage() {
       <p id='username'>반가워요. {username}님</p>
       <p id='useremail'>{email}</p>
 
+      <div id='total-point'>
+        <p id='total-name'>우리의 모금 기록들</p>
+        <div id='point-content'>
+          <p id='total-points'>Total Points</p>
+          <div id='point-content2'>
+            <p id='total-points2'>{totalpoint}</p>
+            <p id='total-points3'>points</p>
+          </div>
+          
+
+        </div>
+        </div>
     </div>
   );
 }
