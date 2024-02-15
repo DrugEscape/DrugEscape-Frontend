@@ -152,7 +152,28 @@ html, body, *{
     background-color: whitesmoke;
     margin-right: 5%;
 }
-#share-side>button{
+#share-side>input::placeholder{
+    padding-left:10px;
+}
+#dotimg:hover{
+    cursor: pointer;
+}
+#dot{
+    height: 5vh;
+    position: absolute;
+    left:75%;
+    margin:4px;
+    border:none;
+    background: none;
+
+}
+#dotimg{
+    height: 3vh;
+    width:30px;
+
+}
+
+#createpost{
     height: 5vh;
     width:15%;
     border-radius: 15px;
@@ -375,6 +396,16 @@ html, body, *{
     width:4vw;
     height:10.2vh;
     right:0;
+    border:none;
+    background:none;
+}
+#share-comment-button:hover{
+    cursor: pointer;
+
+}
+#goimg{
+    width:4vw;
+    height:10.2vh; 
 }
 #comment-p1{
     display:flex;
@@ -419,82 +450,4 @@ html, body, *{
 }
 .postlike-white{
     color:rgba(57, 39, 39, 0.292);
-}
-/* sharemy 시작 */
-#sharemy-user{
-    position:relative;
-    left:30%;
-    width:52vw;
-    height:20vh;
-    border:1px solid #D4D2E3;
-    border-radius: 15px;
-}
-#sharemy-show{
-    position: relative;
-    width:52vw;
-    left:30%;
-}
-#sharemy-Showtitle{
-    position: relative;
-    margin-bottom: 30px;
-    width:52vw;
-    height: 5vh;;
-}
-#share-showpost{
-    position: absolute;
-    top:4vh;
-    font-size:1.5vw;
-    left:2%;
-}
-#share-showpost:hover{
-    color:#28EA53;
-
-}
-
-#share-showcomment{
-    position: absolute;
-    top:4vh;
-    left:17%;
-    font-size:1.5vw;
-    
-}
-#share-showcomment:hover{
-    color:#28EA53;
-
-}
-#share-showlike{
-    position: absolute;
-    top:4vh;
-    left:40%;
-    font-size:1.5vw;
-}
-#share-showlike:hover{
-    color:#28EA53;
-
-}
-#sharemy-show1{
-    position: relative;
-    width:52vw;
-    height: 30vh;
-    border : 1px solid #D4D2E3;
-    border-radius: 15px;
-    left:30%;
-}
-#sharemy-myshow{
-    position: relative;
-    width:52vw;
-    height:30vh;
-    border:1px solid #D4D2E3;
-    border-radius: 15px;
-    max-width: 52vw;
-    max-height: 30vh;
-    overflow: scroll;
-}
-#sharemy-mc{
-    font-weight: 400;
-    font-size: 15px;
-    text-align: left;
-    padding:1.3%;
-    border-bottom: 1px solid #D4D2E3;
-
 }

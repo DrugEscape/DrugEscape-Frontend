@@ -191,6 +191,9 @@ html, body, *{
     width:80px;
     height:40px;
 }
+#manage-btn:hover{
+    cursor: pointer;
+}
 #manage-btn.enabled{
     background-color: #28EA53;
     color:white;

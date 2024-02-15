@@ -55,15 +55,15 @@ function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } :
                     <dt>
                         <Link to="/">Home</Link>
                     </dt>
-                    {isLogin ? (
+                    {/* {isLogin ? ( */}
                      <dt>
                         <Link to="/manage">Manage</Link>
                     </dt>
-                    ) : (
+                    {/* ) : (
                     <dt>
                       <a onClick={() => alert("로그인이 필요합니다.")}>Manage</a>
                     </dt>
-                  )}
+                  )} */}
                   {isLogin ? (
                      <dt>
                      <Link to="/donate">Donate</Link>
@@ -73,28 +73,28 @@ function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } :
                       <a onClick={() => alert("로그인이 필요합니다.")}>Donate</a>
                     </dt>
                   )} 
-                    {isLogin ? (
+                    {/* {isLogin ? ( */}
                      <dt>
                      <Link to="/share">Share</Link>
                        </dt>
-                    ) : (
+                    {/* ) : (
                     <dt>
                       <a onClick={() => alert("로그인이 필요합니다.")}>Share</a>
                     </dt>
-                  )} 
+                  )}  */}
                     
                     <dt>
                         <Link to="/map">Map</Link>
                     </dt>
-                   {isLogin ? (
+                   {/* {isLogin ? ( */}
                      <dt>
                      <Link to="/report">Report</Link>
                  </dt>
-                    ) : (
-                    <dt>
+                    {/* ) : ( */}
+                    {/* <dt>
                       <a onClick={() => alert("로그인이 필요합니다.")}>Report</a>
                     </dt>
-                  )}      
+                  )}       */}
                     {isLogin ?(
                         <button id="header-login2" onClick={handleLogout} >Logout</button>
                     ):(

@@ -70,13 +70,39 @@ html, body, *{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
+.report-p1{
+    font-weight: 700;
+    font-size: 1vw;
+    color:#5D5A88;
+    margin:10px;
+    position: absolute;
+    top:0;
+    left:0;
+    margin:10px;
+}
+.report-p2{
+    font-weight: 700;
+    font-size: 1vw;
+    color:#5D5A88;
+    margin:10px;
+    position: absolute;
+    top:20px;
+    left:0;
+    margin:10px;
+}
+
 #daliygoal{
     color:#28EA53;  
     font-size: 3vw;
 }
 #report-point{
     color:gray;
+}
+#daliygoal1{
+    color:gray;  
+    font-size: 3vw;
 
 }
 #report-manage2{
@@ -86,6 +112,9 @@ html, body, *{
     border:1px solid #E5E5E5;
     left:52%;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #report-manage3{
     position: absolute;
@@ -95,6 +124,9 @@ html, body, *{
     top:35.5vh;
     border:1px solid #E5E5E5;
     border-radius:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #report-manage4{
     position:absolute;
@@ -104,29 +136,18 @@ html, body, *{
     border-radius: 15px;
     left:52%;
     top:35.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.report-p1{
-    font-weight: 700;
-    font-size: 1vw;
-    color:#5D5A88;
-    text-align: left;
-    margin:10px;
-    line-height: 12px;
 
-}
 #report-random{
     color:#28EA53;
-    position: relative;
-    top:8vh;
     font-weight: 500;
     font-size: 1vw;
 
 }
 #report-per{
     width:9vw;
-    height:9vh;
-    position: relative;
-    left:50%;
-    transform: translateX(-50%);
-    top:2vh;
+    height:16vh;
 }

@@ -4,6 +4,8 @@ import {FaHeart} from 'react-icons/fa';
 import '../share.css';
 import post from './post';
 import { useState } from 'react';
+import dot from '../assets/dot.png';
+import go from '../assets/go.png';
 // 게시글 클릭시 오는 페이지
 interface shareContentProps {
     comment: { [key: string]: string[]; };
@@ -91,7 +93,8 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike}:
                     </div>
                     <input type='text' id='share-comment-input' value={input} onChange={handleComment} />
             
-                    <button id='share-comment-button' onClick={postclick}>Post</button>
+                    <button id='share-comment-button' onClick={postclick}>
+                    <img src={go} alt='go' id='goimg'/></button>
                    
                    
                 </div>

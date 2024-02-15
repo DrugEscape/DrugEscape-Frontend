@@ -77,15 +77,15 @@ function report({savedWeekData, pointdata, maxday, dailygoal, labeldata}: report
             </div>
             <div id="report-manage">
                 <div id='report-manage1'>
-                    <p className='report-p1'>My</p>
-                    <p className='report-p1'>Points</p>
-                    <p id='daliygoal'>{pointdata}</p>
-                    <p id='report-point'>Points</p>
+                    <p className='report-p1'>My Points</p>
+                        <p id='daliygoal'>{pointdata}</p>
+                        <p id='report-point'>Points</p>
                 </div>
                 <div id='report-manage2'>
                     <p className='report-p1'>Total accumulated</p>
-                    <p className='report-p1'>days</p>
-                    <p id='daliygoal'>D+{maxday}</p>
+                    <p className='report-p2'>days</p>
+                    <p id='daliygoal1'>D+</p>
+                    <p id='daliygoal'>{maxday}</p>
                 </div>
                 <div id='report-manage3'>
                     <p className='report-p1'>Suggestions</p>
@@ -93,7 +93,7 @@ function report({savedWeekData, pointdata, maxday, dailygoal, labeldata}: report
                 </div>
                 <div id='report-manage4'>
                     <p className='report-p1'>Achieve</p>
-                    <p className='report-p1'>your daily goals</p>
+                    <p className='report-p2'>your daily goals</p>
                         <div id='report-per'>
                             <CircularProgressbar value={dailygoal} text={`${dailygoal}%`}
                             styles={{

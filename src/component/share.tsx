@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../share.css';
+import dot from '../assets/dot.png';
 // 게시글 보여주는 페이지, 게시글 작성시 오는 페이지
 interface ShareProps{
     view: {title: string; content:string; id:number}[];
@@ -39,7 +40,10 @@ function share({view,isChecked}:ShareProps){
                
                 <div id='share-side'>
                     <input type='text' placeholder='Search for'></input>
-                    <button onClick={handleCreatePost}>+ Create a post</button>
+                    <button id="dot">
+                        <img src={dot} alt='dot' id='dotimg'/>
+                    </button>
+                    <button id='createpost'onClick={handleCreatePost}>+ Create a post</button>
                 </div>
                 
                 <div id='share-content-title'>
