@@ -164,15 +164,13 @@ const [maxday, setmaxday] = useState<number>(0);
         setFirstData(prevData => prevData + 7);
         newData = [getData.data.dailyGoals];
       }
-      return newData;
-      // newData를 로컬 스토리지에 저장
       localStorage.setItem('weekData', JSON.stringify(newData));
       return newData;
     });
     setReportData(getData.data);
     setmaxday(() => {
       const newMaxDay = getData.data.maximumDays;
-      localStorage.setItem('maxDay', JSON.stringify(newMaxDay));
+      localStorage.setItem('savedweekdata', JSON.stringify(newMaxDay));
       return newMaxDay;
     });
     
