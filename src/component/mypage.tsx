@@ -33,8 +33,8 @@ function mypage() {
     <div id='mypage'>
       
       <img src={picture} alt='profile' style={{borderRadius: '50%', width: '100px', height: '100px'}}/>
-      <h1>반가워요. {username}님</h1>
-      <p>{email}</p>
+      <p id='username'>반가워요. {username}님</p>
+      <p id='useremail'>{email}</p>
 
     </div>
   );
