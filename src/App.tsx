@@ -66,7 +66,7 @@ useEffect(() => {
         localStorage.setItem('accessToken',accessToken);
         console.log(isLogin);
         console.log('Access Token:', accessToken);
-        navigate('/');
+        navigate('/path');
 
         const storedMaxDay = localStorage.getItem('maxDay');
         const storedPointData = localStorage.getItem('pointData');
