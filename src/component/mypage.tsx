@@ -39,7 +39,9 @@ function mypage() {
       <p id='useremail'>{email}</p>
 
       <div id='total-point'>
+        <div id='total-named'>
         <p id='total-name'>우리의 모금 기록들</p>
+        </div>
         <div id='point-content'>
           <p id='total-points'>Total Points</p>
           <div id='point-content2'>
