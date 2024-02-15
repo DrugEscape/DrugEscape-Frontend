@@ -16,6 +16,7 @@ import Share from './component/share'
 
 
 function App() { 
+  
   const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
   const urlParams = new URLSearchParams(window.location.search);
   const sessionToken = urlParams.get('sessionToken');
@@ -25,7 +26,6 @@ function App() {
 
 };
 useEffect(() => {
-
   if (sessionToken) { 
     console.log('sessionToken:', sessionToken); 
     fetch(`https://drugescape.duckdns.org/drugescape/retrieveTokens?sessionToken=${sessionToken}`, { // URL에 code 쿼리 파라미터 추가
@@ -90,6 +90,7 @@ useEffect(() => {
     });
   }
 }, [sessionToken]);
+
   const [isLogin, setIsLogin] = useState(false);
   const [accessToken, setAccessToken] = useState('null');
   const [refreshToken, setRefreshToken] = useState('null');

@@ -11,3 +11,7 @@ html, body, *{
     
 
 }
+#userlogo{
+    border-radius: 50%;
+    margin-bottom: 40px;
+}
