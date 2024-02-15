@@ -12,12 +12,10 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Share from './component/share'
-import { useNavigate } from 'react-router-dom';
 
 
 
 function App() { 
-  const navigate = useNavigate();
   const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
   const urlParams = new URLSearchParams(window.location.search);
   const sessionToken = urlParams.get('sessionToken');
