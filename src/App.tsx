@@ -139,6 +139,8 @@ useEffect(() => {
 const [maxday, setmaxday] = useState<number>(0);
   const weekDataItem = localStorage.getItem('weekData');
   const savedWeekData = weekDataItem ? JSON.parse(weekDataItem) : [];
+  const [firstdata, setFirstData] = useState<number>(1);
+  const [labeldata, setLabelData] = useState<number[]>([firstdata,firstdata+1,firstdata+2,firstdata+3,firstdata+4,firstdata+5,firstdata+6]);
 
   const handleSubmit = async () => {
     console.log(managementDTO);
@@ -157,11 +159,12 @@ const [maxday, setmaxday] = useState<number>(0);
       }
     });
     setWeekData(prevData => {
-      const newData = [...prevData, getData.data.dailyGoals];
-      // 배열의 길이가 7을 초과하면 첫 번째 요소를 제거
+      let newData = [...prevData, getData.data.dailyGoals];
       if (newData.length > 7) {
-        newData.shift();
+        setFirstData(prevData => prevData + 7);
+        newData = [getData.data.dailyGoals];
       }
+      return newData;
       // newData를 로컬 스토리지에 저장
       localStorage.setItem('weekData', JSON.stringify(newData));
       return newData;
@@ -205,7 +208,7 @@ const [maxday, setmaxday] = useState<number>(0);
         <Route path='/map' element={<Map/>}></Route>
         <Route path='/donate' element={<Donate accessToken={accessToken}  pointdata={pointdata} setpointdata={setpointdata} />}></Route>
         <Route path='/report' element={<Report dailygoal={dailygoal}
-         weekdata={weekData}  savedWeekData={savedWeekData} pointdata={pointdata} maxday={maxday}/>}></Route>
+         weekdata={weekData}  savedWeekData={savedWeekData} pointdata={pointdata} maxday={maxday} labeldata={labeldata}/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}    />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}

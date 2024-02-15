@@ -12,9 +12,10 @@ function Home({handleLogin, isLogin}: HomeProps){
   }
   const navigate = useNavigate();
   const homemsg= ['Remember, progress, no matter how small, is still progress.',
-  'Stay resilient, stay hopeful, and know that you are not alone on this path.,',
+  'You are strong and brave. Past failures are just steps towards building a brighter future.',
  ' Breaking free from addiction is tough, but you are equally strong and courageous.',
-    'We can fight this together and discover a brighter future'
+    'We can fight this together and discover a brighter future',
+    'Where you are right now is where you chose to be, not where you are bound to stay forever. Keep hope alive'
 ];
   const [msg, setMsg] = useState(0);
   const handlePrevClick = () => {
