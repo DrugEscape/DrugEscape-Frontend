@@ -60,7 +60,7 @@ function Donate({accessToken, pointdata,setpointdata} : DonateProps){
         <div id="donate-title">
             <p id="donate-donate">Donate</p>
             <p id='donate-p'>Make a difference today!</p>
-            <p id='donate-p1'>Make a difference today!
+            <p id='donate-p1'> 
                 Your contribution, no matter the size, can positively impact lives.</p>
             <p id='donate-p2'>Join us in spreading kindness
                  through your generous donation.</p>

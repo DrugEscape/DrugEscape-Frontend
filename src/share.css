@@ -161,7 +161,7 @@ html, body, *{
 #dot{
     height: 5vh;
     position: absolute;
-    left:75%;
+    left:77%;
     margin:4px;
     border:none;
     background: none;
@@ -169,7 +169,7 @@ html, body, *{
 }
 #dotimg{
     height: 3vh;
-    width:30px;
+    width:15px;
 
 }
 
@@ -392,7 +392,7 @@ html, body, *{
 }
 #share-comment-button{
     position: absolute;
-    top:35vh;
+    top:35.5vh;
     width:4vw;
     height:10.2vh;
     right:0;
@@ -405,7 +405,7 @@ html, body, *{
 }
 #goimg{
     width:4vw;
-    height:10.2vh; 
+    height:9vh; 
 }
 #comment-p1{
     display:flex;
