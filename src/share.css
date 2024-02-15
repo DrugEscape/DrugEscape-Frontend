@@ -111,9 +111,13 @@ html, body, *{
 #element_id{
     width:40%;
     padding-left: 2%;
+    display: flex;
+    align-items: center;
 }
 #element_user, #element_Date, #element_Likes, #element_Comments{
     width:15%;
+    display: flex;
+    align-items: center;
 
 }
 

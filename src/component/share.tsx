@@ -52,15 +52,15 @@ function share({view,isChecked}:ShareProps){
                 <div id='share-content-show'>
                     {view.slice(page * postpage, (page + 1) * postpage).map((element, index) =>
                         isChecked[element.id] ? null : (
-                        <div id='share-show1' key={index}>
-                            <p id='element_id'onClick={()=>{
-                                navigate('/shareContent', {state: {id: element.id,title: element.title, content: element.content}})
-                                console.log(element.id);
-                            }}>{element.title}</p>
+                        <div id='share-show1'onClick={()=>{
+                            navigate('/shareContent', {state: {id: element.id,title: element.title, content: element.content}})
+                            console.log(element.id);
+                            }} key={index}>
+                            <p id='element_id'>{element.title}</p>
                             <p id='element_user'>user</p>
                             <p id='element_Likes'>Likes</p>
                             <p id='element_Comments'>Comments</p>
-                            <p id='element_Date'>Date</p>
+                            <p id='element_Date'>{new Date(element.id).toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'})} {new Date(element.id).toLocaleTimeString('ko-KR', {hour: '2-digit', minute:'2-digit', second:'2-digit', hour12: false})}</p>
                         </div>
                         )
                     

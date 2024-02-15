@@ -7,9 +7,7 @@ import Donate from './component/Donate'
 import Report from './component/report'
 import Post from './component/post'
 import ShareContent from './component/shareContent'
-import Sharemy from './component/sharemy'
-import SharemyComment from './component/sharemyComment'
-import SharemyLike from './component/sharemyLike'
+import Mypage from './component/mypage'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -210,10 +208,7 @@ const [maxday, setmaxday] = useState<number>(0);
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}    />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
          likes={likes} setLikes={setLikes} handleLike={handleLike} />}></Route>
-        <Route path='/sharemy' element={<Sharemy view={view} setView={setView}/>}></Route>
-        <Route path='/sharemyComment' element={<SharemyComment view={view} setView={setView} comment={comment} />}></Route>
-        <Route path='/sharemyLike' element={<SharemyLike view={view} setView={setView}
-         likes={likes} setLikes={setLikes} handleLike={handleLike} />}></Route>
+         <Route path='/mypage' element={<Mypage/>}></Route>
       </Routes>
       </div>
     </div>

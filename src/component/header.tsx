@@ -104,7 +104,7 @@ function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } :
                     )}
                     
                     <button id="header-mypage" >
-                        <Link to="/report">My Page</Link>
+                        <Link to="/mypage">My Page</Link>
                     </button>
                   </ul>
                 </div>
