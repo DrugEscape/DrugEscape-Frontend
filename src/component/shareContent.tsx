@@ -112,10 +112,27 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                 ...likes,
                 [postId]: !likes[postId]
             });
-            fetchPosts();
+            // 좋아요를 누르거나 취소한 후에 해당 게시물의 정보를 다시 가져옵니다.
+            return fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            });
+        })
+        .then((res) => res.json())
+        .then((res) => {
+            // 서버에서 가져온 게시물의 정보를 사용하여 post 상태를 업데이트합니다.
+            setPost(res);
         })
         .catch((error) => console.error('Error:', error));
     }
+    
+    // ...
+    
+    // 좋아요 수를 표시할 때 post.heartCnt를 사용합니다.
+    <p id='heartCnt'>Likes {post?.heartCnt}</p>
     const [Commentarray, setCommentarray] = useState([]);
     const [servercomment, setServercomment] = useState(null);
     useEffect(() => {
@@ -195,7 +212,7 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                             <p id="posttitle">{title}</p>
                             <p id="postdate">{location.state.createdAt}</p>
                             <p id='membername'>{location.state.memberName}</p>
-                            <p id='heartCnt'>Likes {location.state.heartCnt}</p>
+                            <p id='heartCnt'>Likes {post?.heartCnt}</p>
                             <img src={deleteimg} alt='delete' id='deleteimg' onClick={() => setShowDeleteButton(!showDeleteButton)} />
                             {showDeleteButton && <input type='button' id='delete' value='Delete' onClick={deletePost} />}
                             <label htmlFor='postlike' id='postlike-label' className={likes[postId] ? 'postlike-red' :'postlike-white'}>
