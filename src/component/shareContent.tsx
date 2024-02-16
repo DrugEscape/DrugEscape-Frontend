@@ -107,8 +107,8 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike, 
                         <div id='content-title'>
                             <p id="posttitle">{title}</p>
                             <p id="postdate">{location.state.createdAt}</p>
-                            <p>{location.state.memberName}</p>
-                           
+                            <p id='membername'>{location.state.memberName}</p>
+                            <p id='heartCnt'>Likes {location.state.heartCnt}</p>
                             <label htmlFor='postlike' id='postlike-label' className={likes[postId] ? 'postlike-red' :'postlike-white'}>
                                 <FaHeart id='Faheart' />
                                 <input type='checkbox' id='postlike' onClick={()=> handleLike(postId)}></input>
