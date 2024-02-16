@@ -64,7 +64,6 @@ useEffect(() => {
         localStorage.setItem('accessToken',accessToken);
         console.log(isLogin);
         console.log('Access Token:', accessToken);
-
         const storedMaxDay = localStorage.getItem('maxDay');
         const storedPointData = localStorage.getItem('pointData');
         const storedDailyGoal = localStorage.getItem('daliygoal');
@@ -206,7 +205,7 @@ const [maxday, setmaxday] = useState<number>(0);
         <Route path='/report' element={<Report dailygoal={dailygoal}
          weekdata={weekData}  savedWeekData={savedWeekData} pointdata={pointdata} maxday={maxday} labeldata={labeldata}/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
-        <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}    />}></Route>
+        <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}   accessToken={accessToken}  />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
          likes={likes} setLikes={setLikes} handleLike={handleLike} />}></Route>
          <Route path='/mypage' element={<Mypage/>}></Route>

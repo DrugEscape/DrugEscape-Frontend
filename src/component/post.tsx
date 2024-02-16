@@ -5,35 +5,33 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
-// 게시글 작성하는 페이지
+
 interface PostProps{
-    view: {title: string; content:string;}[];
+    view: {title: string; content:string; id: number}[];
     setView: (value: any) => void;
     isChecked: { [key: number]: boolean };
     handleCheckboxChange: (postId:number) => void;
-
+    accessToken: string;
 } 
-function post({view, setView,isChecked,handleCheckboxChange}:PostProps){
+
+function post({view, setView,isChecked,handleCheckboxChange,accessToken}:PostProps){
     const navigate = useNavigate();
-    const gosharemy = () => {
-        navigate('/sharemy');
-    }
     const [postcontent, setPostcontent] = useState({
         title : '',
         content : '',
-        id:0
     });
-    const postId = postcontent.id;
+
+    const [id, setId] = useState(0);
+
     const getValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setPostcontent({
             ...postcontent,
             [name]: value,
-            id: Date.now(),
         });
-
-       
+        setId(Date.now());
     };
+
     return(
         <>
         <form>
@@ -43,7 +41,6 @@ function post({view, setView,isChecked,handleCheckboxChange}:PostProps){
                 <p id="share-servefont">Connecting with people</p>
             </div>
             <div id='share-content'>
-               
                 <div id='post-content'>
                     <div id='post-post1'>
                         <p>Community</p>
@@ -52,8 +49,8 @@ function post({view, setView,isChecked,handleCheckboxChange}:PostProps){
                         <p>Title:</p>
                         <input type='text' id='post-input-title' onChange={getValue} name='title'></input>
                         <label htmlFor="diary" id='diary' className='lock'>
-                            <FontAwesomeIcon icon={isChecked[postId] ? faLock : faLockOpen} />
-                            <input type="checkbox" onChange={()=> handleCheckboxChange(postId)} className='hidden-checkbox'/>
+                            <FontAwesomeIcon icon={isChecked[id] ? faLock : faLockOpen} />
+                            <input type="checkbox" onChange={()=> handleCheckboxChange(id)} className='hidden-checkbox'/>
                         </label>
                     </div>
                     <div id='post-post3'>
@@ -67,20 +64,29 @@ function post({view, setView,isChecked,handleCheckboxChange}:PostProps){
                     const data = editor.getData();
                     const parser = new DOMParser();
                     const parsed = parser.parseFromString(data, 'text/html');
-                    const text = parsed.body.textContent || "";  // 데이터 파싱한부분 
+                    const text = parsed.body.textContent || "";  
                     console.log({ event, editor, data });
                     setPostcontent({
                         ...postcontent,
                         content : text,
-                        id: Date.now(),
                     });
+                    setId(Date.now());
                     console.log(postcontent);
                  }}
                     />
                     </div>
                     <button id='post-submit' type='submit' onClick={(e)=>{
                         e.preventDefault();
-                        setView(view.concat({...postcontent}));
+                        fetch('https://drugescape.duckdns.org/drugescape/share/post', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${accessToken}`, 
+                            },
+                            body: JSON.stringify(postcontent),
+                        })
+
+                        setView(view.concat({...postcontent, id}));
                         navigate('/share');
                     }}>save </button>
                     <button id='post-cancel' onClick={()=> {
