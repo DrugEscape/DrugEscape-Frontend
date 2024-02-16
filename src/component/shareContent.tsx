@@ -235,17 +235,16 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                         </div>
                         {Commentarray.map((comment: { id: number, content: string; }, index) => (
                         <div id='share-comment2' key={index}>
-                            <div id='comment-p1'>
-                            <p>{comment.content}</p>
-                            <img src={deleteimg} alt='delete' id={`deleteimg${index}`} className='deleteimg2' onClick={() => {
-                                let newShowDeleteButton = [...showDeleteButton2];
-                                newShowDeleteButton[index] = !newShowDeleteButton[index];
-                                setShowDeleteButton2(newShowDeleteButton);
-                                deleteComment(comment.id); // 댓글의 id를 사용하여 deleteComment 함수를 호출
-                            }} />
-                            {showDeleteButton2[index] && <input type='button' id={`delete${index}`} className='delete2' value='Delete' />}
-                            </div>
+                        <div id='comment-p1'>
+                          <p>{comment.content}</p>
+                          <img src={deleteimg} alt='delete' id={`deleteimg${index}`} className='deleteimg2' onClick={() => {
+                            let newShowDeleteButton = [...showDeleteButton2];
+                            newShowDeleteButton[index] = !newShowDeleteButton[index];
+                            setShowDeleteButton2(newShowDeleteButton);
+                          }} />
+                          {showDeleteButton2[index] && <input type='button' id={`delete${index}`} className='delete2' value='Delete' onClick={() => deleteComment(comment.id)} />}
                         </div>
+                      </div>
                     ))}
                     </div>
                     <input type='text' id='share-comment-input' value={input} onChange={handleComment} />
