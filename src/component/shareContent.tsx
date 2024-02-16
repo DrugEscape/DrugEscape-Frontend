@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import {FaHeart} from 'react-icons/fa';
 import '../share.css';
 import post from './post';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import dot from '../assets/dot.png';
 import go from '../assets/go.png';
 // 게시글 클릭시 오는 페이지
@@ -20,6 +20,19 @@ interface shareContentProps {
 
 }
 function shareContent({comment, input, setComment, setInput, likes, handleLike, accessToken}: shareContentProps){
+    useEffect(() => {
+        fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res);
+            });
+    });
     
     const gosharemy = () => {
         navigate('/sharemy');
