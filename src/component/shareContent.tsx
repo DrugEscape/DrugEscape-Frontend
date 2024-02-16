@@ -36,7 +36,7 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike, 
                 setCommentarray(res.comments);
                 console.log(res);
             });
-    },[Commentarray]);
+    },[comment]);
     
     const gosharemy = () => {
         navigate('/sharemy');
