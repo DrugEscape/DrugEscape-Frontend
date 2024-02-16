@@ -25,6 +25,8 @@ interface Post{
 
 }
 function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState<Post[]>([]);
     
     const fetchPosts = () => {
         fetch('https://drugescape.duckdns.org/drugescape/share', {
@@ -57,12 +59,12 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
     const handleCreatePost = () => {
         navigate('/create-post');
     }
-    const gosharemy = () => {
-        navigate('/sharemy');
-    }
-    const gosharecomment = () =>{
-        navigate('/sharemyComment');
-    }
+    const handleSearch = () => {
+        // 여기에서 searchTerm을 사용하여 검색을 수행합니다.
+        // 예를 들어, 제목을 검색하는 경우:
+        const results = posts.filter((post) => post.title.includes(searchTerm));
+        setSearchResults(results);
+      };
     return(
         <>
         <div id="share">
@@ -73,10 +75,10 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
             <div id='share-content'>
                
                 <div id='share-side'>
-                    <input type='text' placeholder='Search for'></input>
-                    <button id="dot">
-                        <img src={dot} alt='dot' id='dotimg'/>
-                    </button>
+                 <input type="text" placeholder='Search for' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                 <button id="dot" onClick={handleSearch}>
+                    <img src={dot} alt='dot' id='dotimg'/>
+                </button>
                     <button id='createpost'onClick={handleCreatePost}>+ Create a post</button>
                 </div>
                 
