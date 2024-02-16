@@ -68,7 +68,13 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
             'Authorization': `Bearer ${accessToken}`,
           },
         })
-        .then((res) => res.json())
+        .then((res) => {
+          if (res.headers.get('Content-Type')?.includes('application/json')) {
+            return res.json();
+          } else {
+            return res.text();
+          }
+        })
         .then((res) => {
           console.log(res);
           // 댓글 삭제 후 게시물을 다시 불러옵니다.
