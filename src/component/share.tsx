@@ -38,7 +38,7 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
                 console.log(res);
                 setPosts(res.content);
             });
-        },[]);
+        });
     console.log(isChecked);
     const [page, setPage] = useState(0);
     const postpage =8;
