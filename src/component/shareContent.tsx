@@ -33,6 +33,7 @@ interface Post{
 
 }
 function shareContent({comment, input, setComment, setInput, likes, accessToken,setLikes,setPosts}: shareContentProps){
+    const [showDeleteButton, setShowDeleteButton] = useState(false);
     const [post, setPost] = useState<Post | null>(null);
     const deletePost = () => {
         fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
@@ -48,6 +49,7 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
             }
             // 게시물 삭제 후 게시물 목록을 다시 불러옵니다.
             fetchPosts();
+            navigate('/share');
         })
         .catch((error) => console.error('Error:', error));
     }
@@ -66,7 +68,7 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
         });
     }
     const handleLike = (postId:number) => {
-        const method = likes[postId] ? 'POST' : 'DELETE';
+        const method = likes[postId] ? 'DELETE' : 'POST';
         fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}/hearts`, {
             method: method,
             headers: {
@@ -102,6 +104,7 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                 setCommentarray(res.comments);
                 console.log(res);
             });
+
     },[]);
     
         
@@ -165,9 +168,8 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                             <p id="postdate">{location.state.createdAt}</p>
                             <p id='membername'>{location.state.memberName}</p>
                             <p id='heartCnt'>Likes {location.state.heartCnt}</p>
-                            <input type='button' id='delete' value='Delete' onClick={deletePost}>
-
-                            </input>
+                            <img src={deleteimg} alt='delete' id='deleteimg' onClick={() => setShowDeleteButton(!showDeleteButton)} />
+                            {showDeleteButton && <input type='button' id='delete' value='Delete' onClick={deletePost} />}
                             <label htmlFor='postlike' id='postlike-label' className={likes[postId] ? 'postlike-red' :'postlike-white'}>
                                 <FaHeart id='Faheart' />
                                 <input type='checkbox' id='postlike' onClick={()=> handleLike(postId)}></input>
