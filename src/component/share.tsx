@@ -8,6 +8,8 @@ interface ShareProps{
     setView: (value: any) => void;
     isChecked: { [key: number]: boolean };
     accessToken: string;
+    setPosts: (value: any) => void;
+    posts: Post[];
 
 }
 interface Post{
@@ -18,10 +20,11 @@ interface Post{
     heartCnt: number;
     commentCnt: number;
     createdAt: string;
+    
 
 }
-function share({view,isChecked,accessToken}:ShareProps){
-    const [posts, setPosts] = useState<Post[]>([]);
+function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
+   
     useEffect(() => {
         fetch('https://drugescape.duckdns.org/drugescape/share', {
             method: 'GET',

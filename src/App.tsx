@@ -14,7 +14,17 @@ import axios from 'axios'
 import Share from './component/share'
 
 
+interface Post{
+  title: string;
+  content: string;
+  id: number;
+  memberName: string;
+  heartCnt: number;
+  commentCnt: number;
+  createdAt: string;
+  
 
+}
 function App() { 
   const [boardid, setBoardid] = useState(0);
   const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
@@ -107,13 +117,7 @@ useEffect(() => {
     medicine4:0,
   });
   const [likes, setLikes] = useState<{ [key: number]: boolean }>({});
-  const handleLike = (postId: number) => {
-    setLikes(prevState => ({
-        ...prevState,
-        [postId]: !prevState[postId]
-    }));
-}
-
+  
   const [comment, setComment] = useState<{[key:string]: string[]}>({});
   const [input, setInput] = useState('');
   
@@ -138,7 +142,7 @@ const [maxday, setmaxday] = useState<number>(0);
   const savedWeekData = weekDataItem ? JSON.parse(weekDataItem) : [];
   const [firstdata, setFirstData] = useState<number>(1);
   const [labeldata, setLabelData] = useState<number[]>([firstdata,firstdata+1,firstdata+2,firstdata+3,firstdata+4,firstdata+5,firstdata+6]);
-
+  const [posts, setPosts] = useState<Post[]>([]);
   const handleSubmit = async () => {
     console.log(managementDTO);
     console.log(accessToken);
@@ -203,11 +207,11 @@ const [maxday, setmaxday] = useState<number>(0);
         <Route path='/donate' element={<Donate accessToken={accessToken}  pointdata={pointdata} setpointdata={setpointdata} />}></Route>
         <Route path='/report' element={<Report dailygoal={dailygoal}
          weekdata={weekData}  savedWeekData={savedWeekData} pointdata={pointdata} maxday={maxday} labeldata={labeldata}/>}></Route>
-        <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked} accessToken={accessToken}/>}></Route>
+        <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked} accessToken={accessToken} setPosts={setPosts} posts={posts}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} 
         handleCheckboxChange={handleCheckboxChange}   accessToken={accessToken} boardId={boardid} setboardId={setBoardid} />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
-         likes={likes} setLikes={setLikes} handleLike={handleLike} accessToken={accessToken} boardId={boardid}  />}></Route>
+         likes={likes} setLikes={setLikes} accessToken={accessToken} boardId={boardid} posts={posts} setPosts={setPosts} />}></Route>
          <Route path='/mypage' element={<Mypage/>}></Route>
       </Routes>
       </div>

@@ -14,13 +14,58 @@ interface shareContentProps {
     setInput: (input: string) => void;
     likes: { [key: number]: boolean };
     setLikes: (likes: { [key: number]: boolean }) => void;
-    handleLike: (postId: number) => void;
     accessToken: string;
     boardId: number;
+    posts: Post[];
+    setPosts: (value: any) => void;
 
 }
+interface Post{
+    title: string;
+    content: string;
+    id: number;
+    memberName: string;
+    heartCnt: number;
+    commentCnt: number;
+    createdAt: string;
+    
 
-function shareContent({comment, input, setComment, setInput, likes, handleLike, accessToken}: shareContentProps){
+}
+function shareContent({comment, input, setComment, setInput, likes, accessToken,setLikes,setPosts}: shareContentProps){
+    const fetchPosts = () => {
+        fetch('https://drugescape.duckdns.org/drugescape/share', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        })
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(res);
+            setPosts(res.content);
+        });
+    }
+    const handleLike = (postId:number) => {
+        const method = likes[postId] ? 'DELETE' : 'POST';
+        fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}/like`, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        })
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(res);
+            setLikes({
+                ...likes,
+                [postId]: !likes[postId]
+            });
+            fetchPosts();
+        });
+    }
+    
     const [Commentarray, setCommentarray] = useState([]);
     const [servercomment, setServercomment] = useState(null);
     useEffect(() => {
@@ -37,16 +82,6 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike, 
                 console.log(res);
             });
     },[]);
-    
-    const gosharemy = () => {
-        navigate('/sharemy');
-    }
-    const gosharecomment = () =>{
-        navigate('/sharemyComment');
-    }
-    const gosharelike = () =>{
-        navigate('/sharemyLike');
-    }
     
         
     
