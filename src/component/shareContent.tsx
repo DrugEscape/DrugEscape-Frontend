@@ -45,6 +45,9 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
         })
         .then((res) => {
             if (!res.ok) {
+                if (res.status === 403) {
+                    alert('다른 사용자의 게시글은 삭제할 수 없습니다.');
+                }
                 throw new Error(res.statusText);
             }
             // 게시물 삭제 후 게시물 목록을 다시 불러옵니다.
