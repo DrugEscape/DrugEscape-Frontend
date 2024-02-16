@@ -203,7 +203,7 @@ const [maxday, setmaxday] = useState<number>(0);
         <Route path='/donate' element={<Donate accessToken={accessToken}  pointdata={pointdata} setpointdata={setpointdata} />}></Route>
         <Route path='/report' element={<Report dailygoal={dailygoal}
          weekdata={weekData}  savedWeekData={savedWeekData} pointdata={pointdata} maxday={maxday} labeldata={labeldata}/>}></Route>
-        <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
+        <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked} accessToken={accessToken}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} 
         handleCheckboxChange={handleCheckboxChange}   accessToken={accessToken} boardId={boardid} setboardId={setBoardid} />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}

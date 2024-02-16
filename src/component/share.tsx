@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../share.css';
 import dot from '../assets/dot.png';
 // 게시글 보여주는 페이지, 게시글 작성시 오는 페이지
@@ -7,9 +7,23 @@ interface ShareProps{
     view: {title: string; content:string; id:number}[];
     setView: (value: any) => void;
     isChecked: { [key: number]: boolean };
+    accessToken: string;
 
 }
-function share({view,isChecked}:ShareProps){
+function share({view,isChecked,accessToken}:ShareProps){
+    useEffect(() => {
+        fetch('https://drugescape.duckdns.org/drugescape/share', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res);
+            });
+        }, []);
     console.log(isChecked);
     const [page, setPage] = useState(0);
     const postpage =8;
