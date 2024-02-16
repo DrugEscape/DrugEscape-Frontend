@@ -354,13 +354,8 @@ html, body, *{
     width: 20px;
     height: 20px;
     position: absolute;
-    right: 10%;
+    right: 0;
     top: 10px;
-}
-#delete2{
-    width:50px;
-    position: absolute;
-    right:0;
 }
 #membername{
     position: absolute;

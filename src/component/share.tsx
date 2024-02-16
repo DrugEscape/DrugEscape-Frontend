@@ -20,6 +20,7 @@ interface Post{
     heartCnt: number;
     commentCnt: number;
     createdAt: string;
+    comments: any[];
     
 
 }
@@ -90,7 +91,8 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
                 {posts.slice(page * postpage, (page + 1) * postpage).map((element, index) =>
                 isChecked[element.id] ? null : (
                     <div id='share-show1' onClick={() => {
-                        navigate('/shareContent', {state: {id: element.id, title: element.title, content: element.content, memberName: element.memberName, heartCnt: element.heartCnt, createdAt: element.createdAt}})
+                        navigate('/shareContent', {state: {id: element.id, title: element.title, content: element.content, memberName: element.memberName,
+                             heartCnt: element.heartCnt, createdAt: element.createdAt, commentsID: element.comments}})
                     console.log(element.id);
                     }} key={index}>
                     <p id='element_id'>{element.title}</p>

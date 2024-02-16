@@ -30,12 +30,14 @@ interface Post{
     heartCnt: number;
     commentCnt: number;
     createdAt: string;
+    comments: any[];
     
 
 }
 function shareContent({comment, input, setComment, setInput, likes, accessToken,setLikes,setPosts}: shareContentProps){
     const [showDeleteButton, setShowDeleteButton] = useState(false);
     const [showDeleteButton2, setShowDeleteButton2] = useState<boolean[]>([]);
+    const [commentId, setCommentId] = useState<number>(0);
     const [post, setPost] = useState<Post | null>(null);
     const deletePost = () => {
         fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
@@ -58,6 +60,21 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
         })
         .catch((error) => console.error('Error:', error));
     }
+    const deleteComment = (commentId: number) => {
+        fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}/comments/${commentId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+          },
+        })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          // 댓글 삭제 후 게시물을 다시 불러옵니다.
+          fetchPosts();
+        });
+      }
     const fetchPosts = () => {
         fetch('https://drugescape.duckdns.org/drugescape/share', {
             method: 'GET',
@@ -192,7 +209,7 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                         <div id='comment-p'>
                             <p>Comment</p>
                         </div>
-                        {Commentarray.map((comment: { content: string; }, index) => (
+                        {Commentarray.map((comment: { id: number, content: string; }, index) => (
                         <div id='share-comment2' key={index}>
                             <div id='comment-p1'>
                             <p>{comment.content}</p>
@@ -200,11 +217,12 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                                 let newShowDeleteButton = [...showDeleteButton2];
                                 newShowDeleteButton[index] = !newShowDeleteButton[index];
                                 setShowDeleteButton2(newShowDeleteButton);
+                                deleteComment(comment.id); // 댓글의 id를 사용하여 deleteComment 함수를 호출
                             }} />
                             {showDeleteButton2[index] && <input type='button' id={`delete${index}`} className='delete2' value='Delete' />}
                             </div>
                         </div>
-                        ))}
+                    ))}
                     </div>
                     <input type='text' id='share-comment-input' value={input} onChange={handleComment} />
                     <button id='share-comment-button' onClick={postclick}>

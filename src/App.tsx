@@ -22,6 +22,7 @@ interface Post{
   heartCnt: number;
   commentCnt: number;
   createdAt: string;
+  comments: any[];
   
 
 }
