@@ -47,7 +47,7 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
         });
     }
     const handleLike = (postId:number) => {
-        const method = likes[postId] ? 'DELETE' : 'POST';
+        const method = likes[postId] ? 'POST' : 'DELETE';
         fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}/hearts`, {
             method: method,
             headers: {
@@ -55,15 +55,17 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                 'Authorization': `Bearer ${accessToken}`,
             },
         })
-        .then((res) => res.json())
         .then((res) => {
-            console.log(res);
+            if (!res.ok) {
+                throw new Error(res.statusText);
+            }
             setLikes({
                 ...likes,
                 [postId]: !likes[postId]
             });
             fetchPosts();
-        });
+        })
+        .catch((error) => console.error('Error:', error));
     }
     
     const [Commentarray, setCommentarray] = useState([]);
