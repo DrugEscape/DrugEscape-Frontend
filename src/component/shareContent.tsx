@@ -36,7 +36,7 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike, 
                 setCommentarray(res.comments);
                 console.log(res);
             });
-    },[comment]);
+    },[]);
     
     const gosharemy = () => {
         navigate('/sharemy');
@@ -61,13 +61,28 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike, 
         });
         setInput('');
         fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}/comments`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`, 
-        },
-        body: JSON.stringify({ content: input })
-    })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`, 
+            },
+            body: JSON.stringify({ content: input })
+        })
+        .then(() => {
+            // POST 요청이 성공적으로 완료된 후에 GET 요청을 보내 Commentarray를 업데이트
+            fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                setCommentarray(res.comments);
+                console.log(res);
+            });
+        });
         console.log(location.state.title);
     }
     
