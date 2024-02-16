@@ -24,7 +24,7 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike, 
     const [Commentarray, setCommentarray] = useState([]);
     const [servercomment, setServercomment] = useState(null);
     useEffect(() => {
-        const serverdata=fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
+        fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike, 
                 setCommentarray(res.comments);
                 console.log(res);
             });
-    },[servercomment]);
+    },[Commentarray]);
     
     const gosharemy = () => {
         navigate('/sharemy');
