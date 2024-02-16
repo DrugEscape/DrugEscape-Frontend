@@ -194,12 +194,14 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                         <div id='share-comment2' key={index}>
                             <div id='comment-p1'>
                                  <p>{comment.content}</p>
+                                 
                              </div>
                          </div>
                         ))}
                     </div>
                     <input type='text' id='share-comment-input' value={input} onChange={handleComment} />
-            
+                    <img src={deleteimg} alt='delete' id='deleteimg2' onClick={() => setShowDeleteButton(!showDeleteButton)} />
+                    {showDeleteButton && <input type='button' id='delete2' value='Delete' onClick={deletePost} />}
                     <button id='share-comment-button' onClick={postclick}>
                     <img src={go} alt='go' id='goimg'/></button>
                    
