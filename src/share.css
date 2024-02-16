@@ -350,7 +350,7 @@ html, body, *{
     right: -5%;
     top: 36px;
 }
-#deleteimg2{
+.deleteimg2{
     width: 20px;
     height: 20px;
 }

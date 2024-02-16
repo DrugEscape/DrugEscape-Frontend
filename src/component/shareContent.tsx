@@ -196,7 +196,7 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                         <div id='share-comment2' key={index}>
                             <div id='comment-p1'>
                             <p>{comment.content}</p>
-                            <img src={deleteimg} alt='delete' id={`deleteimg${index}`}className='deleteimg2' onClick={() => {
+                            <img src={deleteimg} alt='delete' id={`deleteimg${index}`} className='deleteimg2' onClick={() => {
                                 let newShowDeleteButton = [...showDeleteButton2];
                                 newShowDeleteButton[index] = !newShowDeleteButton[index];
                                 setShowDeleteButton2(newShowDeleteButton);
