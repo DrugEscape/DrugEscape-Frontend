@@ -59,7 +59,7 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
     const handleCreatePost = () => {
         navigate('/create-post');
     }
-    const handleSearch = () => {
+    const handleSearch = (term: string) => {
         // 여기에서 searchTerm을 사용하여 검색을 수행합니다.
         // 예를 들어, 제목을 검색하는 경우:
         const results = posts.filter((post) => post.title.includes(searchTerm));
@@ -75,11 +75,15 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
             <div id='share-content'>
                
                 <div id='share-side'>
-                 <input type="text" placeholder='Search for' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-                 <button id="dot" onClick={handleSearch}>
+                
+<input type="text" placeholder='Search for' value={searchTerm} onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    handleSearch(e.target.value);
+                    }} />
+                 <button id="dot">
                     <img src={dot} alt='dot' id='dotimg'/>
                 </button>
-                    <button id='createpost'onClick={handleCreatePost}>+ Create a post</button>
+                <button id='createpost'onClick={handleCreatePost}>+ Create a post</button>
                 </div>
                 
                 <div id='share-content-title'>
@@ -89,24 +93,23 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
                         <p id='t4'>Comments</p>
                         <p id='t5'>Date</p>
                     </div>
-                <div id='share-content-show'>
-                {posts.slice(page * postpage, (page + 1) * postpage).map((element, index) =>
-                isChecked[element.id] ? null : (
-                    <div id='share-show1' onClick={() => {
-                        navigate('/shareContent', {state: {id: element.id, title: element.title, content: element.content, memberName: element.memberName,
-                             heartCnt: element.heartCnt, createdAt: element.createdAt, commentsID: element.comments}})
-                    console.log(element.id);
-                    }} key={index}>
-                    <p id='element_id'>{element.title}</p>
-                    <p id='element_user'>{element.memberName}</p>
-                    <p id='element_Likes'>{element.heartCnt}</p>
-                    <p id='element_Comments'>{element.commentCnt}</p>
-                    <p id='element_Date'>{element.createdAt}</p>
-                    </div>
-                        )
-                    
+                    <div id='share-content-show'>
+                        {(searchTerm ? searchResults : posts).slice(page * postpage, (page + 1) * postpage).map((element, index) =>
+                            isChecked[element.id] ? null : (
+                            <div id='share-show1' onClick={() => {
+                                navigate('/shareContent', {state: {id: element.id, title: element.title, content: element.content, memberName: element.memberName,
+                                heartCnt: element.heartCnt, createdAt: element.createdAt, commentsID: element.comments}})
+                                console.log(element.id);
+                            }} key={index}>
+                                <p id='element_id'>{element.title}</p>
+                                <p id='element_user'>{element.memberName}</p>
+                                <p id='element_Likes'>{element.heartCnt}</p>
+                                <p id='element_Comments'>{element.commentCnt}</p>
+                                <p id='element_Date'>{element.createdAt}</p>
+                            </div>
+                            )
                         )}
-                </div>
+                        </div>
                 <div id='share-page-btn'>
                 {Array.from({ length: totalPages }, (_, index) => (
                  <button onClick={() => handlePageClick(index)}>{index + 1}</button>
