@@ -19,7 +19,7 @@ interface shareContentProps {
     boardId: number;
 
 }
-function shareContent({comment, input, setComment, setInput, likes, handleLike, accessToken, boardId}: shareContentProps){
+function shareContent({comment, input, setComment, setInput, likes, handleLike, accessToken}: shareContentProps){
     
     const gosharemy = () => {
         navigate('/sharemy');
