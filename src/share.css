@@ -345,10 +345,20 @@ html, body, *{
     right: 3%;
     top: 37px;
 }
-#delete{
+#deleteimg2{
+    width: 20px;
+    height: 20px;
     position: absolute;
+
+}
+#delete{
+    position:absolute;
     right: -5%;
     top: 36px;
+}
+#delete2{
+    position:absolute;
+
 }
 #membername{
     position: absolute;
