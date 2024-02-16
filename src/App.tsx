@@ -27,6 +27,7 @@ interface Post{
 
 }
 function App() { 
+
   const [boardid, setBoardid] = useState(0);
   const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
   const urlParams = new URLSearchParams(window.location.search);
@@ -212,7 +213,7 @@ const [maxday, setmaxday] = useState<number>(0);
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} 
         handleCheckboxChange={handleCheckboxChange}   accessToken={accessToken} boardId={boardid} setboardId={setBoardid} />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
-         likes={likes} setLikes={setLikes} accessToken={accessToken} boardId={boardid} posts={posts} setPosts={setPosts} />}></Route>
+         likes={likes} setLikes={setLikes} accessToken={accessToken} boardId={boardid} setPosts={setPosts}/>}></Route>
          <Route path='/mypage' element={<Mypage/>}></Route>
       </Routes>
       </div>

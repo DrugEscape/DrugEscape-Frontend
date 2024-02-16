@@ -18,7 +18,6 @@ interface shareContentProps {
     setLikes: (likes: { [key: number]: boolean }) => void;
     accessToken: string;
     boardId: number;
-    posts: Post[];
     setPosts: (value: any) => void;
 
 }
@@ -35,10 +34,11 @@ interface Post{
 
 }
 function shareContent({comment, input, setComment, setInput, likes, accessToken,setLikes,setPosts}: shareContentProps){
+    const [post, setPost] = useState<Post | null>(null);
     const [showDeleteButton, setShowDeleteButton] = useState(false);
     const [showDeleteButton2, setShowDeleteButton2] = useState<boolean[]>([]);
     const [commentId, setCommentId] = useState<number>(0);
-    const [post, setPost] = useState<Post | null>(null);
+   
     const deletePost = () => {
         fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
             method: 'DELETE',
@@ -78,6 +78,7 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
         .then((res) => {
           console.log(res);
           // 댓글 삭제 후 게시물을 다시 불러옵니다.
+          navigate('/share');
           fetchPosts();
         });
       }
