@@ -32,6 +32,7 @@ interface Post{
 
 }
 function shareContent({comment, input, setComment, setInput, likes, accessToken,setLikes,setPosts}: shareContentProps){
+    const [post, setPost] = useState<Post | null>(null);
     const fetchPosts = () => {
         fetch('https://drugescape.duckdns.org/drugescape/share', {
             method: 'GET',
@@ -63,13 +64,14 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                 ...likes,
                 [postId]: !likes[postId]
             });
-            location.state.fetchPosts();
+            fetchPosts();
         })
         .catch((error) => console.error('Error:', error));
     }
     const [Commentarray, setCommentarray] = useState([]);
     const [servercomment, setServercomment] = useState(null);
     useEffect(() => {
+        fetchPosts();
         fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
             method: 'GET',
             headers: {
