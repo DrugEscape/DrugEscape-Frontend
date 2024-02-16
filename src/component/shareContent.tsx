@@ -19,9 +19,12 @@ interface shareContentProps {
     boardId: number;
 
 }
+
 function shareContent({comment, input, setComment, setInput, likes, handleLike, accessToken}: shareContentProps){
+    const [Commentarray, setCommentarray] = useState([]);
+    const [servercomment, setServercomment] = useState(null);
     useEffect(() => {
-        fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
+        const serverdata=fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,9 +33,10 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike, 
         })
             .then((res) => res.json())
             .then((res) => {
+                setCommentarray(res.comments);
                 console.log(res);
             });
-    });
+    },[servercomment]);
     
     const gosharemy = () => {
         navigate('/sharemy');
@@ -106,10 +110,10 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike, 
                         <div id='comment-p'>
                             <p>Comment</p>
                         </div>
-                        {comment[location.state.id]?.map((comment, index) => (
+                        {Commentarray.map((comment: { content: string; }, index) => (
                         <div id='share-comment2' key={index}>
                             <div id='comment-p1'>
-                                 <p>{comment}</p>
+                                 <p>{comment.content}</p>
                              </div>
                          </div>
                         ))}
