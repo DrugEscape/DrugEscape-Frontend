@@ -106,7 +106,8 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike, 
                 <div id='share-content-show1'>
                         <div id='content-title'>
                             <p id="posttitle">{title}</p>
-                            <p id="postdate">{postdate.toLocaleDateString()}{postdate.toLocaleTimeString('ko-KR', {hour: '2-digit', minute:'2-digit', second:'2-digit', hour12: false})}</p>
+                            <p id="postdate">{location.state.createdAt}</p>
+                            <p>{location.state.memberName}</p>
                            
                             <label htmlFor='postlike' id='postlike-label' className={likes[postId] ? 'postlike-red' :'postlike-white'}>
                                 <FaHeart id='Faheart' />

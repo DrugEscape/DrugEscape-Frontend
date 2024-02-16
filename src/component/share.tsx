@@ -35,7 +35,7 @@ function share({view,isChecked,accessToken}:ShareProps){
                 console.log(res);
                 setPosts(res.content);
             });
-        }, []);
+        });
     console.log(isChecked);
     const [page, setPage] = useState(0);
     const postpage =8;
@@ -83,7 +83,7 @@ function share({view,isChecked,accessToken}:ShareProps){
                 {posts.slice(page * postpage, (page + 1) * postpage).map((element, index) =>
                 isChecked[element.id] ? null : (
                     <div id='share-show1' onClick={() => {
-                    navigate('/shareContent', {state: {id: element.id, title: element.title, content: element.content}})
+                    navigate('/shareContent', {state: {id: element.id, title: element.title, content: element.content, memberName: element.memberName, heartCnt: element.heartCnt, createdAt: element.createdAt}})
                     console.log(element.id);
                     }} key={index}>
                     <p id='element_id'>{element.title}</p>
