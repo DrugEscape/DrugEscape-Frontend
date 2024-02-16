@@ -60,9 +60,8 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
         navigate('/create-post');
     }
     const handleSearch = (term: string) => {
-        // 여기에서 searchTerm을 사용하여 검색을 수행합니다.
-        // 예를 들어, 제목을 검색하는 경우:
-        const results = posts.filter((post) => post.title.includes(searchTerm));
+        // term을 사용하여 검색을 수행합니다.
+        const results = posts.filter((post) => post.title.includes(term));
         setSearchResults(results);
       };
     return(
@@ -76,9 +75,9 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
                
                 <div id='share-side'>
                 
-<input type="text" placeholder='Search for' value={searchTerm} onChange={(e) => {
-                    setSearchTerm(e.target.value);
-                    handleSearch(e.target.value);
+                    <input type="text" placeholder='Search for' value={searchTerm} onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                        handleSearch(e.target.value);
                     }} />
                  <button id="dot">
                     <img src={dot} alt='dot' id='dotimg'/>
