@@ -338,6 +338,18 @@ html, body, *{
     margin-top: 50px;
 
 }
+#deleteimg{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 3%;
+    top: 37px;
+}
+#delete{
+    position: absolute;
+    right: -5%;
+    top: 36px;
+}
 #membername{
     position: absolute;
     top: 8vh;
