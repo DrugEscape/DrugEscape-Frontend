@@ -48,7 +48,7 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
     }
     const handleLike = (postId:number) => {
         const method = likes[postId] ? 'DELETE' : 'POST';
-        fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}/like`, {
+        fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}/hearts`, {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
