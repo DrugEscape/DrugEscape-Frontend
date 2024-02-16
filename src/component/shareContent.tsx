@@ -15,9 +15,10 @@ interface shareContentProps {
     likes: { [key: number]: boolean };
     setLikes: (likes: { [key: number]: boolean }) => void;
     handleLike: (postId: number) => void;
+    accessToken: string;
 
 }
-function shareContent({comment, input, setComment, setInput, likes, handleLike}: shareContentProps){
+function shareContent({comment, input, setComment, setInput, likes, handleLike, accessToken}: shareContentProps){
     
     const gosharemy = () => {
         navigate('/sharemy');
@@ -41,6 +42,16 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike}:
             [postId]: [...(comment[postId] || []), input]
         });
         setInput('');
+        fetch(`https://drugescape.duckdns.org/drugescape/share/2/comments`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`, 
+        },
+        body: JSON.stringify({ content: input })
+    })
+        
+        
         console.log(location.state.title);
     }
     

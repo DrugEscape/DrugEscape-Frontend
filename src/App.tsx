@@ -129,7 +129,6 @@ useEffect(() => {
 
   }
   const [managementDTO, setSelections] = useState<Record<string,number>>({ stopDrug: 0, exercise: 0, meal: 0, medication: 0 });
-  const [reportData, setReportData] = useState<Record<string, number>>({});
   const [weekData, setWeekData] = useState<any[]>([]);
   const [pointdata, setpointdata] = useState<number>(0);
   const [dailygoal, setdailygoal] = useState<number>(0);
@@ -164,7 +163,6 @@ const [maxday, setmaxday] = useState<number>(0);
       localStorage.setItem('weekData', JSON.stringify(newData));
       return newData;
     });
-    setReportData(getData.data);
     setmaxday(() => {
       const newMaxDay = getData.data.maximumDays;
       localStorage.setItem('savedweekdata', JSON.stringify(newMaxDay));
@@ -207,7 +205,7 @@ const [maxday, setmaxday] = useState<number>(0);
         <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}   accessToken={accessToken}  />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
-         likes={likes} setLikes={setLikes} handleLike={handleLike} />}></Route>
+         likes={likes} setLikes={setLikes} handleLike={handleLike} accessToken={accessToken} />}></Route>
          <Route path='/mypage' element={<Mypage/>}></Route>
       </Routes>
       </div>

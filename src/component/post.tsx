@@ -77,13 +77,17 @@ function post({view, setView,isChecked,handleCheckboxChange,accessToken}:PostPro
                     </div>
                     <button id='post-submit' type='submit' onClick={(e)=>{
                         e.preventDefault();
-                        fetch('https://drugescape.duckdns.org/drugescape/share/post', {
+                        const postdata=fetch('https://drugescape.duckdns.org/drugescape/share/post', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
                                 'Authorization': `Bearer ${accessToken}`, 
                             },
                             body: JSON.stringify(postcontent),
+                        })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log('Success:', data);
                         })
 
                         setView(view.concat({...postcontent, id}));
