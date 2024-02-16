@@ -12,9 +12,11 @@ interface PostProps{
     isChecked: { [key: number]: boolean };
     handleCheckboxChange: (postId:number) => void;
     accessToken: string;
+    boardId: number;
+    setboardId: (value: any) => void;
 } 
 
-function post({view, setView,isChecked,handleCheckboxChange,accessToken}:PostProps){
+function post({view, setView,isChecked,handleCheckboxChange,accessToken, setboardId}:PostProps){
     const navigate = useNavigate();
     const [postcontent, setPostcontent] = useState({
         title : '',
@@ -77,7 +79,7 @@ function post({view, setView,isChecked,handleCheckboxChange,accessToken}:PostPro
                     </div>
                     <button id='post-submit' type='submit' onClick={(e)=>{
                         e.preventDefault();
-                        const postdata=fetch('https://drugescape.duckdns.org/drugescape/share/post', {
+                        fetch('https://drugescape.duckdns.org/drugescape/share/post', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -88,6 +90,7 @@ function post({view, setView,isChecked,handleCheckboxChange,accessToken}:PostPro
                         .then((response) => response.json())
                         .then((data) => {
                             console.log('Success:', data);
+                            setboardId(data);
                         })
 
                         setView(view.concat({...postcontent, id}));

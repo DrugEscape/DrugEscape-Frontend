@@ -16,6 +16,7 @@ import Share from './component/share'
 
 
 function App() { 
+  const [boardid, setBoardid] = useState(0);
   const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
   const urlParams = new URLSearchParams(window.location.search);
   const sessionToken = urlParams.get('sessionToken');
@@ -203,9 +204,10 @@ const [maxday, setmaxday] = useState<number>(0);
         <Route path='/report' element={<Report dailygoal={dailygoal}
          weekdata={weekData}  savedWeekData={savedWeekData} pointdata={pointdata} maxday={maxday} labeldata={labeldata}/>}></Route>
         <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked}/>}></Route>
-        <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} handleCheckboxChange={handleCheckboxChange}   accessToken={accessToken}  />}></Route>
+        <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} 
+        handleCheckboxChange={handleCheckboxChange}   accessToken={accessToken} boardId={boardid} setboardId={setBoardid} />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
-         likes={likes} setLikes={setLikes} handleLike={handleLike} accessToken={accessToken} />}></Route>
+         likes={likes} setLikes={setLikes} handleLike={handleLike} accessToken={accessToken} boardId={boardid}  />}></Route>
          <Route path='/mypage' element={<Mypage/>}></Route>
       </Routes>
       </div>
