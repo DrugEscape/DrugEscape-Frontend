@@ -6,6 +6,7 @@ import post from './post';
 import { useEffect, useState } from 'react';
 import dot from '../assets/dot.png';
 import go from '../assets/go.png';
+import deleteimg from '../assets/delete.png';
 // 게시글 클릭시 오는 페이지
 interface shareContentProps {
     comment: { [key: string]: string[]; };
@@ -33,6 +34,23 @@ interface Post{
 }
 function shareContent({comment, input, setComment, setInput, likes, accessToken,setLikes,setPosts}: shareContentProps){
     const [post, setPost] = useState<Post | null>(null);
+    const deletePost = () => {
+        fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        })
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(res.statusText);
+            }
+            // 게시물 삭제 후 게시물 목록을 다시 불러옵니다.
+            fetchPosts();
+        })
+        .catch((error) => console.error('Error:', error));
+    }
     const fetchPosts = () => {
         fetch('https://drugescape.duckdns.org/drugescape/share', {
             method: 'GET',
@@ -147,6 +165,9 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                             <p id="postdate">{location.state.createdAt}</p>
                             <p id='membername'>{location.state.memberName}</p>
                             <p id='heartCnt'>Likes {location.state.heartCnt}</p>
+                            <input type='button' id='delete' value='Delete' onClick={deletePost}>
+
+                            </input>
                             <label htmlFor='postlike' id='postlike-label' className={likes[postId] ? 'postlike-red' :'postlike-white'}>
                                 <FaHeart id='Faheart' />
                                 <input type='checkbox' id='postlike' onClick={()=> handleLike(postId)}></input>

@@ -24,6 +24,7 @@ interface Post{
 
 }
 function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
+    
     const fetchPosts = () => {
         fetch('https://drugescape.duckdns.org/drugescape/share', {
             method: 'GET',
