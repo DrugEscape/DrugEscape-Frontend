@@ -24,8 +24,7 @@ interface Post{
 
 }
 function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
-   
-    useEffect(() => {
+    const fetchPosts = () => {
         fetch('https://drugescape.duckdns.org/drugescape/share', {
             method: 'GET',
             headers: {
@@ -33,11 +32,15 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
                 'Authorization': `Bearer ${accessToken}`,
             },
         })
-            .then((res) => res.json())
-            .then((res) => {
-                console.log(res);
-                setPosts(res.content);
-            });
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(res);
+            setPosts(res.content);
+        });
+    }
+   
+    useEffect(() => {
+        fetchPosts();
         });
     console.log(isChecked);
     const [page, setPage] = useState(0);
@@ -86,7 +89,7 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
                 {posts.slice(page * postpage, (page + 1) * postpage).map((element, index) =>
                 isChecked[element.id] ? null : (
                     <div id='share-show1' onClick={() => {
-                    navigate('/shareContent', {state: {id: element.id, title: element.title, content: element.content, memberName: element.memberName, heartCnt: element.heartCnt, createdAt: element.createdAt}})
+                        navigate('/shareContent', {state: {id: element.id, title: element.title, content: element.content, memberName: element.memberName, heartCnt: element.heartCnt, createdAt: element.createdAt, fetchPosts: fetchPosts}})
                     console.log(element.id);
                     }} key={index}>
                     <p id='element_id'>{element.title}</p>

@@ -63,11 +63,10 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                 ...likes,
                 [postId]: !likes[postId]
             });
-            fetchPosts();
+            location.state.fetchPosts();
         })
         .catch((error) => console.error('Error:', error));
     }
-    
     const [Commentarray, setCommentarray] = useState([]);
     const [servercomment, setServercomment] = useState(null);
     useEffect(() => {
