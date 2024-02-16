@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import dot from '../assets/dot.png';
 import go from '../assets/go.png';
 import deleteimg from '../assets/delete.png';
+import { width } from '@fortawesome/free-solid-svg-icons/fa0';
 // 게시글 클릭시 오는 페이지
 interface shareContentProps {
     comment: { [key: string]: string[]; };
@@ -34,6 +35,7 @@ interface Post{
 }
 function shareContent({comment, input, setComment, setInput, likes, accessToken,setLikes,setPosts}: shareContentProps){
     const [showDeleteButton, setShowDeleteButton] = useState(false);
+    const [showDeleteButton2, setShowDeleteButton2] = useState<boolean[]>([]);
     const [post, setPost] = useState<Post | null>(null);
     const deletePost = () => {
         fetch(`https://drugescape.duckdns.org/drugescape/share/${location.state.id}`, {
@@ -193,15 +195,18 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                         {Commentarray.map((comment: { content: string; }, index) => (
                         <div id='share-comment2' key={index}>
                             <div id='comment-p1'>
-                                 <p>{comment.content}</p>
-                                 
-                             </div>
-                         </div>
+                            <p>{comment.content}</p>
+                            <img src={deleteimg} alt='delete' id={`deleteimg${index}`}className='deleteimg2' onClick={() => {
+                                let newShowDeleteButton = [...showDeleteButton2];
+                                newShowDeleteButton[index] = !newShowDeleteButton[index];
+                                setShowDeleteButton2(newShowDeleteButton);
+                            }} />
+                            {showDeleteButton2[index] && <input type='button' id={`delete${index}`} className='delete2' value='Delete' />}
+                            </div>
+                        </div>
                         ))}
                     </div>
                     <input type='text' id='share-comment-input' value={input} onChange={handleComment} />
-                    <img src={deleteimg} alt='delete' id='deleteimg2' onClick={() => setShowDeleteButton(!showDeleteButton)} />
-                    {showDeleteButton && <input type='button' id='delete2' value='Delete' onClick={deletePost} />}
                     <button id='share-comment-button' onClick={postclick}>
                     <img src={go} alt='go' id='goimg'/></button>
                    
