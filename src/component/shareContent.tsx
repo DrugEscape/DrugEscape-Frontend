@@ -43,7 +43,7 @@ function shareContent({comment, input, setComment, setInput, likes, handleLike, 
             [postId]: [...(comment[postId] || []), input]
         });
         setInput('');
-        fetch(`https://drugescape.duckdns.org/drugescape/share/boardId/comments`, {
+        fetch(`https://drugescape.duckdns.org/drugescape/share/${boardId}/comments`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
