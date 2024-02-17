@@ -62,7 +62,7 @@ function post({view, setView,accessToken, setboardId}:PostProps){
                     const data = editor.getData();
                     const parser = new DOMParser();
                     const parsed = parser.parseFromString(data, 'text/html');
-                    const text = parsed.body.textContent || "";  
+                    const text = parsed.body.innerHTML || ""; 
                     console.log({ event, editor, data });
                     setPostcontent({
                         ...postcontent,
