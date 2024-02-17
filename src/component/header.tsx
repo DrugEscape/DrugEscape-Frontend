@@ -13,7 +13,7 @@ interface HeaderProps{
   handleLogin : () => void;
 }
 
-function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } : HeaderProps){
+function Header({accessToken, refreshToken, setIsLogin, handleLogin } : HeaderProps){
     const loginheader = Boolean(localStorage.getItem('islogin'));
     console.log(loginheader);
     const navigate = useNavigate();
@@ -33,7 +33,7 @@ function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } :
         })
         .then(() => {
           setIsLogin(false);
-          localStorage.setItem('isLogin', isLogin.toString());
+          localStorage.setItem('isLogin', 'false');
           localStorage.removeItem('accessToken');
           localStorage.removeItem('refreshToken');
         })

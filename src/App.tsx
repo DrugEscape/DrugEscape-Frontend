@@ -72,7 +72,7 @@ useEffect(() => {
         const parsedData = JSON.parse(data);
         const { accessToken, refreshToken } = parsedData;
         setIsLogin(true);
-        localStorage.setItem('isLogin', isLogin.toString());
+        localStorage.setItem('isLogin', 'true');
         setAccessToken(accessToken);
         setRefreshToken(refreshToken);
         localStorage.setItem('accessToken',accessToken);
