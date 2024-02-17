@@ -64,9 +64,7 @@ function Map(){
                 <div>
                 <h2>For More Information</h2>
                 <h2 >{selectedMarker.organization.기관명}</h2>
-                <p>기관지역번호: {selectedMarker.organization.기관지역번호}</p>
-                <p>기관중간번호: {selectedMarker.organization.기관중간번호}</p>
-                <p>기관마지막번호: {selectedMarker.organization.기관마지막번호}</p>
+                <p>기관전화번호: {selectedMarker.organization.기관지역번호}-{selectedMarker.organization.기관중간번호}-{selectedMarker.organization.기관마지막번호}</p>
                 <p>분류: {selectedMarker.organization.분류}</p>
                 <p>기관에 도움이 필요하다면 전화후 상담하세요</p>
                 </div>

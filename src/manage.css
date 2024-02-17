@@ -13,7 +13,7 @@ html, body, *{
 }
 #manage-head{
     position:absolute;
-    top:52px;
+    top:30px;
     left:50%;
     transform: translateX(-50%);
 }
@@ -32,7 +32,7 @@ html, body, *{
 }
 #manage-content,#manage-b-content{
     position: relative;
-    top:120px;
+    top:95px;
     padding:10px;
     display:flex;
     flex-direction: row;
@@ -185,7 +185,7 @@ html, body, *{
 }
 #manage-btn{
     position:relative;
-    top:120px;
+    top:100px;
     left:260px;
     border-radius: 30px;
     width:80px;
