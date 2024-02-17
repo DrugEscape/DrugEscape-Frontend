@@ -14,7 +14,8 @@ interface HeaderProps{
 }
 
 function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } : HeaderProps){
-    const loginheader = Boolean(localStorage.getItem('islogin'))
+    const loginheader = Boolean(localStorage.getItem('islogin'));
+    console.log(loginheader);
     const navigate = useNavigate();
     const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
     console.log(window.location.origin);
