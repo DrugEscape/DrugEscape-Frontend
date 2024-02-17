@@ -45,7 +45,7 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
    
     useEffect(() => {
         fetchPosts();
-        });
+        },[]);
     console.log(isChecked);
     const [page, setPage] = useState(0);
     const postpage =8;
