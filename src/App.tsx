@@ -27,7 +27,7 @@ interface Post{
 
 }
 function App() { 
-
+  const accessToken1: string | null = localStorage.getItem('accessToken');
   const [boardid, setBoardid] = useState(0);
   const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
   const urlParams = new URLSearchParams(window.location.search);
@@ -55,7 +55,7 @@ useEffect(() => {
           },
           body: JSON.stringify({ accessToken }),
         })
-        .then(res => res.text()) // 새로운 accessToken을 받아옵니다.
+        .then(res => res.text())
         .then(newToken => {
           setIsLogin(true);
           setAccessToken(newToken);
@@ -72,9 +72,11 @@ useEffect(() => {
         const parsedData = JSON.parse(data);
         const { accessToken, refreshToken } = parsedData;
         setIsLogin(true);
+        const login = localStorage.setItem('isLogin', isLogin.toString());
         setAccessToken(accessToken);
         setRefreshToken(refreshToken);
         localStorage.setItem('accessToken',accessToken);
+        localStorage.setItem('refreshToken',refreshToken);
         console.log(isLogin);
         console.log('Access Token:', accessToken);
         const storedMaxDay = localStorage.getItem('maxDay');
@@ -151,14 +153,14 @@ const [maxday, setmaxday] = useState<number>(0);
     const serverdata = await axios.post('https://drugescape.duckdns.org/drugescape/manage', managementDTO, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
+        'Authorization': `Bearer ${accessToken1}`
       }
     });
     console.log(serverdata);
     const getData = await axios.get('https://drugescape.duckdns.org/drugescape/report', {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
+        'Authorization': `Bearer ${accessToken1}`
       }
     });
     setWeekData(prevData => {
@@ -198,7 +200,7 @@ const [maxday, setmaxday] = useState<number>(0);
    <BrowserRouter>
     <div id="container">
       <div id="wrap">
-      <Header accessToken={accessToken} setAccessToken={setAccessToken} refreshToken={refreshToken} setRefreshToken={setRefreshToken}
+      <Header accessToken={accessToken1} setAccessToken={setAccessToken} refreshToken={refreshToken} setRefreshToken={setRefreshToken}
                     isLogin={isLogin} setIsLogin={setIsLogin} handleLogin={handleLogin} />
       <Routes>
         <Route path='/' element={<Home handleLogin={handleLogin} isLogin={isLogin}/>}></Route>
@@ -206,14 +208,14 @@ const [maxday, setmaxday] = useState<number>(0);
         <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit}
          selections={managementDTO} setSelections={setSelections}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
-        <Route path='/donate' element={<Donate accessToken={accessToken}  pointdata={pointdata} setpointdata={setpointdata} />}></Route>
+        <Route path='/donate' element={<Donate accessToken={accessToken1}  pointdata={pointdata} setpointdata={setpointdata} />}></Route>
         <Route path='/report' element={<Report dailygoal={dailygoal}
          weekdata={weekData}  savedWeekData={savedWeekData} pointdata={pointdata} maxday={maxday} labeldata={labeldata}/>}></Route>
-        <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked} accessToken={accessToken} setPosts={setPosts} posts={posts}/>}></Route>
+        <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked} accessToken={accessToken1} setPosts={setPosts} posts={posts}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} 
-        handleCheckboxChange={handleCheckboxChange}   accessToken={accessToken} boardId={boardid} setboardId={setBoardid} />}></Route>
+        handleCheckboxChange={handleCheckboxChange}   accessToken={accessToken1} boardId={boardid} setboardId={setBoardid} />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
-         likes={likes} setLikes={setLikes} accessToken={accessToken} boardId={boardid} setPosts={setPosts}/>}></Route>
+         likes={likes} setLikes={setLikes} accessToken={accessToken1} boardId={boardid} setPosts={setPosts}/>}></Route>
          <Route path='/mypage' element={<Mypage/>}></Route>
       </Routes>
       </div>

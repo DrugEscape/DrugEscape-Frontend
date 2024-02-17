@@ -4,7 +4,7 @@ import { Link} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 interface HeaderProps{
-  accessToken: string;
+  accessToken: string | null;
   setAccessToken: React.Dispatch<React.SetStateAction<string>>;
   refreshToken: string;
   setRefreshToken: React.Dispatch<React.SetStateAction<string>>;
@@ -14,6 +14,7 @@ interface HeaderProps{
 }
 
 function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } : HeaderProps){
+    const loginheader = Boolean(localStorage.getItem('islogin'))
     const navigate = useNavigate();
     const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
     console.log(window.location.origin);
@@ -31,6 +32,9 @@ function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } :
         })
         .then(() => {
           setIsLogin(false);
+          localStorage.setItem('islogin', isLogin.toString());
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('refreshToken');
         })
         .catch(error => {
           console.error('Logout failed:', error);
@@ -55,7 +59,7 @@ function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } :
                     <dt>
                         <Link to="/">Home</Link>
                     </dt>
-                    {isLogin ? ( 
+                    {loginheader ? ( 
                      <dt>
                         <Link to="/manage">Manage</Link>
                     </dt>
@@ -64,7 +68,7 @@ function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } :
                       <a onClick={() => alert("로그인이 필요합니다.")}>Manage</a>
                     </dt>
                   )}
-                  {isLogin ? (
+                  {loginheader ? (
                      <dt>
                      <Link to="/donate">Donate</Link>
                        </dt>
@@ -86,7 +90,7 @@ function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } :
                     <dt>
                         <Link to="/map">Map</Link>
                     </dt>
-                  {isLogin ? ( 
+                  {loginheader ? ( 
                      <dt>
                      <Link to="/report">Report</Link>
                  </dt>
@@ -95,7 +99,7 @@ function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } :
                       <a onClick={() => alert("로그인이 필요합니다.")}>Report</a>
                     </dt>
                   )}    
-                    {isLogin ?(
+                    {loginheader ?(
                         <button id="header-login2" onClick={handleLogout} >Logout</button>
                     ):(
                         <button id="header-login1" onClick={handleLogin} >Login</button>
