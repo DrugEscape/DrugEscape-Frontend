@@ -16,7 +16,7 @@ interface PostProps{
     setboardId: (value: any) => void;
 } 
 
-function post({view, setView,isChecked,handleCheckboxChange,accessToken, setboardId}:PostProps){
+function post({view, setView,accessToken, setboardId}:PostProps){
     const navigate = useNavigate();
     const [postcontent, setPostcontent] = useState({
         title : '',
@@ -50,10 +50,6 @@ function post({view, setView,isChecked,handleCheckboxChange,accessToken, setboar
                     <div id='post-post2'>
                         <p>Title:</p>
                         <input type='text' id='post-input-title' onChange={getValue} name='title'></input>
-                        <label htmlFor="diary" id='diary' className='lock'>
-                            <FontAwesomeIcon icon={isChecked[id] ? faLock : faLockOpen} />
-                            <input type="checkbox" onChange={()=> handleCheckboxChange(id)} className='hidden-checkbox'/>
-                        </label>
                     </div>
                     <div id='post-post3'>
                     <CKEditor

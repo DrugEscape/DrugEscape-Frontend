@@ -19,8 +19,6 @@ function Header({accessToken, refreshToken,isLogin, setIsLogin, handleLogin } : 
     const navigate = useNavigate();
     const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
     console.log(window.location.origin);
-   
-    console.log(window.location.origin);
     
    
     const handleLogout = () => {
