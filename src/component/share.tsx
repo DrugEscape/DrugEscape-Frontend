@@ -79,9 +79,6 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
                         setSearchTerm(e.target.value);
                         handleSearch(e.target.value);
                     }} />
-                 <button id="dot">
-                    <img src={dot} alt='dot' id='dotimg'/>
-                </button>
                 <button id='createpost'onClick={handleCreatePost}>+ Create a post</button>
                 </div>
                 

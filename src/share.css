@@ -146,15 +146,14 @@ html, body, *{
 
 }
 #share-side>input{
+    text-indent: 15px;
     height: 5vh;
     width:80%;
     border-radius: 15px;
     background-color: whitesmoke;
     margin-right: 5%;
 }
-#share-side>input::placeholder{
-    padding-left:10px;
-}
+
 #dotimg:hover{
     cursor: pointer;
 }
@@ -284,6 +283,7 @@ html, body, *{
     
 }
 #post-submit{
+    cursor: pointer;
     position:absolute;
     top:72vh;
     left:80%;
@@ -295,6 +295,7 @@ html, body, *{
     color:#FFFFFF;
 }
 #post-cancel{
+    cursor: pointer;
     position:absolute;
     top:72vh;
     left:91%;

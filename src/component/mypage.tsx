@@ -33,7 +33,7 @@ function mypage() {
     }
   }, []);
   const handleSubmit = () => {
-    if (inputValue === '1234') {
+    if (inputValue === 'epoch1234') {
       fetch('https://drugescape.duckdns.org/drugescape/admin', {
         method: 'GET',
         headers: {
