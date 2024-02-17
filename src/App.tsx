@@ -59,6 +59,7 @@ const refreshAccessToken = (refreshToken: string) => {
       setAccessToken(data.accessToken);
       setRefreshToken(data.refreshToken || refreshToken); // 새로운 리프레시 토큰이 없다면 기존의 것을 유지
       setIsLogin(true);
+      window.location.href='https://drugescape.netlify.app/';
     } else {
       // 로그인 페이지로 리디렉트하거나 로그인 상태 업데이트
       setIsLogin(false);
@@ -72,7 +73,7 @@ const refreshAccessToken = (refreshToken: string) => {
 
 useEffect(() => {
   if (sessionToken) { 
-    console.log('sessionToken:', sessionToken); 
+    console.log('sessionToken:', sessionToken);   
     fetch(`https://drugescape.duckdns.org/drugescape/retrieveTokens?sessionToken=${sessionToken}`, { // URL에 code 쿼리 파라미터 추가
     method: 'GET',
       headers: {
