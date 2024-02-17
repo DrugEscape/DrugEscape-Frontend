@@ -74,7 +74,6 @@ function share({view,isChecked,accessToken,posts,setPosts}:ShareProps){
             <div id='share-content'>
                
                 <div id='share-side'>
-                
                     <input type="text" placeholder='Search for' value={searchTerm} onChange={(e) => {
                         setSearchTerm(e.target.value);
                         handleSearch(e.target.value);
