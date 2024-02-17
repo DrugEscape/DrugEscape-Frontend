@@ -356,7 +356,7 @@ html, body, *{
     height: 20px;
     position: absolute;
     right: 0;
-    top: 10px;
+    top: 15px;
 }
 #membername{
     position: absolute;
@@ -413,6 +413,10 @@ html, body, *{
     height:7vh;
     border-bottom: 1px solid #D4D2E3;
 
+}
+#commnet-name{
+    position: absolute;
+    right:3%;
 }
 #comment-p>p{
     position:absolute;
