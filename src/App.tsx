@@ -43,27 +43,13 @@ useEffect(() => {
   }
 }, []);
 const refreshAccessToken = (refreshToken: string) => {
+  const accessToken = localStorage.getItem('accessToken');
   fetch(`https://drugescape.duckdns.org/drugescape/refresh`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ refreshToken }),
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    if (data.accessToken) {
-      localStorage.setItem('accessToken', data.accessToken);
-      console.log('asdfasdf',data.accessToken);
-      setAccessToken(data.accessToken);
-      setRefreshToken(data.refreshToken || refreshToken); // 새로운 리프레시 토큰이 없다면 기존의 것을 유지
-      setIsLogin(true);
-      window.location.href='https://drugescape.netlify.app/';
-    } else {
-      // 로그인 페이지로 리디렉트하거나 로그인 상태 업데이트
-      setIsLogin(false);
-    }
+    body: JSON.stringify({accessToken,refreshToken}),
   })
   .catch(error => {
     console.error('Token refresh failed:', error);
