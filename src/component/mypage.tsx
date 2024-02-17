@@ -35,7 +35,7 @@ function mypage() {
   const handleSubmit = () => {
     if (inputValue === '1234') {
       fetch('https://drugescape.duckdns.org/drugescape/admin', {
-        method: 'POST', // 또는 'GET', 'PUT' 등의 메서드를 사용할 수 있습니다.
+        method: 'GET', // 또는 'GET', 'PUT' 등의 메서드를 사용할 수 있습니다.
         headers: {
           'Content-Type': 'application/json',
         },
