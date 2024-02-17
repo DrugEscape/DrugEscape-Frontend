@@ -33,7 +33,7 @@ function Header({accessToken, refreshToken, isLogin, setIsLogin, handleLogin } :
         })
         .then(() => {
           setIsLogin(false);
-          localStorage.setItem('islogin', isLogin.toString());
+          localStorage.setItem('isLogin', isLogin.toString());
           localStorage.removeItem('accessToken');
           localStorage.removeItem('refreshToken');
         })
