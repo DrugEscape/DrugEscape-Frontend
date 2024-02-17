@@ -11,7 +11,7 @@ interface PostProps{
     setView: (value: any) => void;
     isChecked: { [key: number]: boolean };
     handleCheckboxChange: (postId:number) => void;
-    accessToken: string | null;
+    accessToken: string;
     boardId: number;
     setboardId: (value: any) => void;
 } 

@@ -7,7 +7,7 @@ interface ShareProps{
     view: {title: string; content:string; id:number}[];
     setView: (value: any) => void;
     isChecked: { [key: number]: boolean };
-    accessToken: string | null;
+    accessToken: string;
     setPosts: (value: any) => void;
     posts: Post[];
 

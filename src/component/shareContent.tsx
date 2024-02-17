@@ -16,7 +16,7 @@ interface shareContentProps {
     setInput: (input: string) => void;
     likes: { [key: number]: boolean };
     setLikes: (likes: { [key: number]: boolean }) => void;
-    accessToken: string | null;
+    accessToken: string;
     boardId: number;
     setPosts: (value: any) => void;
 

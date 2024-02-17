@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 
 interface DonateProps {
-    accessToken: string | null;
+    accessToken: string;
     pointdata : number;
     setpointdata: (pointdata: number) => void;
 }

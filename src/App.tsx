@@ -27,7 +27,6 @@ interface Post{
 
 }
 function App() { 
-  const accessToken1: string | null = localStorage.getItem('accessToken');
   const [boardid, setBoardid] = useState(0);
   const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
   const urlParams = new URLSearchParams(window.location.search);
@@ -37,6 +36,42 @@ function App() {
     window.location.href = url  // Google 로그인 페이지로 리다이렉트합니다.
 
 };
+useEffect(() => {
+  const refreshToken = localStorage.getItem('refreshToken');
+  if (refreshToken) {
+    refreshAccessToken(refreshToken);
+  }
+}, []);
+const refreshAccessToken = (refreshToken: string) => {
+  fetch(`https://drugescape.duckdns.org/drugescape/refresh`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ refreshToken }),
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.accessToken) {
+      localStorage.setItem('accessToken', data.accessToken);
+      // refreshToken이 새로 발급된 경우에만 갱신
+      if (data.refreshToken) {
+        localStorage.setItem('refreshToken', data.refreshToken);
+      }
+      setAccessToken(data.accessToken);
+      setRefreshToken(data.refreshToken || refreshToken); // 새로운 리프레시 토큰이 없다면 기존의 것을 유지
+      setIsLogin(true);
+    } else {
+      // 로그인 페이지로 리디렉트하거나 로그인 상태 업데이트
+      setIsLogin(false);
+    }
+  })
+  .catch(error => {
+    console.error('Token refresh failed:', error);
+    setIsLogin(false);
+  });
+};
+
 useEffect(() => {
   if (sessionToken) { 
     console.log('sessionToken:', sessionToken); 
@@ -72,7 +107,6 @@ useEffect(() => {
         const parsedData = JSON.parse(data);
         const { accessToken, refreshToken } = parsedData;
         setIsLogin(true);
-        localStorage.setItem('isLogin', 'true');
         setAccessToken(accessToken);
         setRefreshToken(refreshToken);
         localStorage.setItem('accessToken',accessToken);
@@ -154,14 +188,14 @@ const [maxday, setmaxday] = useState<number>(0);
     const serverdata = await axios.post('https://drugescape.duckdns.org/drugescape/manage', managementDTO, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken1}`
+        'Authorization': `Bearer ${accessToken}`
       }
     });
     console.log(serverdata);
     const getData = await axios.get('https://drugescape.duckdns.org/drugescape/report', {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken1}`
+        'Authorization': `Bearer ${accessToken}`
       }
     });
     setWeekData(prevData => {
@@ -201,7 +235,7 @@ const [maxday, setmaxday] = useState<number>(0);
    <BrowserRouter>
     <div id="container">
       <div id="wrap">
-      <Header accessToken={accessToken1} setAccessToken={setAccessToken} refreshToken={refreshToken} setRefreshToken={setRefreshToken}
+      <Header accessToken={accessToken} setAccessToken={setAccessToken} refreshToken={refreshToken} setRefreshToken={setRefreshToken}
                     isLogin={isLogin} setIsLogin={setIsLogin} handleLogin={handleLogin}  />
       <Routes>
         <Route path='/' element={<Home handleLogin={handleLogin} isLogin={isLogin}/>}></Route>
@@ -209,14 +243,14 @@ const [maxday, setmaxday] = useState<number>(0);
         <Route path='/manage' element={<Manage onChange={handleChange} onSubmit={handleSubmit}
          selections={managementDTO} setSelections={setSelections}/>}></Route>
         <Route path='/map' element={<Map/>}></Route>
-        <Route path='/donate' element={<Donate accessToken={accessToken1}  pointdata={pointdata} setpointdata={setpointdata} />}></Route>
+        <Route path='/donate' element={<Donate accessToken={accessToken}  pointdata={pointdata} setpointdata={setpointdata} />}></Route>
         <Route path='/report' element={<Report dailygoal={dailygoal}
          weekdata={weekData}  savedWeekData={savedWeekData} pointdata={pointdata} maxday={maxday} labeldata={labeldata}/>}></Route>
-        <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked} accessToken={accessToken1} setPosts={setPosts} posts={posts}/>}></Route>
+        <Route path='/share' element={<Share view={view} setView={setView} isChecked={isChecked} accessToken={accessToken} setPosts={setPosts} posts={posts}/>}></Route>
         <Route path='/create-post' element={<Post view={view} setView={setView} isChecked={isChecked} 
-        handleCheckboxChange={handleCheckboxChange}   accessToken={accessToken1} boardId={boardid} setboardId={setBoardid} />}></Route>
+        handleCheckboxChange={handleCheckboxChange}   accessToken={accessToken} boardId={boardid} setboardId={setBoardid} />}></Route>
         <Route path='/shareContent' element={<ShareContent comment={comment} setComment={setComment} input={input} setInput={setInput}
-         likes={likes} setLikes={setLikes} accessToken={accessToken1} boardId={boardid} setPosts={setPosts}/>}></Route>
+         likes={likes} setLikes={setLikes} accessToken={accessToken} boardId={boardid} setPosts={setPosts}/>}></Route>
          <Route path='/mypage' element={<Mypage/>}></Route>
       </Routes>
       </div>
