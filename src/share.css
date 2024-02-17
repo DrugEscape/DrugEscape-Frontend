@@ -372,6 +372,7 @@ html, body, *{
 #content-content1{
     position: absolute;
     margin:15px;
+    text-align: left;
 
 }
 #content-title{
