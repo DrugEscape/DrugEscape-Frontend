@@ -41,9 +41,10 @@ function mypage() {
           'Authorization': `Bearer ${accessToken}`,
         },
       })
-      .then((response) => response.json())
+      .then((response) => response.text())
       .then((data) => {
         console.log(data);
+        alert('당신은 이제 관리자입니다');
       })
       .catch((error) => {
         console.error('Error:', error);
