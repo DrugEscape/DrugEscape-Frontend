@@ -36,26 +36,6 @@ function App() {
     window.location.href = url  // Google 로그인 페이지로 리다이렉트합니다.
 
 };
-useEffect(() => {
-  const refreshToken = localStorage.getItem('refreshToken');
-  if (refreshToken) {
-    refreshAccessToken(refreshToken);
-  }
-}, []);
-const refreshAccessToken = (refreshToken: string) => {
-  const accessToken = localStorage.getItem('accessToken');
-  fetch(`https://drugescape.duckdns.org/drugescape/refresh`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({accessToken,refreshToken}),
-  })
-  .catch(error => {
-    console.error('Token refresh failed:', error);
-    setIsLogin(false);
-  });
-};
 
 useEffect(() => {
   if (sessionToken) { 
