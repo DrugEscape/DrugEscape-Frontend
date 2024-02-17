@@ -448,10 +448,6 @@ html, body, *{
     max-height: 200px;
     border-bottom: 1px solid #D4D2E3;
 }
-#comment-name{
-    position:absolute;
-    right:0;
-}
 #comment-p1>p{
     margin:10px;
     font-weight: 400;
