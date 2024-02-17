@@ -233,11 +233,11 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
                         <div id='comment-p'>
                             <p>Comment</p>
                         </div>
-                        {Commentarray.map((comment: { id: number, content: string; }, index) => (
+                        {Commentarray.map((comment: { id: number, content: string,memberName:number; }, index) => (
                         <div id='share-comment2' key={index}>
                         <div id='comment-p1'>
                           <p>{comment.content}</p>
-                          <p id='comment-name'>{location.state.memberName}</p>
+                          <p id='comment-name'>{comment.memberName}</p>
                           <img src={deleteimg} alt='delete' id={`deleteimg${index}`} className='deleteimg2' onClick={() => {
                             let newShowDeleteButton = [...showDeleteButton2];
                             newShowDeleteButton[index] = !newShowDeleteButton[index];
