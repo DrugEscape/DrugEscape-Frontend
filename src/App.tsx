@@ -72,13 +72,14 @@ useEffect(() => {
         const parsedData = JSON.parse(data);
         const { accessToken, refreshToken } = parsedData;
         setIsLogin(true);
-        const login = localStorage.setItem('isLogin', isLogin.toString());
+        localStorage.setItem('isLogin', isLogin.toString());
         setAccessToken(accessToken);
         setRefreshToken(refreshToken);
         localStorage.setItem('accessToken',accessToken);
         localStorage.setItem('refreshToken',refreshToken);
         console.log(isLogin);
         console.log('Access Token:', accessToken);
+        console.log(localStorage.getItem('accessToken'));
         const storedMaxDay = localStorage.getItem('maxDay');
         const storedPointData = localStorage.getItem('pointData');
         const storedDailyGoal = localStorage.getItem('daliygoal');
@@ -201,7 +202,7 @@ const [maxday, setmaxday] = useState<number>(0);
     <div id="container">
       <div id="wrap">
       <Header accessToken={accessToken1} setAccessToken={setAccessToken} refreshToken={refreshToken} setRefreshToken={setRefreshToken}
-                    isLogin={isLogin} setIsLogin={setIsLogin} handleLogin={handleLogin} />
+                    isLogin={isLogin} setIsLogin={setIsLogin} handleLogin={handleLogin}  />
       <Routes>
         <Route path='/' element={<Home handleLogin={handleLogin} isLogin={isLogin}/>}></Route>
         <Route path='/path' element={<Home handleLogin={handleLogin} isLogin={isLogin} />}></Route> 
