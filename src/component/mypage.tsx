@@ -38,8 +38,8 @@ function mypage() {
         method: 'GET', // 또는 'GET', 'PUT' 등의 메서드를 사용할 수 있습니다.
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
         },
-        body: JSON.stringify({ accessToken }), // 서버에 보낼 데이터를 JSON 형식으로 변환합니다.
       })
       .then((response) => response.json())
       .then((data) => {
