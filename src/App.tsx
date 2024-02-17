@@ -52,6 +52,7 @@ const refreshAccessToken = (refreshToken: string) => {
   })
   .then(response => response.json())
   .then(data => {
+    console.log(data);
     if (data.accessToken) {
       localStorage.setItem('accessToken', data.accessToken);
       // refreshToken이 새로 발급된 경우에만 갱신
