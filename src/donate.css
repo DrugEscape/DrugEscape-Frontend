@@ -89,16 +89,16 @@ body,html{
 
 /* 여기까지 donate-main */
 #donate-complete{
-    position: relative;
-    top:104px;
-    width:1220px;
-    height:550px;
-    background-color: #28EA53;
-    margin-left:150px;
-    margin-right:150px;
-    margin-top: 40px;
-    border:1px solid white;
-    border-radius: 30px;
+        position: relative;
+        top: 104px;
+        width: 80%;
+        height: 550px;
+        background-color: #28ea53;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 40px;
+        border: 1px solid white;
+        border-radius: 30px;
 }
 .visible{
     display: block;
