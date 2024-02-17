@@ -55,10 +55,7 @@ const refreshAccessToken = (refreshToken: string) => {
     console.log(data);
     if (data.accessToken) {
       localStorage.setItem('accessToken', data.accessToken);
-      // refreshToken이 새로 발급된 경우에만 갱신
-      if (data.refreshToken) {
-        localStorage.setItem('refreshToken', data.refreshToken);
-      }
+      console.log('asdfasdf',data.accessToken);
       setAccessToken(data.accessToken);
       setRefreshToken(data.refreshToken || refreshToken); // 새로운 리프레시 토큰이 없다면 기존의 것을 유지
       setIsLogin(true);
