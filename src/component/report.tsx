@@ -50,7 +50,7 @@ function report({savedWeekData, pointdata, maxday, dailygoal, labeldata}: report
             y: {
                 type: 'linear' as const,
                 display: true,
-               
+                max:100,
                 grid:{
                    color: 'white'
                 },
