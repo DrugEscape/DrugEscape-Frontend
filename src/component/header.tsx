@@ -63,7 +63,7 @@ function Header({accessToken, refreshToken,isLogin, setIsLogin, handleLogin } : 
                     </dt>
                      ) : (
                     <dt>
-                      <a onClick={() => alert("로그인이 필요합니다.")}>Manage</a>
+                      <a onClick={() => alert("Login required")}>Manage</a>
                     </dt>
                   )}
                   {isLogin ? (
@@ -72,7 +72,7 @@ function Header({accessToken, refreshToken,isLogin, setIsLogin, handleLogin } : 
                        </dt>
                     ) : (
                     <dt>
-                      <a onClick={() => alert("로그인이 필요합니다.")}>Donate</a>
+                      <a onClick={() => alert("Login required.")}>Donate</a>
                     </dt>
                   )} 
                      {isLogin ? (
@@ -81,7 +81,7 @@ function Header({accessToken, refreshToken,isLogin, setIsLogin, handleLogin } : 
                        </dt>
                    ) : (
                     <dt>
-                      <a onClick={() => alert("로그인이 필요합니다.")}>Share</a>
+                      <a onClick={() => alert("Login required")}>Share</a>
                     </dt>
                   )}  
                     
@@ -94,7 +94,7 @@ function Header({accessToken, refreshToken,isLogin, setIsLogin, handleLogin } : 
                  </dt>
                      ) : ( 
                      <dt>
-                      <a onClick={() => alert("로그인이 필요합니다.")}>Report</a>
+                      <a onClick={() => alert("Login required")}>Report</a>
                     </dt>
                   )}    
                     {isLogin ?(

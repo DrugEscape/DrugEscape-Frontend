@@ -50,7 +50,7 @@ function shareContent({comment, input, setComment, setInput, likes, accessToken,
         .then((res) => {
             if (!res.ok) {
                 if (res.status === 403) {
-                    alert('다른 사용자의 게시글은 삭제할 수 없습니다.');
+                    alert('You can not delete other user posts');
                 }
                 throw new Error(res.statusText);
             }

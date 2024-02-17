@@ -44,13 +44,13 @@ function mypage() {
       .then((response) => response.text())
       .then((data) => {
         console.log(data);
-        alert('당신은 이제 관리자입니다');
+        alert('You are an admin');
       })
       .catch((error) => {
         console.error('Error:', error);
       });
     } else {
-      alert('비밀번호가 틀렸습니다'); // inputValue가 '1234'가 아닌 경우에 메시지를 표시합니다.
+      alert('invalid password'); // inputValue가 '1234'가 아닌 경우에 메시지를 표시합니다.
     }
   };
 

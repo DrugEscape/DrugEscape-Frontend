@@ -92,7 +92,7 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
         
         // 마지막 제출 날짜가 오늘인지 확인
         // if (lastSubmittedDate?.getTime() === currentDate.getTime()) {
-        //     alert("하루에 한 번만 제출할 수 있습니다.");
+        //     alert("You can only submit once a day");
         //     return;
         // }
     
