@@ -378,7 +378,7 @@ html, body, *{
     height:14vh;
     border-bottom: 1px solid #D4D2E3;
 }
-#share-comment{
+#share{
     position:relative;
     left:30%;
     width:60%;
@@ -447,6 +447,10 @@ html, body, *{
     top:50px;
     max-height: 200px;
     border-bottom: 1px solid #D4D2E3;
+}
+#comment-name{
+    position:absolute;
+    right:0;
 }
 #comment-p1>p{
     margin:10px;
