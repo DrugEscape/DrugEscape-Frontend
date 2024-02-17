@@ -27,6 +27,7 @@ interface Post{
 
 }
 function App() { 
+  localStorage.removeItem('lastSubmittedDate');
   const [boardid, setBoardid] = useState(0);
   const client_id = import.meta.env.VITE_GOOGLE_LOGIN_ID;
   const urlParams = new URLSearchParams(window.location.search);
