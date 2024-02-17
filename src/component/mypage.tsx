@@ -35,7 +35,7 @@ function mypage() {
   const handleSubmit = () => {
     if (inputValue === '1234') {
       fetch('https://drugescape.duckdns.org/drugescape/admin', {
-        method: 'GET', // 또는 'GET', 'PUT' 등의 메서드를 사용할 수 있습니다.
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${accessToken}`,
@@ -49,6 +49,8 @@ function mypage() {
       .catch((error) => {
         console.error('Error:', error);
       });
+    } else {
+      alert('비밀번호가 틀렸습니다'); // inputValue가 '1234'가 아닌 경우에 메시지를 표시합니다.
     }
   };
 
