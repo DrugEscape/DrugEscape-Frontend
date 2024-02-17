@@ -174,7 +174,7 @@ const [maxday, setmaxday] = useState<number>(0);
     });
     setmaxday(() => {
       const newMaxDay = getData.data.maximumDays;
-      localStorage.setItem('savedweekdata', JSON.stringify(newMaxDay));
+      localStorage.setItem('maxDay', JSON.stringify(newMaxDay));
       return newMaxDay;
     });
     
