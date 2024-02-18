@@ -20,6 +20,7 @@ html, body, *{
     align-items: end;
 }
 #adminbtn{
+    cursor: pointer;
     width:50px;
     background-color: darkgreen;
     color:white;

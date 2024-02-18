@@ -100,6 +100,7 @@ html, body, *{
 }
 
 #share-show1{  
+    cursor: pointer;
     text-align: left;
     width: 100%;
     display:flex;
@@ -173,6 +174,7 @@ html, body, *{
 }
 
 #createpost{
+    cursor: pointer;
     height: 5vh;
     width:15%;
     border-radius: 15px;
@@ -340,18 +342,24 @@ html, body, *{
 
 }
 #deleteimg{
+    cursor: pointer;
     width: 20px;
     height: 20px;
     position: absolute;
     right: 3%;
     top: 37px;
 }
+.delete2{
+    cursor:pointer;
+}
 #delete{
+    cursor: pointer;
     position:absolute;
     right: -5%;
     top: 36px;
 }
 .deleteimg2{
+    cursor: pointer;
     width: 20px;
     height: 20px;
     position: absolute;

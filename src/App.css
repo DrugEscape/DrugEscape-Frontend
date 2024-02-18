@@ -82,6 +82,7 @@ html, body, #root{
   cursor: pointer;
 }
 #header-login1, #header-mypage,#content-start,#content-login,#header-login2{
+  cursor: pointer;
   font-size: 1.3vw;
   font-family: "poppins", Sans-serif;
   border: 1px solid #D4D2E3;
