@@ -38,6 +38,13 @@ function App() {
 };
 
 useEffect(() => {
+  localStorage.removeItemItem('accessToken');
+  localStorage.removeItemItem('refreshToken');
+  localStorage.removeItemItem('maxDay');
+  localStorage.removeItemItem('pointData');
+  localStorage.removeItemItem('daliygoal');
+  localStorage.removeItemItem('weekData');
+  
   if (sessionToken) { 
     console.log('sessionToken:', sessionToken);   
     fetch(`https://drugescape.duckdns.org/drugescape/retrieveTokens?sessionToken=${sessionToken}`, { // URL에 code 쿼리 파라미터 추가
