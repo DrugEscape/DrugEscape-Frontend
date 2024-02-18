@@ -163,20 +163,22 @@ const [maxday, setmaxday] = useState<number>(0);
         'Authorization': `Bearer ${accessToken}`
       }
     });
-    setWeekData(prevData => {
-      let newData = [...prevData, getData.data.dailyGoals];
-      if (newData.length > 7) {
-        setLabelData(prevData => prevData.map(data => data + 7));
-        newData = [getData.data.dailyGoals];
-      }
-      localStorage.setItem('weekData', JSON.stringify(newData));
-      return newData;
-    });
+    let newData = getData.data.weeklyGoals; // weeklyGoals 데이터 추출
+    localStorage.setItem('weekData', JSON.stringify(newData));
+    setWeekData(newData); // weeklyGoals 데이터 추출
     setmaxday(() => {
       const newMaxDay = getData.data.maximumDays;
       localStorage.setItem('maxDay', JSON.stringify(newMaxDay));
       return newMaxDay;
     });
+    let maxDay = getData.data.maximumDays;
+    if (maxDay <= 7) {
+     
+      setLabelData([1, 2, 3, 4, 5, 6, 7]);
+    } else {
+      let labelData = Array.from({length: 7}, (_, i) => i + maxDay - 6);
+      setLabelData(labelData);
+    }
     
     setpointdata(() => {
       const newPointData = getData.data.point;
