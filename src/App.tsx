@@ -59,8 +59,7 @@ useEffect(() => {
         .then(res => res.text())
         .then(newToken => {
           setIsLogin(true);
-          setAccessToken(newToken);
-          console.log('New Access Token:', newToken);     
+          setAccessToken(newToken);    
           return newToken;
         });
         
@@ -77,9 +76,6 @@ useEffect(() => {
         setRefreshToken(refreshToken);
         localStorage.setItem('accessToken',accessToken);
         localStorage.setItem('refreshToken',refreshToken);
-        console.log(isLogin);
-        console.log('Access Token:', accessToken);
-        console.log(localStorage.getItem('accessToken'));
         const storedMaxDay = localStorage.getItem('maxDay');
         const storedPointData = localStorage.getItem('pointData');
         const storedDailyGoal = localStorage.getItem('daliygoal');
@@ -149,8 +145,6 @@ const [maxday, setmaxday] = useState<number>(0);
   const [labeldata, setLabelData] = useState<number[]>([firstdata,firstdata+1,firstdata+2,firstdata+3,firstdata+4,firstdata+5,firstdata+6]);
   const [posts, setPosts] = useState<Post[]>([]);
   const handleSubmit = async () => {
-    console.log(managementDTO);
-    console.log(accessToken);
     const serverdata = await axios.post('https://drugescape.duckdns.org/drugescape/manage', managementDTO, {
       headers: {
         'Content-Type': 'application/json',

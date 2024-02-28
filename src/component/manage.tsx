@@ -91,10 +91,10 @@ function Manage({onChange, onSubmit, selections, setSelections  } : ManageProps)
         currentDate.setHours(0, 0, 0, 0);
         
         // 마지막 제출 날짜가 오늘인지 확인
-        // if (lastSubmittedDate?.getTime() === currentDate.getTime()) {
-        //     alert("You can only submit once a day");
-        //     return;
-        // }
+         if (lastSubmittedDate?.getTime() === currentDate.getTime()) {
+             alert("You can only submit once a day");
+             return;
+         }
     
         onSubmit();
         setLastSubmittedDate(currentDate);

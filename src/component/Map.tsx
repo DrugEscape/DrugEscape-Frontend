@@ -20,8 +20,6 @@ function Map(){
                 const addresses = response.data.data.map((item: { 주소: String; }) => item.주소);
                 const phone1 = response.data.data.map((item: { 기관지역번호: Number; }) => item.기관지역번호);
                 const geocoder = new google.maps.Geocoder();
-                console.log(addresses);
-                console.log(phone1);
                 
                 const data = response.data.data;
                 data.forEach((item: any) => {
