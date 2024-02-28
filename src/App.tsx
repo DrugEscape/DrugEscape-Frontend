@@ -40,7 +40,6 @@ function App() {
 useEffect(() => {
 
   if (sessionToken) { 
-    console.log('sessionToken:', sessionToken);   
     fetch(`https://drugescape.duckdns.org/drugescape/retrieveTokens?sessionToken=${sessionToken}`, { // URL에 code 쿼리 파라미터 추가
     method: 'GET',
       headers: {
@@ -151,7 +150,6 @@ const [maxday, setmaxday] = useState<number>(0);
         'Authorization': `Bearer ${accessToken}`
       }
     });
-    console.log(serverdata);
     const getData = await axios.get('https://drugescape.duckdns.org/drugescape/report', {
       headers: {
         'Content-Type': 'application/json',
